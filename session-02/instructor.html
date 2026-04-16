@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Facilitator Guide — Session 02 | The Table</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:#1a1a2e;--navy-mid:#16213e;--gold:#ffb432;--gold-dark:#c9922a;
+  --gold-light:#ffd166;--latte:#fdf8f3;--latte-dark:#f0e8dc;
+  --latte-mid:#e8ddd0;--text:#2c2c2c;--text-light:#6b5b45;
+  --white:#ffffff;--border:#e0d4c4;
+  --red:#c0392b;--purple:#6c3483;--blue:#1a6fa0;--green:#1e8449;--amber:#ca6f1e;--dark:#2c3e50;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:var(--latte);color:var(--text);line-height:1.7;}
+nav{background:rgba(253,248,243,0.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:68px;position:sticky;top:0;z-index:100;}
+.nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo-text{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--navy);letter-spacing:2px;}
+.nav-back{font-size:13px;font-weight:600;color:var(--text-light);text-decoration:none;display:flex;align-items:center;gap:6px;transition:color 0.2s;}
+.nav-back:hover{color:var(--navy);}
+
+.cover{background:linear-gradient(135deg,#1a1a2e 0%,#16213e 40%,#0f3460 100%);min-height:50vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 40px;position:relative;overflow:hidden;}
+.cover::before{content:'';position:absolute;top:-100px;left:-100px;width:400px;height:400px;background:radial-gradient(circle,rgba(255,180,50,0.12) 0%,transparent 70%);border-radius:50%;}
+.cover-badge{background:rgba(255,180,50,0.2);border:1px solid rgba(255,180,50,0.5);color:#ffb432;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;padding:8px 20px;border-radius:30px;margin-bottom:40px;}
+.cover h1{font-family:'Playfair Display',serif;font-size:52px;color:#fff;line-height:1.2;margin-bottom:20px;font-style:italic;}
+.cover h1 span{color:#ffb432;font-style:normal;}
+.cover-subtitle{font-family:'Lora',serif;font-size:18px;color:rgba(255,255,255,0.7);margin-bottom:50px;font-style:italic;}
+.cover-divider{width:80px;height:3px;background:linear-gradient(90deg,transparent,#ffb432,transparent);margin:0 auto 40px;}
+.cover-meta{display:flex;gap:40px;justify-content:center;flex-wrap:wrap;}
+.cover-meta-item{text-align:center;}
+.cover-meta-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:4px;}
+.cover-meta-value{font-size:14px;color:rgba(255,255,255,0.85);font-weight:600;}
+
+.content{max-width:850px;margin:0 auto;padding:60px 40px;}
+
+.overview-box{background:linear-gradient(135deg,#1a1a2e,#0f3460);border-radius:16px;padding:40px;margin-bottom:60px;color:white;}
+.overview-box h2{font-family:'Playfair Display',serif;font-size:24px;color:#ffb432;margin-bottom:24px;letter-spacing:1px;}
+.overview-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:20px;margin-bottom:30px;}
+.overview-item{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:10px;padding:16px;text-align:center;}
+.overview-item .icon{font-size:24px;margin-bottom:8px;}
+.overview-item .label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.5);}
+.overview-item .value{font-size:15px;font-weight:600;color:white;margin-top:4px;}
+.session-list{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;}
+.session-list li{background:rgba(255,180,50,0.1);border-left:3px solid #ffb432;padding:10px 14px;border-radius:0 8px 8px 0;font-size:14px;color:rgba(255,255,255,0.85);}
+.session-list li span{color:#ffb432;font-weight:700;margin-right:6px;}
+
+.section-header{display:flex;align-items:center;gap:16px;margin-bottom:30px;margin-top:60px;}
+.section-number{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:22px;font-weight:700;flex-shrink:0;color:white;}
+.s1 .section-number{background:linear-gradient(135deg,#e74c3c,#c0392b);}
+.s2 .section-number{background:linear-gradient(135deg,#8e44ad,#6c3483);}
+.s3 .section-number{background:linear-gradient(135deg,#2980b9,#1a6fa0);}
+.s4 .section-number{background:linear-gradient(135deg,#27ae60,#1e8449);}
+.s5 .section-number{background:linear-gradient(135deg,#e67e22,#ca6f1e);}
+.s6 .section-number{background:linear-gradient(135deg,#2c3e50,#1a252f);}
+.section-title-block h2{font-family:'Playfair Display',serif;font-size:28px;line-height:1.2;}
+.s1 .section-title-block h2{color:#c0392b;}
+.s2 .section-title-block h2{color:#6c3483;}
+.s3 .section-title-block h2{color:#1a6fa0;}
+.s4 .section-title-block h2{color:#1e8449;}
+.s5 .section-title-block h2{color:#ca6f1e;}
+.s6 .section-title-block h2{color:#2c3e50;}
+.section-title-block .section-tag{font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:600;opacity:0.6;}
+.section-divider-line{height:3px;border-radius:2px;margin-bottom:30px;}
+.s1 .section-divider-line{background:linear-gradient(90deg,#e74c3c,transparent);}
+.s2 .section-divider-line{background:linear-gradient(90deg,#8e44ad,transparent);}
+.s3 .section-divider-line{background:linear-gradient(90deg,#2980b9,transparent);}
+.s4 .section-divider-line{background:linear-gradient(90deg,#27ae60,transparent);}
+.s5 .section-divider-line{background:linear-gradient(90deg,#e67e22,transparent);}
+.s6 .section-divider-line{background:linear-gradient(90deg,#2c3e50,transparent);}
+
+p{font-family:'Lora',serif;font-size:16px;line-height:1.9;margin-bottom:16px;color:#333;}
+
+.leader-box{background:#fff8e6;border:1px solid #ffd97d;border-left:5px solid #ffb432;border-radius:8px;padding:18px 22px;margin:24px 0;font-family:'Inter',sans-serif;font-size:14px;color:#7a5c00;}
+.leader-box strong{display:block;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#b8860b;margin-bottom:6px;}
+
+.scripture{background:linear-gradient(135deg,#eaf4fb,#d6eaf8);border-left:5px solid #2980b9;border-radius:0 12px 12px 0;padding:22px 28px;margin:28px 0;position:relative;}
+.scripture::before{content:'\201C';position:absolute;top:-10px;left:14px;font-size:80px;color:#2980b9;opacity:0.2;font-family:'Playfair Display',serif;line-height:1;}
+.scripture p{font-family:'Playfair Display',serif;font-size:18px;font-style:italic;color:#1a5276;margin:0 0 8px 0;line-height:1.7;}
+.scripture .ref{font-family:'Inter',sans-serif;font-size:12px;font-weight:700;letter-spacing:1px;color:#2980b9;text-transform:uppercase;}
+
+.question-box{border-radius:12px;padding:20px 24px;margin:24px 0;display:flex;gap:16px;align-items:flex-start;}
+.s1 .question-box{background:#fdf2f2;border:1px solid #f5c6cb;}
+.s2 .question-box{background:#f5eef8;border:1px solid #d7bde2;}
+.s3 .question-box{background:#eaf4fb;border:1px solid #aed6f1;}
+.s4 .question-box{background:#eafaf1;border:1px solid #a9dfbf;}
+.s5 .question-box{background:#fef9e7;border:1px solid #f9e79f;}
+.s6 .question-box{background:#f2f3f4;border:1px solid #cacfd2;}
+.question-icon{font-size:26px;flex-shrink:0;margin-top:2px;}
+.question-content strong{display:block;font-family:'Inter',sans-serif;font-size:10px;letter-spacing:2px;text-transform:uppercase;font-weight:700;margin-bottom:6px;}
+.s1 .question-content strong{color:#c0392b;}
+.s2 .question-content strong{color:#6c3483;}
+.s3 .question-content strong{color:#1a6fa0;}
+.s4 .question-content strong{color:#1e8449;}
+.s5 .question-content strong{color:#ca6f1e;}
+.s6 .question-content strong{color:#2c3e50;}
+.question-content p{font-family:'Inter',sans-serif;font-size:15px;font-weight:600;margin:0;color:#2c2c2c;font-style:italic;}
+
+.movement-card{background:white;border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,0.08);padding:30px;margin:20px 0;page-break-inside:avoid;}
+.movement-card:nth-child(1){border-top:5px solid #e74c3c;}
+.movement-card:nth-child(2){border-top:5px solid #8e44ad;}
+.movement-card:nth-child(3){border-top:5px solid #2980b9;}
+.movement-title{font-family:'Inter',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:4px;}
+.movement-card:nth-child(1) .movement-title{color:#e74c3c;}
+.movement-card:nth-child(2) .movement-title{color:#8e44ad;}
+.movement-card:nth-child(3) .movement-title{color:#2980b9;}
+.movement-card h3{font-family:'Playfair Display',serif;font-size:22px;margin-bottom:16px;color:#2c2c2c;}
+
+.jesus-card{background:white;border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,0.08);padding:30px;margin:20px 0;}
+.jesus-card:nth-child(1){border-top:5px solid #e74c3c;}
+.jesus-card:nth-child(2){border-top:5px solid #8e44ad;}
+.jesus-card:nth-child(3){border-top:5px solid #2980b9;}
+.jesus-card:nth-child(4){border-top:5px solid #27ae60;}
+.jesus-num{font-family:'Inter',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:4px;}
+.jesus-card:nth-child(1) .jesus-num{color:#e74c3c;}
+.jesus-card:nth-child(2) .jesus-num{color:#8e44ad;}
+.jesus-card:nth-child(3) .jesus-num{color:#2980b9;}
+.jesus-card:nth-child(4) .jesus-num{color:#27ae60;}
+.jesus-card h3{font-family:'Playfair Display',serif;font-size:20px;margin-bottom:12px;color:#2c2c2c;}
+
+.highlight-box{background:linear-gradient(135deg,#1a1a2e,#0f3460);color:white;border-radius:16px;padding:32px 36px;margin:30px 0;text-align:center;page-break-inside:avoid;}
+.highlight-box p{font-family:'Playfair Display',serif;font-size:20px;font-style:italic;color:white;margin:0;line-height:1.7;}
+.highlight-box .highlight-label{font-family:'Inter',sans-serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#ffb432;font-style:normal;margin-bottom:14px;display:block;font-weight:700;}
+
+.fathers-note{background:#fff8e6;border:2px dashed #ffb432;border-radius:16px;padding:30px;margin:40px 0;}
+.fathers-note h3{font-family:'Inter',sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#b8860b;font-weight:700;margin-bottom:14px;}
+.fathers-note p{font-family:'Lora',serif;font-size:15px;color:#7a5c00;line-height:1.8;}
+
+.reflection-box{background:linear-gradient(160deg,#0f3460,#1a1a2e);border-radius:20px;padding:50px 44px;margin:40px 0;position:relative;overflow:hidden;}
+.reflection-box::before{content:'';position:absolute;top:-60px;right:-60px;width:250px;height:250px;background:radial-gradient(circle,rgba(255,180,50,0.12),transparent 70%);border-radius:50%;}
+.reflection-box p{font-family:'Playfair Display',serif;font-size:18px;font-style:italic;color:rgba(255,255,255,0.9);line-height:2;margin-bottom:18px;}
+.final-question{background:rgba(255,180,50,0.15);border:1px solid rgba(255,180,50,0.4);border-radius:12px;padding:24px 28px;margin-top:30px;text-align:center;}
+.final-question p{font-family:'Playfair Display',serif;font-size:22px;font-style:italic;color:#ffb432;margin:0;}
+
+.absalom-box{background:linear-gradient(135deg,#fdf2f2,#fce4e4);border:1px solid #f5c6cb;border-left:5px solid #c0392b;border-radius:0 12px 12px 0;padding:28px 30px;margin:28px 0;}
+.absalom-box .absalom-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#c0392b;margin-bottom:10px;}
+.absalom-box h4{font-family:'Playfair Display',serif;font-size:20px;color:#2c2c2c;margin-bottom:12px;}
+.absalom-box p{font-family:'Lora',serif;font-size:15px;color:#6b5b45;line-height:1.85;margin-bottom:10px;}
+
+footer{background:#0d0d1e;padding:36px 40px;text-align:center;}
+footer p{font-family:'Lora',serif;font-size:13px;color:rgba(255,255,255,0.4);font-style:italic;}
+footer a{color:#c9922a;text-decoration:none;}
+
+@media(max-width:700px){
+  nav{padding:0 20px;}
+  .cover{padding:60px 20px 50px;}.cover h1{font-size:36px;}
+  .content{padding:40px 20px;}
+  .overview-grid{grid-template-columns:1fr 1fr;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="nav-logo">
+    <svg width="36" height="36" viewBox="0 0 36 36">
+      <circle cx="18" cy="18" r="17" fill="#1a1a2e"/>
+      <path d="M 10 12 A 8 1.5 0 0 0 26 12" fill="none" stroke="#ffd166" stroke-width="0.9" stroke-linecap="round"/>
+      <rect x="10" y="12" width="16" height="3.5" rx="1" fill="#ffb432"/>
+      <rect x="15.5" y="15.5" width="5" height="11" rx="1" fill="#ffb432"/>
+      <rect x="13" y="26.5" width="10" height="2" rx="1" fill="#ffb432" opacity="0.75"/>
+    </svg>
+    <span class="nav-logo-text">THE TABLE</span>
+  </a>
+  <a href="../index.html" class="nav-back">
+    <svg width="16" height="16" viewBox="0 0 16 16"><path d="M10 3L5 8L10 13" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Back to Home
+  </a>
+</nav>
+
+<div class="cover">
+  <div class="cover-badge">Session 02 · Facilitator Guide · May 2026</div>
+  <h1>"But You,<br><span>Lord"</span></h1>
+  <p class="cover-subtitle">Psalm 3 — Peace in the Midst of the Storm</p>
+  <div class="cover-divider"></div>
+  <div class="cover-meta">
+    <div class="cover-meta-item"><div class="cover-meta-label">Date</div><div class="cover-meta-value">Sunday, 3 May 2026</div></div>
+    <div class="cover-meta-item"><div class="cover-meta-label">Time</div><div class="cover-meta-value">4:00 – 6:00pm</div></div>
+    <div class="cover-meta-item"><div class="cover-meta-label">Duration</div><div class="cover-meta-value">60 – 75 Minutes</div></div>
+    <div class="cover-meta-item"><div class="cover-meta-label">Audience</div><div class="cover-meta-value">Ages 13 and Above</div></div>
+  </div>
+</div>
+
+<div class="content">
+
+  <div class="overview-box">
+    <h2>📋 Session Overview</h2>
+    <div class="overview-grid">
+      <div class="overview-item"><div class="icon">📖</div><div class="label">Scripture</div><div class="value">Psalm 3</div></div>
+      <div class="overview-item"><div class="icon">🎯</div><div class="label">Central Theme</div><div class="value">But You, Lord</div></div>
+      <div class="overview-item"><div class="icon">💬</div><div class="label">Discussions</div><div class="value">5 Questions</div></div>
+      <div class="overview-item"><div class="icon">✝</div><div class="label">Jesus in the Psalm</div><div class="value">4 Connections</div></div>
+    </div>
+    <ul class="session-list">
+      <li><span>1.</span> Opening Hook</li>
+      <li><span>2.</span> Setting the Scene</li>
+      <li><span>3.</span> Reading the Psalm</li>
+      <li><span>4.</span> Three Movements</li>
+      <li><span>5.</span> Where Do We See Jesus?</li>
+      <li><span>6.</span> Closing Reflection</li>
+    </ul>
+  </div>
+
+  <!-- SECTION 1 -->
+  <div class="s1">
+    <div class="section-header">
+      <div class="section-number">1</div>
+      <div class="section-title-block"><div class="section-tag">To Open</div><h2>Opening Hook</h2></div>
+    </div>
+    <div class="section-divider-line"></div>
+    <div class="leader-box"><strong>🎤 Leader Instruction</strong>Start with this question. Do not explain it yet. Let it sit. Give the group space to answer freely.</div>
+    <div class="highlight-box">
+      <span class="highlight-label">Ask the Group</span>
+      <p>"Has there ever been a moment in your life when you felt like everything was against you at the same time — school, friendships, family, your own thoughts — all at once?"</p>
+    </div>
+    <div class="leader-box"><strong>⏸ Then follow with:</strong>"Now — what if on top of all of that, someone looked at you and said: even God has given up on you?"</div>
+    <p>There is something about the middle of the night that makes problems feel bigger than they are. A worry that is manageable at noon becomes overwhelming at 2am. Most of us know that feeling — the sleepless night, the racing mind, the heaviness that will not lift.</p>
+    <p>Now imagine that feeling — but the threat is not just in your mind. Imagine your own son has raised an army against you. Your closest friends have abandoned you. You have been chased from your own city by your own child.</p>
+    <p>That is where David was when he wrote Psalm 3. And yet — somehow — he slept. That is what this session is about.</p>
+  </div>
+
+  <!-- SECTION 2 -->
+  <div class="s2">
+    <div class="section-header">
+      <div class="section-number">2</div>
+      <div class="section-title-block"><div class="section-tag">Background</div><h2>Setting the Scene</h2></div>
+    </div>
+    <div class="section-divider-line"></div>
+    <div class="leader-box"><strong>📖 Leader Instruction</strong>Read this aloud or paraphrase naturally. Keep it conversational.</div>
+    <p>Psalm 3 has a title — and it is not inserted by a Bible publisher. It goes back to the original Hebrew text, which means it is just as much a part of the psalm as verse 1. It reads: <em>A psalm of David when he fled from Absalom his son.</em></p>
+    <p>David is regarded as the greatest king Israel ever had. Yet his reign was one crisis after another. This particular crisis was not a foreign enemy — it was his own son Absalom, who launched a full rebellion, seized Jerusalem, and was hunting his own father.</p>
+    <p>On top of the rebellion and exile, people were saying something that cut deeper than all of it: <em>"There is no help for him in God."</em> They looked back at David's past failures — his sin with Bathsheba, the murder of Uriah — and concluded: this is what he deserves. God is finished with him.</p>
+    <div class="question-box">
+      <div class="question-icon">💭</div>
+      <div class="question-content"><strong>Discussion Pause</strong><p>"Have you ever been in a season where you felt like God was far away or had given up on you? Sit with that honestly for a moment."</p></div>
+    </div>
+  </div>
+
+  <!-- SECTION 3 -->
+  <div class="s3">
+    <div class="section-header">
+      <div class="section-number">3</div>
+      <div class="section-title-block"><div class="section-tag">Scripture</div><h2>Reading the Psalm</h2></div>
+    </div>
+    <div class="section-divider-line"></div>
+    <div class="leader-box"><strong>📖 Leader Instruction</strong>Read all eight verses together as a group. As you read, ask the group to notice: the problem David names, the turn that changes everything, and the peace he arrives at by the end.</div>
+    <div class="scripture">
+      <p>Lord, how many are my foes. How many rise up against me. Many are saying of me, "God will not deliver him." But you, Lord, are a shield around me, my glory, the One who lifts my head high. I call out to the Lord, and he answers me from his holy mountain. I lie down and sleep. I wake again, because the Lord sustains me. I will not fear though tens of thousands assail me on every side. Arise, Lord. Deliver me, my God. Strike all my enemies on the jaw. Break the teeth of the wicked. From the Lord comes deliverance. May your blessing be on your people.</p>
+      <span class="ref">Psalm 3:1–8</span>
+    </div>
+
+    <div class="absalom-box">
+      <div class="absalom-label">⚠️ A Word for the Young People — Say This Clearly</div>
+      <h4>The Consequences of Absalom's Defiance</h4>
+      <p>Absalom defied his father. He did not just disagree — he raised an army against him, drove him from his throne, and tried to have him killed. He broke one of the most fundamental commandments: honour your father and your mother.</p>
+      <p>Absalom was a young man of extraordinary gifts. The Bible says no one in all Israel was as handsome as he was. He was charismatic, popular, and admired. By the world's measure he had everything going for him.</p>
+      <p>But he chose defiance over honour. The rebellion failed. As he fled on a mule, his long hair — the very thing he was most famous for — caught in the branches of a great oak tree. He was left hanging there, helpless, and was killed. The very thing he was most proud of became the instrument of his downfall.</p>
+      <p>That is not coincidence. That is scripture showing us something true about how the world works. Defiance of God-given authority carries consequences — not always immediately, but the direction of that road is not upward.</p>
+    </div>
+
+    <div class="question-box">
+      <div class="question-icon">💭</div>
+      <div class="question-content"><strong>Discussion Question</strong><p>"What do you think the title of the psalm — written before verse 1 — adds to how we read it? Does knowing the story behind it change anything?"</p></div>
+    </div>
+  </div>
+
+  <!-- SECTION 4 -->
+  <div class="s4">
+    <div class="section-header">
+      <div class="section-number">4</div>
+      <div class="section-title-block"><div class="section-tag">Scripture Study</div><h2>Three Movements in the Psalm</h2></div>
+    </div>
+    <div class="section-divider-line"></div>
+    <div class="leader-box"><strong>📖 Leader Instruction</strong>Walk through each movement carefully. These are the backbone of the session. Give space between each one for the group to sit with it.</div>
+
+    <div class="movement-card">
+      <div class="movement-title">Movement One · Verses 1–2</div>
+      <h3>The Cry</h3>
+      <p>David begins not with praise but with brutal honesty. He names the enemies, counts the betrayals, repeats the accusation that God has abandoned him. He does not dress it up or arrive in prayer already composed.</p>
+      <p>This is the first liberating truth Psalm 3 teaches: honest prayer is not a lack of faith. It is the beginning of it. God does not want our sanitised prayers. David brings the full weight of his pain directly to God — and that is where the psalm starts.</p>
+      <div class="question-box">
+        <div class="question-icon">💬</div>
+        <div class="question-content"><strong>Discussion Question</strong><p>"Is there something you have been carrying that you have not yet brought to God because it felt too raw, too messy, or too complicated?"</p></div>
+      </div>
+    </div>
+
+    <div class="movement-card">
+      <div class="movement-title">Movement Two · Verses 3–4</div>
+      <h3>The Shield</h3>
+      <p>Two small words change everything. <em>But you.</em> Everything before them is the problem. Everything after them is the answer.</p>
+      <p>David does not argue with the voices. He does not write letters back to his accusers. He turns away from the noise and speaks directly to God — making three declarations of fact, not desperate pleas.</p>
+      <p><strong>You are a shield around me.</strong> Not in front — around. Complete, surrounding protection. There is no angle from which the enemy can approach where God is not already standing.</p>
+      <p><strong>My glory.</strong> When everything the world uses to define a person has been stripped away — David finds his glory in God alone. And God is enough.</p>
+      <p><strong>The One who lifts my head high.</strong> In David's culture, a bowed head was the posture of shame. To lift someone's head was to restore their dignity. God does not just protect David — he restores his honour.</p>
+      <div class="question-box">
+        <div class="question-icon">💬</div>
+        <div class="question-content"><strong>Discussion Question</strong><p>"What are the loudest voices in your life right now — and are they telling you the truth?"</p></div>
+      </div>
+    </div>
+
+    <div class="movement-card">
+      <div class="movement-title">Movement Three · Verses 5–8</div>
+      <h3>The Rest</h3>
+      <p>The proof that the declaration was real. David sleeps. Not because the danger has passed — but because he has genuinely handed it to someone bigger than himself.</p>
+      <p>You can say the right things about God with your mouth. But how you sleep tells the truth about what you actually believe in your heart.</p>
+      <p>He wakes not just surviving but declaring: <em>I will not fear though tens of thousands assail me.</em> And he closes with the most important truth in the psalm — <em>from the Lord comes deliverance.</em> Not from armies. Not from cleverness. From the Lord.</p>
+      <div class="question-box">
+        <div class="question-icon">💬</div>
+        <div class="question-content"><strong>Discussion Question</strong><p>"What is keeping you awake at night right now — and have you actually given it to God, or are you just saying the words?"</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 5 -->
+  <div class="s5">
+    <div class="section-header">
+      <div class="section-number">5</div>
+      <div class="section-title-block"><div class="section-tag">Jesus in the Psalm</div><h2>Where Do We See Jesus?</h2></div>
+    </div>
+    <div class="section-divider-line"></div>
+    <div class="leader-box"><strong>✝ Leader Instruction</strong>Say this clearly before you begin: "Every time we open the Old Testament together, we will ask this question. Because all of scripture points to Jesus — and Psalm 3 is no exception."</div>
+
+    <div class="jesus-card">
+      <div class="jesus-num">Connection One · Verse 2</div>
+      <h3>He is the one they said God would not help</h3>
+      <p>Those words — <em>"there is no help for him in God"</em> — were said about David. But they were said about Jesus too, almost word for word. As he hung on the cross, the crowds mocked: <em>"He trusts in God. Let God rescue him now if he wants him."</em> (Matthew 27:43). Jesus placed himself in that position deliberately — not because God had abandoned him, but so that he could stand alongside every person who has ever felt abandoned.</p>
+    </div>
+
+    <div class="jesus-card">
+      <div class="jesus-num">Connection Two · Verse 3</div>
+      <h3>He is the one whose head God lifted</h3>
+      <p>God vindicated David — his kingdom was restored. But the greater vindication happened on the third day after the crucifixion. Every voice said it was over. And then God lifted his head. The resurrection is the ultimate <em>but you, Lord</em> moment in all of human history — the answer to every accusation, the reversal of every defeat, the lifting of the head that the whole world said deserved to stay bowed.</p>
+    </div>
+
+    <div class="jesus-card">
+      <div class="jesus-num">Connection Three · Verse 6</div>
+      <h3>He is the one who moved forward without fear</h3>
+      <p>Throughout his entire ministry, Jesus walked in extraordinary fearlessness. When the soldiers came for him in Gethsemane, he stepped forward and said — <em>"I am he."</em> Not because he did not understand the danger. But because he knew his Father was with him. He is the ultimate human expression of verse 6 — the one who looked at everything arrayed against him and did not flinch.</p>
+    </div>
+
+    <div class="jesus-card">
+      <div class="jesus-num">Connection Four · Verse 8</div>
+      <h3>He is the one in whom salvation belongs</h3>
+      <p>David ends: <em>from the Lord comes deliverance.</em> The name Jesus — Yeshua in Hebrew — means <em>the Lord saves.</em> Every time you say the name Jesus, you are saying Psalm 3 verse 8. Salvation is not a human achievement. It is not earned or deserved. It comes from the Lord — and it comes through the one whose very name announces that truth. David wrote these words a thousand years before Jesus was born. And the name of Jesus was hidden in the final verse all along.</p>
+    </div>
+
+    <div class="highlight-box">
+      <span class="highlight-label">Summary</span>
+      <p>The Old Testament is not a collection of ancient stories about ancient people. It is a long, carefully woven tapestry — and every thread leads to the same face.</p>
+    </div>
+  </div>
+
+  <!-- SECTION 6 -->
+  <div class="s6">
+    <div class="section-header">
+      <div class="section-number">6</div>
+      <div class="section-title-block"><div class="section-tag">To Close</div><h2>Closing Reflection</h2></div>
+    </div>
+    <div class="section-divider-line"></div>
+    <div class="leader-box"><strong>📖 Leader Instruction</strong>Read this aloud slowly. Let each line breathe. This is the landing place of the whole session.</div>
+
+    <div class="reflection-box">
+      <p>There is a hill outside Nairobi where, on a clear morning, you can see everything.</p>
+      <p>The city stretching out below. The roads threading through the valleys. The estates and the schools and the churches and the homes — all of it laid out beneath you like a map of ordinary life.</p>
+      <p>From up there, the problems that feel enormous at ground level look different. Not smaller exactly — but placed. In context. Part of something larger than themselves.</p>
+      <p>That is what Psalm 3 does.</p>
+      <p>It does not pretend the problems are not real. David does not tell us to smile and believe harder. He names the enemies. He counts the betrayals. And then he lifts his eyes.</p>
+      <p><em>But you, Lord.</em></p>
+      <p>Those two words are a decision — a conscious, deliberate turning of the gaze from what is against us toward who is for us. David made that turn in the middle of the worst evening of his life. And then he lay down. And he slept.</p>
+      <div class="final-question">
+        <p>"Is there something God is asking you to hand over this evening and finally, actually, rest?"</p>
+      </div>
+    </div>
+
+    <div class="fathers-note">
+      <h3>✍ A Note for the Facilitator — Your Personal Moment</h3>
+      <p>This is where your own voice matters most. Share briefly — has there been a season in your own life where the voices said God had given up on you? Where you felt the weight of tens of thousands? And how did the truth of this psalm meet you there? Your neighbours and their children are around this table for the first time. Even two or three honest sentences from the person who called this gathering carry more weight than an hour of teaching.</p>
+    </div>
+
+    <div class="highlight-box" style="margin-top:40px;">
+      <span class="highlight-label">A Final Word</span>
+      <p>What started on Easter Sunday around a kitchen table is now a gathering. New families. New questions. New stories that God is writing in this estate. The Table is open. Lead well. ✝</p>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <p>The Table · <a href="../index.html">thetable-hub.github.io/session-01</a> · Encounter. Community. Truth.</p>
+</footer>
+
+</body>
+</html>
