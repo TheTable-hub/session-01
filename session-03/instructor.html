@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Facilitator Guide — Session 03 | The Table</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#1a1a2e;--navy-mid:#16213e;--gold:#ffb432;--gold-dark:#c9922a;
+  --gold-light:#ffd166;--latte:#fdf8f3;--latte-dark:#f0e8dc;
+  --text:#2c2c2c;--text-light:#6b5b45;--white:#ffffff;--border:#e0d4c4;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:var(--latte);color:var(--text);line-height:1.7;}
+nav{background:rgba(253,248,243,0.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:68px;position:sticky;top:0;z-index:100;}
+.nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo-text{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--navy);letter-spacing:2px;}
+.nav-back{font-size:13px;font-weight:600;color:var(--text-light);text-decoration:none;display:flex;align-items:center;gap:6px;transition:color 0.2s;}
+.nav-back:hover{color:var(--navy);}
+
+.cover{background:linear-gradient(135deg,#1a1a2e 0%,#16213e 40%,#0f3460 100%);min-height:50vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 40px;position:relative;overflow:hidden;}
+.cover::before{content:'';position:absolute;top:-100px;left:-100px;width:400px;height:400px;background:radial-gradient(circle,rgba(255,180,50,0.12) 0%,transparent 70%);border-radius:50%;}
+.cover-badge{background:rgba(255,180,50,0.2);border:1px solid rgba(255,180,50,0.5);color:#ffb432;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;padding:8px 20px;border-radius:30px;margin-bottom:40px;}
+.cover h1{font-family:'Playfair Display',serif;font-size:52px;color:#fff;line-height:1.2;margin-bottom:20px;font-style:italic;}
+.cover h1 span{color:#ffb432;font-style:normal;}
+.cover-subtitle{font-family:'Lora',serif;font-size:17px;color:rgba(255,255,255,0.65);margin-bottom:10px;font-style:italic;}
+.cover-scriptures{font-size:11px;color:rgba(255,255,255,0.35);letter-spacing:2px;margin-bottom:50px;}
+.cover-divider{width:80px;height:3px;background:linear-gradient(90deg,transparent,#ffb432,transparent);margin:0 auto 40px;}
+.cover-meta{display:flex;gap:40px;justify-content:center;flex-wrap:wrap;}
+.cover-meta-item{text-align:center;}
+.cover-meta-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:4px;}
+.cover-meta-value{font-size:14px;color:rgba(255,255,255,0.85);font-weight:600;}
+
+.content{max-width:850px;margin:0 auto;padding:60px 40px;}
+
+.overview-box{background:linear-gradient(135deg,#1a1a2e,#0f3460);border-radius:16px;padding:40px;margin-bottom:60px;color:white;}
+.overview-box h2{font-family:'Playfair Display',serif;font-size:24px;color:#ffb432;margin-bottom:24px;letter-spacing:1px;}
+.overview-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;margin-bottom:30px;}
+.overview-item{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:10px;padding:16px;text-align:center;}
+.overview-item .icon{font-size:22px;margin-bottom:8px;}
+.overview-item .label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.5);}
+.overview-item .value{font-size:14px;font-weight:600;color:white;margin-top:4px;}
+.session-list{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;}
+.session-list li{background:rgba(255,180,50,0.1);border-left:3px solid #ffb432;padding:10px 14px;border-radius:0 8px 8px 0;font-size:14px;color:rgba(255,255,255,0.85);}
+.session-list li span{color:#ffb432;font-weight:700;margin-right:6px;}
+
+.section-header{display:flex;align-items:center;gap:16px;margin-bottom:30px;margin-top:60px;}
+.section-number{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:22px;font-weight:700;flex-shrink:0;color:white;}
+.s1 .section-number{background:linear-gradient(135deg,#e74c3c,#c0392b);}
+.s2 .section-number{background:linear-gradient(135deg,#8e44ad,#6c3483);}
+.s3 .section-number{background:linear-gradient(135deg,#2980b9,#1a6fa0);}
+.s4 .section-number{background:linear-gradient(135deg,#27ae60,#1e8449);}
+.s5 .section-number{background:linear-gradient(135deg,#e67e22,#ca6f1e);}
+.s6 .section-number{background:linear-gradient(135deg,#d4a017,#b8860b);}
+.s7 .section-number{background:linear-gradient(135deg,#2c3e50,#1a252f);}
+.section-title-block h2{font-family:'Playfair Display',serif;font-size:28px;line-height:1.2;}
+.s1 .section-title-block h2{color:#c0392b;}
+.s2 .section-title-block h2{color:#6c3483;}
+.s3 .section-title-block h2{color:#1a6fa0;}
+.s4 .section-title-block h2{color:#1e8449;}
+.s5 .section-title-block h2{color:#ca6f1e;}
+.s6 .section-title-block h2{color:#b8860b;}
+.s7 .section-title-block h2{color:#2c3e50;}
+.section-title-block .section-tag{font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:600;opacity:0.6;}
+.section-divider-line{height:3px;border-radius:2px;margin-bottom:30px;}
+.s1 .section-divider-line{background:linear-gradient(90deg,#e74c3c,transparent);}
+.s2 .section-divider-line{background:linear-gradient(90deg,#8e44ad,transparent);}
+.s3 .section-divider-line{background:linear-gradient(90deg,#2980b9,transparent);}
+.s4 .section-divider-line{background:linear-gradient(90deg,#27ae60,transparent);}
+.s5 .section-divider-line{background:linear-gradient(90deg,#e67e22,transparent);}
+.s6 .section-divider-line{background:linear-gradient(90deg,#d4a017,transparent);}
+.s7 .section-divider-line{background:linear-gradient(90deg,#2c3e50,transparent);}
+
+p{font-family:'Lora',serif;font-size:16px;line-height:1.9;margin-bottom:16px;color:#333;}
+
+.leader-box{background:#fff8e6;border:1px solid #ffd97d;border-left:5px solid #ffb432;border-radius:8px;padding:18px 22px;margin:24px 0;font-family:'Inter',sans-serif;font-size:14px;color:#7a5c00;}
+.leader-box strong{display:block;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#b8860b;margin-bottom:6px;}
+
+.scripture{background:linear-gradient(135deg,#eaf4fb,#d6eaf8);border-left:5px solid #2980b9;border-radius:0 12px 12px 0;padding:22px 28px;margin:28px 0;position:relative;}
+.scripture::before{content:'\201C';position:absolute;top:-10px;left:14px;font-size:80px;color:#2980b9;opacity:0.2;font-family:'Playfair Display',serif;line-height:1;}
+.scripture p{font-family:'Playfair Display',serif;font-size:17px;font-style:italic;color:#1a5276;margin:0 0 8px 0;line-height:1.7;}
+.scripture .ref{font-family:'Inter',sans-serif;font-size:12px;font-weight:700;letter-spacing:1px;color:#2980b9;text-transform:uppercase;}
+
+.question-box{border-radius:12px;padding:20px 24px;margin:24px 0;display:flex;gap:16px;align-items:flex-start;}
+.s1 .question-box,.s3 .question-box{background:#fdf2f2;border:1px solid #f5c6cb;}
+.s2 .question-box{background:#f5eef8;border:1px solid #d7bde2;}
+.s4 .question-box{background:#eafaf1;border:1px solid #a9dfbf;}
+.s5 .question-box{background:#fef9e7;border:1px solid #f9e79f;}
+.s6 .question-box{background:#fffbf0;border:1px solid #fde68a;}
+.s7 .question-box{background:#f2f3f4;border:1px solid #cacfd2;}
+.question-icon{font-size:26px;flex-shrink:0;margin-top:2px;}
+.question-content strong{display:block;font-family:'Inter',sans-serif;font-size:10px;letter-spacing:2px;text-transform:uppercase;font-weight:700;margin-bottom:6px;color:#c9922a;}
+.question-content p{font-family:'Inter',sans-serif;font-size:15px;font-weight:600;margin:0;color:#2c2c2c;font-style:italic;}
+
+.treasure-card{background:white;border-radius:14px;box-shadow:0 4px 16px rgba(0,0,0,0.07);padding:26px 28px;margin:16px 0;border-left:5px solid var(--gold);}
+.treasure-num{font-family:'Inter',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold-dark);margin-bottom:6px;}
+.treasure-card h3{font-family:'Playfair Display',serif;font-size:20px;color:var(--navy);margin-bottom:10px;}
+
+.vessel-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:24px 0;}
+.vessel-chip{border-radius:10px;padding:16px 12px;text-align:center;border:1px solid var(--border);}
+.vessel-chip.gold{background:linear-gradient(135deg,#fff8e6,#fef3cc);border-color:#ffd97d;}
+.vessel-chip.silver{background:linear-gradient(135deg,#f5f5f5,#e8e8e8);border-color:#d0d0d0;}
+.vessel-chip.wood{background:linear-gradient(135deg,#fdf0e0,#f5e0c4);border-color:#d4a86a;}
+.vessel-chip.clay{background:linear-gradient(135deg,#f5ede4,#ead5c4);border-color:#c4a08a;}
+.vessel-chip .icon{font-size:24px;margin-bottom:6px;}
+.vessel-chip h4{font-size:12px;font-weight:700;color:var(--navy);}
+
+.jesus-card{background:white;border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,0.08);padding:28px;margin:18px 0;}
+.jesus-card:nth-child(1){border-top:5px solid #e74c3c;}
+.jesus-card:nth-child(2){border-top:5px solid #8e44ad;}
+.jesus-card:nth-child(3){border-top:5px solid #2980b9;}
+.jesus-card:nth-child(4){border-top:5px solid #27ae60;}
+.jesus-num{font-family:'Inter',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:4px;}
+.jesus-card:nth-child(1) .jesus-num{color:#e74c3c;}
+.jesus-card:nth-child(2) .jesus-num{color:#8e44ad;}
+.jesus-card:nth-child(3) .jesus-num{color:#2980b9;}
+.jesus-card:nth-child(4) .jesus-num{color:#27ae60;}
+.jesus-card h3{font-family:'Playfair Display',serif;font-size:20px;margin-bottom:12px;color:#2c2c2c;}
+
+.highlight-box{background:linear-gradient(135deg,#1a1a2e,#0f3460);color:white;border-radius:16px;padding:32px 36px;margin:30px 0;text-align:center;page-break-inside:avoid;break-inside:avoid;}
+.highlight-box p{font-family:'Playfair Display',serif;font-size:20px;font-style:italic;color:white;margin:0;line-height:1.7;}
+.highlight-box .highlight-label{font-family:'Inter',sans-serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#ffb432;font-style:normal;margin-bottom:14px;display:block;font-weight:700;}
+
+.fathers-note{background:#fff8e6;border:2px dashed #ffb432;border-radius:16px;padding:30px;margin:40px 0;}
+.fathers-note h3{font-family:'Inter',sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#b8860b;font-weight:700;margin-bottom:14px;}
+.fathers-note p{font-family:'Lora',serif;font-size:15px;color:#7a5c00;line-height:1.8;}
+
+.reflection-box{background:linear-gradient(160deg,#0f3460,#1a1a2e);border-radius:20px;padding:50px 44px;margin:40px 0;position:relative;overflow:hidden;}
+.reflection-box::before{content:'';position:absolute;top:-60px;right:-60px;width:250px;height:250px;background:radial-gradient(circle,rgba(255,180,50,0.12),transparent 70%);border-radius:50%;}
+.reflection-box p{font-family:'Playfair Display',serif;font-size:18px;font-style:italic;color:rgba(255,255,255,0.9);line-height:2;margin-bottom:18px;}
+.final-question{background:rgba(255,180,50,0.15);border:1px solid rgba(255,180,50,0.4);border-radius:12px;padding:24px 28px;margin-top:30px;text-align:center;}
+.final-question p{font-family:'Playfair Display',serif;font-size:21px;font-style:italic;color:#ffb432;margin:0;}
+
+footer{background:#0d0d1e;padding:36px 40px;text-align:center;}
+footer p{font-family:'Lora',serif;font-size:13px;color:rgba(255,255,255,0.4);font-style:italic;}
+footer a{color:#c9922a;text-decoration:none;}
+
+@media(max-width:700px){
+  nav{padding:0 20px;}
+  .cover{padding:60px 20px 50px;}.cover h1{font-size:36px;}
+  .content{padding:40px 20px;}
+  .vessel-row{grid-template-columns:repeat(2,1fr);}
+  .overview-grid{grid-template-columns:1fr 1fr;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="nav-logo">
+    <svg width="36" height="36" viewBox="0 0 36 36">
+      <circle cx="18" cy="18" r="17" fill="#1a1a2e"/>
+      <path d="M 10 12 A 8 1.5 0 0 0 26 12" fill="none" stroke="#ffd166" stroke-width="0.9" stroke-linecap="round"/>
+      <rect x="10" y="12" width="16" height="3.5" rx="1" fill="#ffb432"/>
+      <rect x="15.5" y="15.5" width="5" height="11" rx="1" fill="#ffb432"/>
+      <rect x="13" y="26.5" width="10" height="2" rx="1" fill="#ffb432" opacity="0.75"/>
+    </svg>
+    <span class="nav-logo-text">THE TABLE</span>
+  </a>
+  <a href="../index.html" class="nav-back">
+    <svg width="16" height="16" viewBox="0 0 16 16"><path d="M10 3L5 8L10 13" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Back to Home
+  </a>
+</nav>
+
+<div class="cover">
+  <div class="cover-badge">Session 03 · Facilitator Guide · June 2026</div>
+  <h1>"Already<br><span>Given"</span></h1>
+  <p class="cover-subtitle">The Treasure, the Vessel and the Dance</p>
+  <p class="cover-scriptures">Ephesians 1:3–14 · 2 Timothy 2:20–21 · Psalm 12:6</p>
+  <div class="cover-divider"></div>
+  <div class="cover-meta">
+    <div class="cover-meta-item"><div class="cover-meta-label">Date</div><div class="cover-meta-value">Sunday, 1 June 2026</div></div>
+    <div class="cover-meta-item"><div class="cover-meta-label">Time</div><div class="cover-meta-value">4:00 – 6:00pm</div></div>
+    <div class="cover-meta-item"><div class="cover-meta-label">Duration</div><div class="cover-meta-value">60 – 75 Minutes</div></div>
+    <div class="cover-meta-item"><div class="cover-meta-label">Audience</div><div class="cover-meta-value">Ages 13 and Above</div></div>
+  </div>
+</div>
+
+<div class="content">
+
+  <div class="overview-box">
+    <h2>📋 Session Overview</h2>
+    <div class="overview-grid">
+      <div class="overview-item"><div class="icon">💎</div><div class="label">The Treasure</div><div class="value">Ephesians 1:3–14</div></div>
+      <div class="overview-item"><div class="icon">🏺</div><div class="label">The Vessel</div><div class="value">2 Timothy 2:20–21</div></div>
+      <div class="overview-item"><div class="icon">🔥</div><div class="label">The Refining</div><div class="value">Psalm 12:6</div></div>
+      <div class="overview-item"><div class="icon">✝</div><div class="label">Jesus Connections</div><div class="value">4 Points</div></div>
+    </div>
+    <ul class="session-list">
+      <li><span>1.</span> Opening Hook</li>
+      <li><span>2.</span> Setting the Scene</li>
+      <li><span>3.</span> The Treasure — Ephesians 1</li>
+      <li><span>4.</span> The Vessel — 2 Timothy 2</li>
+      <li><span>5.</span> The Refining — Psalm 12</li>
+      <li><span>6.</span> Where Do We See Jesus?</li>
+      <li><span>7.</span> The Dance — Closing Reflection</li>
+    </ul>
+  </div>
+
+  <!-- SECTION 1 -->
+  <div class="s1">
+    <div class="section-header">
+      <div class="section-number">1</div>
+      <div class="section-title-block"><div class="section-tag">To Open</div><h2>Opening Hook</h2></div>
+    </div>
+    <div class="section-divider-line"></div>
+    <div class="leader-box"><strong>🎤 Leader Instruction</strong>Start with this question. Let it sit without explanation. Give the group genuine space to respond.</div>
+    <div class="highlight-box">
+      <span class="highlight-label">Ask the Group</span>
+      <p>"Has anyone here ever received a gift that was meant for you — but you never actually opened it?"</p>
+    </div>
+    <div class="leader-box"><strong>⏸ Then follow with:</strong>"What about a gift sitting right there with your name on it — and you spent years asking the person who gave it to you for something — not knowing it was already yours?"</div>
+    <p>Many of us carry a picture of God without realising it — he is seated far away and we are lined up below with bowls, hoping that if we pray long enough or behave well enough, he might drop something in. According to Paul writing to the Ephesians, that picture is completely wrong. The vault was opened in Christ before the foundation of the world.</p>
+    <div class="question-box">
+      <div class="question-icon">💭</div>
+      <div class="question-content"><strong>Discussion Pause</strong><p>"If someone told you right now that everything you have been asking God for has already been released — what would your first reaction be? Relief? Disbelief? Confusion?"</p></div>
+    </div>
+  </div>
+
+  <!-- SECTION 2 -->
+  <div class="s2">
+    <div class="section-header">
+      <div class="section-number">2</div>
+      <div class="section-title-block"><div class="section-tag">Background</div><h2>Setting the Scene</h2></div>
+    </div>
+    <div class="section-divider-line"></div>
+    <p>Paul writes Ephesians from prison. The man who produces the most extravagant description of spiritual blessing in the entire New Testament is sitting in a Roman cell. He is not writing a theory — he is writing a testimony. What he has discovered about the Father's generosity cannot be taken from him by any chain.</p>
+    <p>The word he uses in verse 3 unlocks the whole passage — God <em>has blessed</em> us. Past tense. Completed action. Not will bless. Not is considering blessing. Has blessed. Already. Done. With every spiritual blessing. Not some. Every one. In Christ.</p>
+    <div class="highlight-box">
+      <span class="highlight-label">Key Insight</span>
+      <p>The Father is not the problem. He never was. He settled the question of his generosity before time began. The question that remains is on our side — not whether he has given, but whether we are positioned to receive.</p>
+    </div>
+    <div class="question-box">
+      <div class="question-icon">💭</div>
+      <div class="question-content"><strong>Discussion Question</strong><p>"Have you ever prayed for something not knowing it had already been provided? What does it do to the way you pray when you discover that God already moved before you asked?"</p></div>
+    </div>
+  </div>
+
+  <!-- SECTION 3 -->
+  <div class="s3">
+    <div class="section-header">
+      <div class="section-number">3</div>
+      <div class="section-title-block"><div class="section-tag">Ephesians 1:3–14</div><h2>The Treasure</h2></div>
+    </div>
+    <div class="section-divider-line"></div>
+    <div class="leader-box"><strong>📖 Leader Instruction</strong>Read the passage together. Ask the group to count the blessings — how many are described in the past tense, already done and secured. Walk through each treasure deliberately.</div>
+
+    <div class="scripture">
+      <p>"Praise be to the God and Father of our Lord Jesus Christ, who has blessed us in the heavenly realms with every spiritual blessing in Christ. For he chose us in him before the creation of the world to be holy and blameless in his sight. In love he predestined us for adoption to sonship through Jesus Christ, in accordance with his pleasure and will — to the praise of his glorious grace, which he has freely given us in the One he loves. In him we have redemption through his blood, the forgiveness of sins, in accordance with the riches of God's grace that he lavished on us..."</p>
+      <span class="ref">Ephesians 1:3–8</span>
+    </div>
+
+    <div class="treasure-card">
+      <div class="treasure-num">Treasure One</div>
+      <h3>Chosen before creation</h3>
+      <p>Before the world existed — before any name was given — the Father chose each person around this table. Not because of achievement. According to his pleasure and will. For a teenager who has ever felt picked last or invisible, this is the most counter-cultural truth in the entire Bible.</p>
+    </div>
+    <div class="treasure-card">
+      <div class="treasure-num">Treasure Two</div>
+      <h3>Adopted into sonship</h3>
+      <p>Not servants. Not subjects. Sons and daughters. The Father did not wait to see how they turned out before deciding to bring them in. He decided to make them family before they existed. We do not come to God as beggars at a gate — we come as children walking into our Father's house.</p>
+    </div>
+    <div class="treasure-card">
+      <div class="treasure-num">Treasure Three</div>
+      <h3>Redemption and forgiveness</h3>
+      <p>Past tense. Secured. Done. The question of forgiveness was settled at the cross. It does not fluctuate based on last Tuesday's behaviour. We have redemption — present possession, not future hope.</p>
+    </div>
+    <div class="treasure-card">
+      <div class="treasure-num">Treasure Four</div>
+      <h3>The mystery revealed</h3>
+      <p>God did not keep his plan hidden. He made known to us the mystery of his will — pulled back the curtain, invited us into the secret counsel of his purposes. This is not the behaviour of a distant withholding deity. It is a Father who wants his children to understand what he is doing.</p>
+    </div>
+    <div class="treasure-card">
+      <div class="treasure-num">Treasure Five</div>
+      <h3>Sealed with the Holy Spirit</h3>
+      <p>A deposit guaranteeing the full inheritance — a legal commitment in Paul's world. God has legally bound himself to the completion of what he started. The Spirit living in us is not a consolation prize. He is heaven's guarantee that everything promised is coming.</p>
+    </div>
+
+    <div class="question-box">
+      <div class="question-icon">💬</div>
+      <div class="question-content"><strong>Discussion Question</strong><p>"Which of those five treasures feels most real to you right now? And which one feels furthest away — like you know it in your head but have not yet received it in your life?"</p></div>
+    </div>
+  </div>
+
+  <!-- SECTION 4 -->
+  <div class="s4">
+    <div class="section-header">
+      <div class="section-number">4</div>
+      <div class="section-title-block"><div class="section-tag">2 Timothy 2:20–21</div><h2>The Vessel</h2></div>
+    </div>
+    <div class="section-divider-line"></div>
+    <div class="leader-box"><strong>📖 Leader Instruction</strong>Read the passage together. Then walk through the four vessel types. Make clear this is not a theology of favouritism — it is a call to active, daily, personal choice.</div>
+
+    <div class="scripture">
+      <p>"In a large house there are articles not only of gold and silver but also of wood and clay. Some are for special purposes and some for common use. Those who cleanse themselves from the latter will be instruments for special purposes, made holy, useful to the Master and prepared to do any good work."</p>
+      <span class="ref">2 Timothy 2:20–21</span>
+    </div>
+
+    <div class="vessel-row">
+      <div class="vessel-chip gold"><div class="icon">🥇</div><h4>Gold</h4></div>
+      <div class="vessel-chip silver"><div class="icon">🥈</div><h4>Silver</h4></div>
+      <div class="vessel-chip wood"><div class="icon">🪵</div><h4>Wood</h4></div>
+      <div class="vessel-chip clay"><div class="icon">🏺</div><h4>Clay</h4></div>
+    </div>
+
+    <p>Paul is not teaching that some people are born gold and others born clay with no hope of change. The key phrase is <em>those who cleanse themselves.</em> This is a choice — deliberate, active, daily — about what you allow to remain in your vessel and what you cleanse yourself from.</p>
+    <p>The vessel shapes the asking. A gold vessel asks from a place of knowing who it is and whose it is. A clay vessel asks from a place of striving — trying to get something it does not believe it already has. This is why James says you ask and do not receive because you ask with wrong motives. The vessel and the asking are inseparable.</p>
+    <p>But Paul does not say clean yourself up first and then come to God. He says those who cleanse themselves <em>will be</em> instruments for special purposes. The cleansing leads to the usefulness. And God partners with you in it. You take a step — he meets you in it. You make a choice — he honours it. That is the dance.</p>
+
+    <div class="question-box">
+      <div class="question-icon">💬</div>
+      <div class="question-content"><strong>Discussion Question</strong><p>"What is in your vessel right now that does not belong there? What are you holding onto that is keeping you from being the kind of vessel that can carry what the Father has already prepared?"</p></div>
+    </div>
+  </div>
+
+  <!-- SECTION 5 -->
+  <div class="s5">
+    <div class="section-header">
+      <div class="section-number">5</div>
+      <div class="section-title-block"><div class="section-tag">Psalm 12:6</div><h2>The Refining</h2></div>
+    </div>
+    <div class="section-divider-line"></div>
+    <div class="leader-box"><strong>📖 Leader Instruction</strong>Read the verse. Then take time on the illustration of the refining process — it is the practical answer to the question everyone is sitting with: how does a clay vessel actually become gold?</div>
+
+    <div class="scripture">
+      <p>"The words of the Lord are flawless, like silver purified in a crucible, like gold refined seven times."</p>
+      <span class="ref">Psalm 12:6</span>
+    </div>
+
+    <p>In the ancient world, refining silver and gold was a meticulous, repeated process. The metal was placed in a crucible — a container built for extreme heat. Fire was applied. Impurities rose to the surface. They were removed. Then fire again. Seven times. Each pass removed what did not belong until what remained was pure and genuinely precious.</p>
+    <p>The psalmist says the word of God is like that — not raw metal needing our help, but already fully refined. Seven times pure. And when a clay vessel is immersed in the word of God, the word does to the vessel what fire does to metal. It surfaces what does not belong. It removes what is impure. It refines what remains.</p>
+    <p>This is not a call to read the Bible more as religious duty. It is a revelation about the nature of the word itself. The word of God is not information about God — it is the living, active presence of God. Hebrews 4:12 says it is sharper than any double-edged sword. It does not just describe transformation. It produces it.</p>
+
+    <div class="highlight-box">
+      <span class="highlight-label">The Full Arc</span>
+      <p>The Father released the treasure — Ephesians 1. The vessel you present determines what you can receive — 2 Timothy 2. The instrument that transforms the vessel is sustained immersion in the word of God — Psalm 12. This is one complete picture of how the life of faith actually works.</p>
+    </div>
+
+    <div class="question-box">
+      <div class="question-icon">💬</div>
+      <div class="question-content"><strong>Discussion Question</strong><p>"What would it look like for you to treat the word of God not as a religious obligation but as the primary instrument of your transformation — the thing actively turning your clay into gold?"</p></div>
+    </div>
+  </div>
+
+  <!-- SECTION 6 -->
+  <div class="s6">
+    <div class="section-header">
+      <div class="section-number">6</div>
+      <div class="section-title-block"><div class="section-tag">Jesus in the Passages</div><h2>Where Do We See Jesus?</h2></div>
+    </div>
+    <div class="section-divider-line"></div>
+    <div class="leader-box"><strong>✝ Leader Instruction</strong>Say this clearly: "Jesus is not just present in these passages — he is the foundation on which every single thing we have discussed this evening stands. Remove him and the entire architecture collapses."</div>
+
+    <div class="jesus-card">
+      <div class="jesus-num">Connection One · Ephesians 1:3</div>
+      <h3>He is the vault itself</h3>
+      <p>Paul says every spiritual blessing exists <em>in Christ</em> — not from Christ, not delivered by Christ, but in him. He is not the postman who delivers the treasure. He is the location where the treasure lives. To receive Christ is to receive access to everything in him. He is not just the giver. He is the gift.</p>
+    </div>
+
+    <div class="jesus-card">
+      <div class="jesus-num">Connection Two · 2 Timothy 2:21</div>
+      <h3>He is the ultimate gold vessel</h3>
+      <p>The gold vessel in human form is Jesus. Fully surrendered. Fully available. Nothing in him that did not belong. Hebrews 10:7 records his words — <em>"Here I am, I have come to do your will."</em> And the extraordinary truth of the gospel is that when you are in Christ, his vessel-hood becomes yours. You do not work toward gold from clay. You receive gold as your new identity in him and live from that identity outward.</p>
+    </div>
+
+    <div class="jesus-card">
+      <div class="jesus-num">Connection Three · Psalm 12:6</div>
+      <h3>He is the word that refines</h3>
+      <p>John 1:1 — <em>"In the beginning was the Word, and the Word was with God, and the Word was God."</em> The word described as seven times refined gold has a name. Jesus. When you sit with scripture and allow it to surface what does not belong — you are not engaging with a book. You are engaging with a person. The refining work of scripture is the refining work of Jesus himself.</p>
+    </div>
+
+    <div class="jesus-card">
+      <div class="jesus-num">Connection Four — The Whole Session</div>
+      <h3>He is why the dance is possible at all</h3>
+      <p>Without Christ there is no open vault — sin closed it. Without Christ there is no gold vessel — our nature tends toward clay. Without Christ there is no refining word that can actually transform a human heart. The cross is the moment the vault was opened. The resurrection is the moment the gold vessel was vindicated. The sending of the Spirit is the moment the living word took up permanent residence in his people.</p>
+    </div>
+  </div>
+
+  <!-- SECTION 7 -->
+  <div class="s7">
+    <div class="section-header">
+      <div class="section-number">7</div>
+      <div class="section-title-block"><div class="section-tag">To Close</div><h2>The Dance — Closing Reflection</h2></div>
+    </div>
+    <div class="section-divider-line"></div>
+    <div class="leader-box"><strong>📖 Leader Instruction</strong>Read this slowly. This is the landing place of everything. Let each image breathe before you move to the next.</div>
+
+    <div class="reflection-box">
+      <p>In many African homes there is a moment at a celebration when the music changes.</p>
+      <p>Up until that point everyone has been watching. Seated. Comfortable. Safe in the anonymity of the crowd. And then the music shifts — and someone reaches out a hand toward you. Not to the person next to you. To you. And the question in that extended hand is simply — <em>will you dance?</em></p>
+      <p>The Father has already done the releasing. Before you were born. Before you knew you had a need. He extended his hand and said — everything I have is yours in my Son.</p>
+      <p>The vault is open. Your name is on the treasure. The invitation has already been given.</p>
+      <p>But a dance requires two people moving. He leads — always. The initiative is always his. The grace is always his. But you respond. You choose the vessel. You present yourself. You open the word and stay in it.</p>
+      <p>And in that moment of response — the Father's generosity meets the vessel's availability. The treasure finds its home. The clay becomes gold. The asking changes because the vessel has changed.</p>
+      <p><em>That is the dance.</em></p>
+      <div class="final-question">
+        <p>"The Father's hand is extended. What is your response?"</p>
+      </div>
+    </div>
+
+    <div class="fathers-note">
+      <h3>✍ A Note for the Facilitator — Your Personal Moment</h3>
+      <p>Share briefly — when was the moment in your own life when you stopped approaching God as a beggar with a bowl and began to understand that the vault was already open? When did the dance become real for you rather than just a theological idea? Two or three honest sentences from someone who has actually lived this will do more than everything else in the session combined.</p>
+    </div>
+
+    <div class="highlight-box" style="margin-top:40px;">
+      <span class="highlight-label">A Final Word</span>
+      <p>Three sessions in. An estate gathering built on the word of God. The Table is not just open — it is bearing fruit. Lead well. ✝</p>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <p>The Table · <a href="../index.html">thetable-hub.github.io/session-01</a> · Encounter. Community. Truth.</p>
+</footer>
+
+</body>
+</html>
