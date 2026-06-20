@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Facilitator Guide — Session 04 | The Table</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#1a1a2e;--navy-mid:#16213e;--gold:#ffb432;--gold-dark:#c9922a;
+  --gold-light:#ffd166;--latte:#fdf8f3;--latte-dark:#f0e8dc;
+  --text:#2c2c2c;--text-light:#6b5b45;--white:#ffffff;--border:#e0d4c4;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:var(--latte);color:var(--text);line-height:1.7;}
+nav{background:rgba(253,248,243,0.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:68px;position:sticky;top:0;z-index:100;}
+.nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo-text{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--navy);letter-spacing:2px;}
+.nav-back{font-size:13px;font-weight:600;color:var(--text-light);text-decoration:none;display:flex;align-items:center;gap:6px;transition:color 0.2s;}
+.nav-back:hover{color:var(--navy);}
+
+.cover{background:linear-gradient(135deg,#1a1a2e 0%,#16213e 40%,#0f3460 100%);min-height:50vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 40px;position:relative;overflow:hidden;}
+.cover::before{content:'';position:absolute;top:-100px;left:-100px;width:400px;height:400px;background:radial-gradient(circle,rgba(255,180,50,0.12) 0%,transparent 70%);border-radius:50%;}
+.cover-badge{background:rgba(255,180,50,0.2);border:1px solid rgba(255,180,50,0.5);color:#ffb432;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;padding:8px 20px;border-radius:30px;margin-bottom:40px;}
+.cover h1{font-family:'Playfair Display',serif;font-size:52px;color:#fff;line-height:1.2;margin-bottom:20px;font-style:italic;}
+.cover h1 span{color:#ffb432;font-style:normal;}
+.cover-subtitle{font-family:'Lora',serif;font-size:17px;color:rgba(255,255,255,0.65);margin-bottom:10px;font-style:italic;}
+.cover-scriptures{font-size:11px;color:rgba(255,255,255,0.35);letter-spacing:2px;margin-bottom:50px;}
+.cover-divider{width:80px;height:3px;background:linear-gradient(90deg,transparent,#ffb432,transparent);margin:0 auto 40px;}
+.cover-meta{display:flex;gap:40px;justify-content:center;flex-wrap:wrap;}
+.cover-meta-item{text-align:center;}
+.cover-meta-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:4px;}
+.cover-meta-value{font-size:14px;color:rgba(255,255,255,0.85);font-weight:600;}
+
+.content{max-width:850px;margin:0 auto;padding:60px 40px;}
+
+.overview-box{background:linear-gradient(135deg,#1a1a2e,#0f3460);border-radius:16px;padding:40px;margin-bottom:60px;color:white;}
+.overview-box h2{font-family:'Playfair Display',serif;font-size:24px;color:#ffb432;margin-bottom:24px;letter-spacing:1px;}
+.overview-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;margin-bottom:30px;}
+.overview-item{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:10px;padding:16px;text-align:center;}
+.overview-item .icon{font-size:22px;margin-bottom:8px;}
+.overview-item .label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.5);}
+.overview-item .value{font-size:14px;font-weight:600;color:white;margin-top:4px;}
+.session-list{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;}
+.session-list li{background:rgba(255,180,50,0.1);border-left:3px solid #ffb432;padding:10px 14px;border-radius:0 8px 8px 0;font-size:14px;color:rgba(255,255,255,0.85);}
+.session-list li span{color:#ffb432;font-weight:700;margin-right:6px;}
+
+.section-header{display:flex;align-items:center;gap:16px;margin-bottom:30px;margin-top:60px;}
+.section-number{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:22px;font-weight:700;flex-shrink:0;color:white;}
+.s1 .section-number{background:linear-gradient(135deg,#e74c3c,#c0392b);}
+.s2 .section-number{background:linear-gradient(135deg,#8e44ad,#6c3483);}
+.s3 .section-number{background:linear-gradient(135deg,#2980b9,#1a6fa0);}
+.s4 .section-number{background:linear-gradient(135deg,#27ae60,#1e8449);}
+.s5 .section-number{background:linear-gradient(135deg,#e67e22,#ca6f1e);}
+.s6 .section-number{background:linear-gradient(135deg,#d4a017,#b8860b);}
+.s7 .section-number{background:linear-gradient(135deg,#2c3e50,#1a252f);}
+.section-title-block h2{font-family:'Playfair Display',serif;font-size:28px;line-height:1.2;}
+.s1 .section-title-block h2{color:#c0392b;}
+.s2 .section-title-block h2{color:#6c3483;}
+.s3 .section-title-block h2{color:#1a6fa0;}
+.s4 .section-title-block h2{color:#1e8449;}
+.s5 .section-title-block h2{color:#ca6f1e;}
+.s6 .section-title-block h2{color:#b8860b;}
+.s7 .section-title-block h2{color:#2c3e50;}
+.section-title-block .section-tag{font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:600;opacity:0.6;}
+.section-divider-line{height:3px;border-radius:2px;margin-bottom:30px;}
+.s1 .section-divider-line{background:linear-gradient(90deg,#e74c3c,transparent);}
+.s2 .section-divider-line{background:linear-gradient(90deg,#8e44ad,transparent);}
+.s3 .section-divider-line{background:linear-gradient(90deg,#2980b9,transparent);}
+.s4 .section-divider-line{background:linear-gradient(90deg,#27ae60,transparent);}
+.s5 .section-divider-line{background:linear-gradient(90deg,#e67e22,transparent);}
+.s6 .section-divider-line{background:linear-gradient(90deg,#d4a017,transparent);}
+.s7 .section-divider-line{background:linear-gradient(90deg,#2c3e50,transparent);}
+
+p{font-family:'Lora',serif;font-size:16px;line-height:1.9;margin-bottom:16px;color:#333;}
+
+.leader-box{background:#fff8e6;border:1px solid #ffd97d;border-left:5px solid #ffb432;border-radius:8px;padding:18px 22px;margin:24px 0;font-family:'Inter',sans-serif;font-size:14px;color:#7a5c00;}
+.leader-box strong{display:block;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#b8860b;margin-bottom:6px;}
+
+.scripture{background:linear-gradient(135deg,#eaf4fb,#d6eaf8);border-left:5px solid #2980b9;border-radius:0 12px 12px 0;padding:22px 28px;margin:28px 0;position:relative;}
+.scripture::before{content:'\201C';position:absolute;top:-10px;left:14px;font-size:80px;color:#2980b9;opacity:0.2;font-family:'Playfair Display',serif;line-height:1;}
+.scripture p{font-family:'Playfair Display',serif;font-size:17px;font-style:italic;color:#1a5276;margin:0 0 8px 0;line-height:1.7;}
+.scripture .ref{font-family:'Inter',sans-serif;font-size:12px;font-weight:700;letter-spacing:1px;color:#2980b9;text-transform:uppercase;}
+
+.question-box{border-radius:12px;padding:20px 24px;margin:24px 0;display:flex;gap:16px;align-items:flex-start;}
+.s1 .question-box{background:#fdf2f2;border:1px solid #f5c6cb;}
+.s2 .question-box{background:#f5eef8;border:1px solid #d7bde2;}
+.s3 .question-box{background:#eaf4fb;border:1px solid #aed6f1;}
+.s4 .question-box{background:#eafaf1;border:1px solid #a9dfbf;}
+.s5 .question-box{background:#fef9e7;border:1px solid #f9e79f;}
+.s6 .question-box{background:#fffbf0;border:1px solid #fde68a;}
+.s7 .question-box{background:#f2f3f4;border:1px solid #cacfd2;}
+.question-icon{font-size:26px;flex-shrink:0;margin-top:2px;}
+.question-content strong{display:block;font-family:'Inter',sans-serif;font-size:10px;letter-spacing:2px;text-transform:uppercase;font-weight:700;margin-bottom:6px;color:#c9922a;}
+.question-content p{font-family:'Inter',sans-serif;font-size:15px;font-weight:600;margin:0;color:#2c2c2c;font-style:italic;}
+
+.discovery-box{background:linear-gradient(135deg,#2c2416,#1a1a2e);border-radius:16px;padding:36px;margin:28px 0;color:white;position:relative;overflow:hidden;}
+.discovery-box::before{content:'';position:absolute;top:-80px;right:-80px;width:250px;height:250px;background:radial-gradient(circle,rgba(255,180,50,0.1),transparent 70%);border-radius:50%;}
+.discovery-box .d-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#ffb432;font-weight:700;margin-bottom:14px;}
+.discovery-box h3{font-family:'Playfair Display',serif;font-size:22px;color:#fff;margin-bottom:14px;font-style:italic;}
+.discovery-box p{font-family:'Lora',serif;font-size:15px;color:rgba(255,255,255,0.78);line-height:1.85;font-style:italic;margin-bottom:10px;}
+
+.arc-card{background:white;border-radius:14px;box-shadow:0 4px 16px rgba(0,0,0,0.07);padding:24px 28px;margin:14px 0;display:flex;gap:18px;align-items:flex-start;}
+.arc-card:nth-child(odd){border-left:5px solid #27ae60;}
+.arc-card:nth-child(even){border-left:5px solid #2980b9;}
+.arc-icon{font-size:32px;flex-shrink:0;}
+.arc-content h3{font-family:'Playfair Display',serif;font-size:19px;color:var(--navy);margin-bottom:6px;}
+.arc-content .arc-ref{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#c9922a;margin-bottom:8px;}
+.arc-content p{font-family:'Lora',serif;font-size:14px;color:var(--text-light);margin:0;font-style:italic;line-height:1.7;}
+
+.host-element-card{background:white;border-radius:14px;box-shadow:0 4px 16px rgba(0,0,0,0.06);padding:24px 26px;margin:14px 0;border-top:4px solid #ca6f1e;}
+.host-element-card .he-tag{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#ca6f1e;margin-bottom:6px;}
+.host-element-card h3{font-family:'Playfair Display',serif;font-size:19px;color:var(--navy);margin-bottom:10px;font-style:italic;}
+
+.jesus-card{background:white;border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,0.08);padding:28px;margin:18px 0;}
+.jesus-card:nth-child(1){border-top:5px solid #e74c3c;}
+.jesus-card:nth-child(2){border-top:5px solid #8e44ad;}
+.jesus-card:nth-child(3){border-top:5px solid #2980b9;}
+.jesus-card:nth-child(4){border-top:5px solid #27ae60;}
+.jesus-num{font-family:'Inter',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:4px;}
+.jesus-card:nth-child(1) .jesus-num{color:#e74c3c;}
+.jesus-card:nth-child(2) .jesus-num{color:#8e44ad;}
+.jesus-card:nth-child(3) .jesus-num{color:#2980b9;}
+.jesus-card:nth-child(4) .jesus-num{color:#27ae60;}
+.jesus-card h3{font-family:'Playfair Display',serif;font-size:20px;margin-bottom:12px;color:#2c2c2c;}
+
+.highlight-box{background:linear-gradient(135deg,#1a1a2e,#0f3460);color:white;border-radius:16px;padding:32px 36px;margin:30px 0;text-align:center;page-break-inside:avoid;break-inside:avoid;}
+.highlight-box p{font-family:'Playfair Display',serif;font-size:20px;font-style:italic;color:white;margin:0;line-height:1.7;}
+.highlight-box .highlight-label{font-family:'Inter',sans-serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#ffb432;font-style:normal;margin-bottom:14px;display:block;font-weight:700;}
+
+.fathers-note{background:#fff8e6;border:2px dashed #ffb432;border-radius:16px;padding:30px;margin:40px 0;}
+.fathers-note h3{font-family:'Inter',sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#b8860b;font-weight:700;margin-bottom:14px;}
+.fathers-note p{font-family:'Lora',serif;font-size:15px;color:#7a5c00;line-height:1.8;}
+
+.reflection-box{background:linear-gradient(160deg,#0f3460,#1a1a2e);border-radius:20px;padding:50px 44px;margin:40px 0;position:relative;overflow:hidden;}
+.reflection-box::before{content:'';position:absolute;top:-60px;right:-60px;width:250px;height:250px;background:radial-gradient(circle,rgba(255,180,50,0.12),transparent 70%);border-radius:50%;}
+.reflection-box p{font-family:'Playfair Display',serif;font-size:18px;font-style:italic;color:rgba(255,255,255,0.9);line-height:2;margin-bottom:18px;}
+.final-question{background:rgba(255,180,50,0.15);border:1px solid rgba(255,180,50,0.4);border-radius:12px;padding:24px 28px;margin-top:30px;text-align:center;}
+.final-question p{font-family:'Playfair Display',serif;font-size:21px;font-style:italic;color:#ffb432;margin:0;}
+
+footer{background:#0d0d1e;padding:36px 40px;text-align:center;}
+footer p{font-family:'Lora',serif;font-size:13px;color:rgba(255,255,255,0.4);font-style:italic;}
+footer a{color:#c9922a;text-decoration:none;}
+
+@media(max-width:700px){
+  nav{padding:0 20px;}
+  .cover{padding:60px 20px 50px;}.cover h1{font-size:36px;}
+  .content{padding:40px 20px;}
+  .overview-grid{grid-template-columns:1fr 1fr;}
+  .arc-card{flex-direction:column;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="nav-logo">
+    <svg width="36" height="36" viewBox="0 0 36 36">
+      <circle cx="18" cy="18" r="17" fill="#1a1a2e"/>
+      <path d="M 10 12 A 8 1.5 0 0 0 26 12" fill="none" stroke="#ffd166" stroke-width="0.9" stroke-linecap="round"/>
+      <rect x="10" y="12" width="16" height="3.5" rx="1" fill="#ffb432"/>
+      <rect x="15.5" y="15.5" width="5" height="11" rx="1" fill="#ffb432"/>
+      <rect x="13" y="26.5" width="10" height="2" rx="1" fill="#ffb432" opacity="0.75"/>
+    </svg>
+    <span class="nav-logo-text">THE TABLE</span>
+  </a>
+  <a href="../index.html" class="nav-back">
+    <svg width="16" height="16" viewBox="0 0 16 16"><path d="M10 3L5 8L10 13" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Back to Home
+  </a>
+</nav>
+
+<div class="cover">
+  <div class="cover-badge">Session 04 · Facilitator Guide · July 2026</div>
+  <h1>"The Table<br><span>He Prepares"</span></h1>
+  <p class="cover-subtitle">Psalm 23 — The Shepherd Who Becomes the Host</p>
+  <p class="cover-scriptures">Psalm 23 · John 10:1–18, 27–30 · 1 Peter 5:1–4</p>
+  <div class="cover-divider"></div>
+  <div class="cover-meta">
+    <div class="cover-meta-item"><div class="cover-meta-label">Date</div><div class="cover-meta-value">Sunday, 5 July 2026</div></div>
+    <div class="cover-meta-item"><div class="cover-meta-label">Time</div><div class="cover-meta-value">4:00 – 6:00pm</div></div>
+    <div class="cover-meta-item"><div class="cover-meta-label">Duration</div><div class="cover-meta-value">60 – 75 Minutes</div></div>
+    <div class="cover-meta-item"><div class="cover-meta-label">Audience</div><div class="cover-meta-value">Ages 13 and Above</div></div>
+  </div>
+</div>
+
+<div class="content">
+
+  <div class="overview-box">
+    <h2>📋 Session Overview</h2>
+    <div class="overview-grid">
+      <div class="overview-item"><div class="icon">🐑</div><div class="label">Main Scripture</div><div class="value">Psalm 23</div></div>
+      <div class="overview-item"><div class="icon">🎯</div><div class="label">Central Pivot</div><div class="value">Shepherd to Host</div></div>
+      <div class="overview-item"><div class="icon">💬</div><div class="label">Discussions</div><div class="value">5 Questions</div></div>
+      <div class="overview-item"><div class="icon">✝</div><div class="label">Jesus Connections</div><div class="value">4 Points</div></div>
+    </div>
+    <ul class="session-list">
+      <li><span>1.</span> Opening Hook</li>
+      <li><span>2.</span> Setting the Scene</li>
+      <li><span>3.</span> The Lord is My Shepherd</li>
+      <li><span>4.</span> The Voice and the Choice</li>
+      <li><span>5.</span> The Shepherd Becomes the Host</li>
+      <li><span>6.</span> Where Do We See Jesus?</li>
+      <li><span>7.</span> For His Name's Sake</li>
+    </ul>
+  </div>
+
+  <!-- SECTION 1 -->
+  <div class="s1">
+    <div class="section-header">
+      <div class="section-number">1</div>
+      <div class="section-title-block"><div class="section-tag">To Open</div><h2>Opening Hook</h2></div>
+    </div>
+    <div class="section-divider-line"></div>
+    <div class="leader-box"><strong>🎤 Leader Instruction</strong>Start with this question. Let the group guess freely before you reveal the answer.</div>
+    <div class="highlight-box">
+      <span class="highlight-label">Ask the Group</span>
+      <p>"What animal do you think has the worst memory in the world?"</p>
+    </div>
+    <p>Most will guess goldfish or ostrich. The answer is the sheep. A sheep cannot remember where the water was yesterday, where the path home is, or that the predator that attacked last week might come again. Almost every species has better memory than a sheep.</p>
+    <p>So how does a sheep survive? It survives by knowing one thing — its Shepherd. If it knows the Shepherd, the Shepherd remembers everything else for it.</p>
+    <p>Now think about an elephant — one of the most powerful memories in the animal kingdom. An elephant is built for self-reliance. But when David sat down to describe his relationship with God, he did not say <em>the Lord is my elephant.</em> He said — <em>the Lord is my shepherd.</em> Which means David also said something else about himself. <em>I am a sheep.</em></p>
+    <p>Not because David was weak. He killed Goliath. He led armies. He understood power. But he understood something deeper — the strongest position a human being can take before God is not self-sufficiency. It is dependence.</p>
+    <div class="question-box">
+      <div class="question-icon">💭</div>
+      <div class="question-content"><strong>Discussion Pause</strong><p>"What would it look like for you to live more like a sheep than an elephant? Does that sound freeing — or does it sound terrifying?"</p></div>
+    </div>
+  </div>
+
+  <!-- SECTION 2 -->
+  <div class="s2">
+    <div class="section-header">
+      <div class="section-number">2</div>
+      <div class="section-title-block"><div class="section-tag">Background</div><h2>Setting the Scene</h2></div>
+    </div>
+    <div class="section-divider-line"></div>
+    <div class="leader-box"><strong>📖 Leader Instruction</strong>Two stories anchor this section — David's own shepherd background and the recent archaeological discovery. Take time on both.</div>
+
+    <p>Before he was king, before Goliath, before the armies, David was a teenager out on the hills near Bethlehem looking after his father's sheep. When the prophet Samuel came to anoint the next king of Israel, David was not even called in for the lineup. His father Jesse left him in the fields with the flock.</p>
+    <p>That detail matters. The years David spent alone with the sheep — leading them to water, fighting off lions and bears, carrying lambs that could not keep up — became the very experience that taught him who God is. Psalm 23 is not a poem written from a distance. It is a man describing what he himself had been to a flock, and now realising God had been all of that and more to him.</p>
+
+    <div class="discovery-box">
+      <div class="d-label">⛏️ Hisardere · Turkey · August 2025</div>
+      <h3>The earliest portrait of Jesus is not on a cross.</h3>
+      <p>In August 2025, archaeologists in the small village of Hisardere near the ancient city of Nicaea opened a sealed underground tomb that had not been disturbed for 1,700 years.</p>
+      <p>On the wall behind the burial platform they found a fresco. A young man in a simple tunic. Clean-shaven. Surrounded by goats. Carrying one of them across his shoulders. It was Jesus — depicted as the Good Shepherd.</p>
+      <p>The fresco dates to the early third century, painted during active persecution. Christians at that time could not paint crosses on tombs — it would have invited execution. So they chose this image instead. The Shepherd carrying his sheep on his shoulders.</p>
+      <p>That is what they wanted to be the last thing visible over their beloved dead. Not a king. Not a warrior. A Shepherd carrying home the one that could not walk on its own. Eighty years later, in that same city of Nicaea, the bishops of the early church would gather and produce the Nicene Creed. Before there was a creed, there was an image.</p>
+    </div>
+
+    <div class="question-box">
+      <div class="question-icon">💭</div>
+      <div class="question-content"><strong>Discussion Question</strong><p>"If you had to choose one image to be buried under — one picture that summarised everything you believed about who Christ is to you — what would you choose? And why do you think those early Christians chose the Shepherd?"</p></div>
+    </div>
+  </div>
+
+  <!-- SECTION 3 -->
+  <div class="s3">
+    <div class="section-header">
+      <div class="section-number">3</div>
+      <div class="section-title-block"><div class="section-tag">Psalm 23:1–3</div><h2>The Lord is My Shepherd</h2></div>
+    </div>
+    <div class="section-divider-line"></div>
+    <div class="leader-box"><strong>📖 Leader Instruction</strong>Read all six verses together first. Then walk slowly through verses 1 to 3. Note the present-tense provision — already arranged, already prepared.</div>
+
+    <div class="scripture">
+      <p>"The Lord is my shepherd, I lack nothing. He makes me lie down in green pastures, he leads me beside quiet waters, he refreshes my soul. He guides me along the right paths for his name's sake."</p>
+      <span class="ref">Psalm 23:1–3</span>
+    </div>
+
+    <p><strong>"I lack nothing."</strong> Already. Present tense. Not because David had everything — he often had very little. But because he had the Shepherd. When you have the Shepherd, you have what you need before you even know you need it. This is enormously counter-cultural for a teenager in 2026. Almost everything around them is designed to make them feel like they are lacking. Social media. Advertising. Every notification. Psalm 23 stands against all of it with five words. <em>I lack nothing.</em></p>
+
+    <p><strong>"He makes me lie down."</strong> Sheep do not naturally rest. An anxious sheep, a hungry sheep, a frightened sheep will not lie down even in a perfect pasture. A sheep lying down is a sheep that trusts. The Shepherd has to create the conditions — safety, food, calm — for the sheep to rest. He does this for you. The question is whether you let him.</p>
+
+    <p><strong>"Beside quiet waters."</strong> Sheep are afraid of moving water. Their wool gets heavy and they can drown. The Shepherd does not just take them to any water — he takes them to still water they can drink without fear. The precision of how God provides. Not just provision, but provision suited to what you actually are.</p>
+
+    <p><strong>"He refreshes my soul."</strong> The Hebrew word means <em>restores.</em> He brings back to wholeness what was scattered, broken or depleted. He does not just provide for needs — he repairs what life has worn down.</p>
+
+    <p><strong>"For his name's sake."</strong> This is the phrase that ties this session back to Session 03. The Shepherd leads you not because you deserve it but for the glory of his own name. This is not arrogance — it is our deepest security. If God led us because we deserved it, we would be in trouble. Because he leads for his own glory, he will keep leading us long after we have stopped deserving it. The whole story is for his glory. And that is exactly why we can trust it.</p>
+
+    <div class="question-box">
+      <div class="question-icon">💬</div>
+      <div class="question-content"><strong>Discussion Question</strong><p>"Where in your life do you feel like you are striving for something that the Shepherd has already arranged for you? What would change if you really believed — present tense — that you lack nothing?"</p></div>
+    </div>
+  </div>
+
+  <!-- SECTION 4 -->
+  <div class="s4">
+    <div class="section-header">
+      <div class="section-number">4</div>
+      <div class="section-title-block"><div class="section-tag">John 10 · 1 Peter 5</div><h2>The Voice and the Choice</h2></div>
+    </div>
+    <div class="section-divider-line"></div>
+    <div class="leader-box"><strong>📖 Leader Instruction</strong>This section asks an uncomfortable but necessary question — how does a sheep know it is following the right Shepherd? Take time on the false-shepherd warning and the pastor distinction. Both matter for teenagers in 2026.</div>
+
+    <div class="scripture">
+      <p>"My sheep listen to my voice; I know them, and they follow me. I give them eternal life, and they shall never perish; no one will snatch them out of my hand."</p>
+      <span class="ref">John 10:27–28</span>
+    </div>
+
+    <p><strong>First — there really are other voices.</strong> The world is not a neutral pasture. Jesus said in John 10:8 — <em>"All who have come before me are thieves and robbers."</em> And in verse 12 he describes the hired hand who runs when the wolf comes because the sheep are not actually his. For this generation, this is more relevant than for any generation in human history. Your young people did not grow up with one or two voices — they grew up with thousands. Every phone open, every social feed, every influencer claiming authority. Many of those voices sound spiritual. Some sound biblical. Most are not the Shepherd.</p>
+
+    <p><strong>Second — the sheep know the Shepherd by voice, not by certainty.</strong> Jesus says in John 10:4 — <em>his sheep follow him because they know his voice.</em> Not because they have analysed all the shepherds. Not because they have done a theological study. <em>Because they know his voice.</em> A sheep knows its shepherd's voice the way a child knows a mother's voice — by long, repeated, daily exposure. The way you become familiar with the Shepherd's voice is by sitting in his word. Psalm 12:6 from last session — the word is seven times refined gold, and it is the instrument through which you learn to recognise the voice.</p>
+
+    <div class="highlight-box">
+      <span class="highlight-label">A Difficult But Necessary Word</span>
+      <p>Pastors are called shepherds in the New Testament. Honour your pastor. Submit to good leadership. But Peter calls Jesus <em>"the Chief Shepherd"</em> in 1 Peter 5:4 — and every other shepherd is an under-shepherd. No pastor is THE Shepherd.</p>
+    </div>
+
+    <p>This matters because it is one of the most common ways young people get spiritually wounded — and adults too. We elevate a human shepherd to a position only Christ can occupy. We follow a personality more than the Person. We become loyal to a man, a church, or a movement, and mistake that loyalty for following Jesus. Then when the human shepherd fails — and every human shepherd eventually fails because they are sheep too — our faith is shaken.</p>
+
+    <p>Never confuse the under-shepherd with the Chief Shepherd. Never give a man the glory that belongs only to Christ. The voice you must learn to recognise above every other voice is his. Not your pastor's. Not your worship leader's. Not your favourite preacher on YouTube. <em>His.</em></p>
+
+    <p>And here is the link back to Session 03. In 2 Timothy 2, Paul said you must choose what kind of vessel you will be. The same is true here. The choice of Shepherd is yours. The Good Shepherd does not force himself on anyone. He calls his sheep by name. But the sheep must choose to listen to his voice and not the voices of others.</p>
+
+    <div class="question-box">
+      <div class="question-icon">💬</div>
+      <div class="question-content"><strong>Discussion Question</strong><p>"If you are honest — what shepherd, what teacher, what influencer, what voice have you been following more closely than the voice of Christ himself?"</p></div>
+    </div>
+  </div>
+
+  <!-- SECTION 5 -->
+  <div class="s5">
+    <div class="section-header">
+      <div class="section-number">5</div>
+      <div class="section-title-block"><div class="section-tag">Psalm 23:4–6 — The Heart of the Session</div><h2>The Shepherd Becomes the Host</h2></div>
+    </div>
+    <div class="section-divider-line"></div>
+    <div class="leader-box"><strong>📖 Leader Instruction</strong>This is the climax of the session. Slow down. The transition from Shepherd to Host in verse 5 is where the identity of <em>The Table</em> finds its meaning. Take genuine time on each element.</div>
+
+    <div class="scripture">
+      <p>"You prepare a table before me in the presence of my enemies. You anoint my head with oil. My cup overflows."</p>
+      <span class="ref">Psalm 23:5</span>
+    </div>
+
+    <p>Look at the language. Verse 4 ends with a rod and a staff — the tools of a shepherd. Verse 5 begins with a table, oil, and a cup — the tools of a host. David is showing us a transition that the Lord himself makes in the life of every sheep who walks with him long enough. <em>The Shepherd leads you to the table. And then he takes off his shepherd's cloak and sits down as the Host.</em></p>
+
+    <p>A shepherd works outside; a host works inside. A shepherd protects from a distance; a host welcomes you up close. A shepherd carries his sheep on his shoulders through the wilderness; a host pulls out the chair, fills the cup, and sits across from you to share a meal. The God of Psalm 23 is not just our protector. He is our companion at the meal.</p>
+
+    <div class="highlight-box">
+      <span class="highlight-label">Why We Call This Gathering The Table</span>
+      <p>The entire architecture of our relationship with God moves toward a table. In Psalm 23 the Shepherd prepares one. At the Last Supper in Luke 22 Jesus serves one. At Emmaus in Luke 24 he is recognised at one. In Revelation 19 the story ends with a wedding supper. From the green pastures to the wedding feast — the Lord is always leading his people toward a table.</p>
+    </div>
+
+    <div class="host-element-card">
+      <div class="he-tag">Element One</div>
+      <h3>"You prepare a table before me..."</h3>
+      <p>He prepares it. Not you. The work of laying the meal belongs to him. You do not bring anything to this table that you produced yourself. Before you arrived, everything had already been arranged. Your place was already set. Your portion was already chosen. Your name was already there. The only thing you bring to this table is yourself. This is the same theology as Session 03 — already given.</p>
+    </div>
+
+    <div class="host-element-card">
+      <div class="he-tag">Element Two</div>
+      <h3>"In the presence of my enemies..."</h3>
+      <p>The Host does not wait until the enemies are gone before he serves the meal. He sets the table while they are still watching. The enemies cannot interrupt the meal. They cannot overturn the table. For a teenager facing the noise of social media, peer pressure, anxiety about the future — this is enormous. The Lord is not asking you to wait until your circumstances calm down before you come to his table. The table is already set. In the middle of the noise.</p>
+    </div>
+
+    <div class="host-element-card">
+      <div class="he-tag">Element Three</div>
+      <h3>"You anoint my head with oil..."</h3>
+      <p>In the ancient world, when a host welcomed an honoured guest, the first thing he did was pour perfumed oil on their head. It was a gesture of welcome, dignity, and honour, reserved for important guests. The Host does not welcome you to his table reluctantly. He welcomes you with the gesture reserved for the most honoured. You are not tolerated at this table. You are celebrated.</p>
+    </div>
+
+    <div class="host-element-card">
+      <div class="he-tag">Element Four</div>
+      <h3>"My cup overflows..."</h3>
+      <p>The Host does not measure your portion. He does not fill the cup carefully to the line of what you have earned. He fills it until it overflows. This is extravagance. The Host gives more than you can hold, more than you can drink, more than you came expecting. The portion is not based on your worthiness. It is based on his generosity.</p>
+    </div>
+
+    <p>And then look at verse 6 — <em>"Surely your goodness and love will follow me all the days of my life, and I will dwell in the house of the Lord forever."</em> The psalm started in pastures, moved through valley, arrived at the table, and now ends in the house. The Shepherd became the Host. And the Host invited the sheep to live with him forever.</p>
+
+    <div class="highlight-box">
+      <span class="highlight-label">The Whole Christian Life in Six Verses</span>
+      <p>From pasture, through valley, to the table, and finally to the house. We are all somewhere on that journey tonight. The Lord is the Shepherd, the Host, and the Builder of the eternal house — and he has been the same all along.</p>
+    </div>
+
+    <div class="question-box">
+      <div class="question-icon">💬</div>
+      <div class="question-content"><strong>Discussion Question</strong><p>"Are you sitting at his table — or are you still standing nearby, waiting for permission?"</p></div>
+    </div>
+  </div>
+
+  <!-- SECTION 6 -->
+  <div class="s6">
+    <div class="section-header">
+      <div class="section-number">6</div>
+      <div class="section-title-block"><div class="section-tag">Jesus in the Psalm</div><h2>Where Do We See Jesus?</h2></div>
+    </div>
+    <div class="section-divider-line"></div>
+    <div class="leader-box"><strong>✝ Leader Instruction</strong>This is the question we ask every time we open the Old Testament. Tonight the answer is overwhelming — Jesus himself claimed Psalm 23 as a description of who he is.</div>
+
+    <p>When Jesus stood in the temple and said <em>"I am the good shepherd"</em> — he was not just using a pastoral image. He was claiming Psalm 23 as a description of himself. The Lord David had been writing about a thousand years earlier was now standing in front of them in flesh.</p>
+
+    <div class="jesus-card">
+      <div class="jesus-num">Connection One · John 10:11</div>
+      <h3>He is the Shepherd David was writing about</h3>
+      <p><em>"I am the good shepherd. The good shepherd lays down his life for the sheep."</em> David said the Shepherd protects the sheep. Jesus said the Shepherd <em>lays down his life</em> for the sheep. A shepherd in David's day would risk his life. Jesus said he would <em>give</em> his life. That is not what shepherds do. That is what God does. The early Christians at Hisardere knew this — they painted Jesus carrying the sheep on his shoulders because they believed he was the one Psalm 23 was always about.</p>
+    </div>
+
+    <div class="jesus-card">
+      <div class="jesus-num">Connection Two · John 17 · Ephesians 1</div>
+      <h3>He is the one who guides for the Father's name's sake</h3>
+      <p>In Session 03 we sat with the truth that the Father released every spiritual blessing for the praise of his glory. Psalm 23:3 says the Shepherd guides for his name's sake. In John 17 Jesus prays — <em>"I have brought you glory on earth by finishing the work you gave me to do."</em> Everything Jesus did was for the glory of the Father. The cross itself was the moment the Son glorified the Father. And that is exactly why we can trust the leading — because the glory of God is the most reliable thing in the universe.</p>
+    </div>
+
+    <div class="jesus-card">
+      <div class="jesus-num">Connection Three · Luke 22:19–20</div>
+      <h3>He is the Host who prepares the table</h3>
+      <p>On the night before he died, Jesus did not gather his disciples in a temple. He gathered them at a table. He himself was the Host. He took the bread. He took the cup. He served them. And then — astonishingly — he became what was served. This is the table David saw in shadow. The Lord prepares a table, anoints heads with oil, fills the cup until it overflows. And the Lord himself becomes the bread broken and the cup poured out. When you sit at Communion you are sitting at Psalm 23:5. The Host is the same. Only now he has a name.</p>
+    </div>
+
+    <div class="jesus-card">
+      <div class="jesus-num">Connection Four · John 14:2–3</div>
+      <h3>He is the one preparing the eternal house</h3>
+      <p>David ends Psalm 23 — <em>"I will dwell in the house of the Lord forever."</em> Jesus picks up that exact promise in John 14 — <em>"I am going to prepare a place for you... I will come back and take you to be with me."</em> The Shepherd-Host is also the Builder. The carpenter from Nazareth — who worked with his hands building tables and houses in Galilee — is right now building a room for you. The early Christians at Hisardere were not just remembering Psalm 23. They were trusting John 14. They believed the Shepherd had carried their loved one home to the house he himself had gone ahead to prepare.</p>
+    </div>
+
+    <div class="highlight-box">
+      <span class="highlight-label">Summary</span>
+      <p>Psalm 23 is not poetry that happens to apply loosely to Christ. It is a portrait of Jesus written a thousand years before he was born. He is the Shepherd. He is the Host. He is the Builder. He is here tonight — around this table, in this home, with these neighbours.</p>
+    </div>
+  </div>
+
+  <!-- SECTION 7 -->
+  <div class="s7">
+    <div class="section-header">
+      <div class="section-number">7</div>
+      <div class="section-title-block"><div class="section-tag">To Close</div><h2>For His Name's Sake</h2></div>
+    </div>
+    <div class="section-divider-line"></div>
+    <div class="leader-box"><strong>📖 Leader Instruction</strong>Read this slowly. Let every line breathe. This is the landing place of the whole arc — and the arc of the last four sessions together.</div>
+
+    <div class="reflection-box">
+      <p>There is a fresco in a tomb in a small village in Turkey called Hisardere.</p>
+      <p>For seventeen hundred years it sat in the dark. Sealed behind stone. Painted by hands that have long since turned to dust. Created in a season when being a Christian could cost you your life.</p>
+      <p>And on the wall of that tomb — before there was a creed, before there was a recognised church, before there was an empire that called itself Christian — there is a young man in a simple tunic, surrounded by goats, carrying one of them across his shoulders. That is what those believers wanted to be the last thing visible over their beloved dead.</p>
+      <p>Not a king. Not a warrior. A Shepherd.</p>
+      <p>Because that is what they had encountered. The one who went out into the wilderness, found them, lifted them onto his own shoulders, and carried them home.</p>
+      <p>He carried David. He carried the early Christians at Hisardere. He carried every saint who has ever lived through every century since. <em>And he is carrying you.</em></p>
+      <p>The Shepherd does everything for his name's sake. He leads for his name. He provides for his name. He prepares the table for his name. He builds the eternal house for his name. This is not arrogance — it is our security. Because his name is the most reliable thing in the universe.</p>
+      <div class="final-question">
+        <p>"There is a table being prepared for you in the presence of your enemies. Right now. Tonight. Will you sit down at it?"</p>
+      </div>
+    </div>
+
+    <div class="fathers-note">
+      <h3>✍ A Note for the Facilitator — Your Personal Moment</h3>
+      <p>This is the moment when your own voice carries more weight than anything else said in the evening. The young people and parents around the table have heard scripture, theology, and the story of a fresco in Turkey. But what they need now is a witness. Share briefly — when in your own life did you stop trying to be an elephant and start letting yourself be a sheep? When did you stop trying to be your own shepherd and finally trust the Shepherd? Or when did you stop standing nervously beside the table and actually sit down at it? Two or three honest sentences. They will land deeper than anything else this evening.</p>
+    </div>
+
+    <div class="highlight-box" style="margin-top:40px;">
+      <span class="highlight-label">A Final Word</span>
+      <p>Four months. Four sessions. A family conversation that became an estate community. A gathering called The Table — that has just discovered, in its fourth month, why that name was chosen for it. Christ himself is the Host. This is his table. Lead well. 🪑✝</p>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <p>The Table · <a href="../index.html">thetable-hub.github.io/session-01</a> · Encounter. Community. Truth.</p>
+</footer>
+
+</body>
+</html>
