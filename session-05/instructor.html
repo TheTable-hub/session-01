@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Facilitator Guide — Session 05 | The Table</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#1a1a2e;--navy-mid:#16213e;--gold:#ffb432;--gold-dark:#c9922a;
+  --gold-light:#ffd166;--latte:#fdf8f3;--latte-dark:#f0e8dc;
+  --text:#2c2c2c;--text-light:#6b5b45;--white:#ffffff;--border:#e0d4c4;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:var(--latte);color:var(--text);line-height:1.7;}
+nav{background:rgba(253,248,243,0.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:68px;position:sticky;top:0;z-index:100;}
+.nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo-text{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--navy);letter-spacing:2px;}
+.nav-back{font-size:13px;font-weight:600;color:var(--text-light);text-decoration:none;display:flex;align-items:center;gap:6px;transition:color 0.2s;}
+.nav-back:hover{color:var(--navy);}
+
+.cover{background:linear-gradient(135deg,#1a1a2e 0%,#16213e 40%,#0f3460 100%);min-height:50vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 40px;position:relative;overflow:hidden;}
+.cover::before{content:'';position:absolute;top:-100px;left:-100px;width:400px;height:400px;background:radial-gradient(circle,rgba(255,180,50,0.12) 0%,transparent 70%);border-radius:50%;}
+.cover-badge{background:rgba(255,180,50,0.2);border:1px solid rgba(255,180,50,0.5);color:#ffb432;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;padding:8px 20px;border-radius:30px;margin-bottom:40px;}
+.cover h1{font-family:'Playfair Display',serif;font-size:52px;color:#fff;line-height:1.2;margin-bottom:20px;font-style:italic;}
+.cover h1 span{color:#ffb432;font-style:normal;}
+.cover-subtitle{font-family:'Lora',serif;font-size:17px;color:rgba(255,255,255,0.65);margin-bottom:10px;font-style:italic;}
+.cover-scriptures{font-size:11px;color:rgba(255,255,255,0.35);letter-spacing:2px;margin-bottom:50px;}
+.cover-divider{width:80px;height:3px;background:linear-gradient(90deg,transparent,#ffb432,transparent);margin:0 auto 40px;}
+.cover-meta{display:flex;gap:40px;justify-content:center;flex-wrap:wrap;}
+.cover-meta-item{text-align:center;}
+.cover-meta-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:4px;}
+.cover-meta-value{font-size:14px;color:rgba(255,255,255,0.85);font-weight:600;}
+
+.content{max-width:850px;margin:0 auto;padding:60px 40px;}
+
+.overview-box{background:linear-gradient(135deg,#1a1a2e,#0f3460);border-radius:16px;padding:40px;margin-bottom:60px;color:white;}
+.overview-box h2{font-family:'Playfair Display',serif;font-size:24px;color:#ffb432;margin-bottom:24px;letter-spacing:1px;}
+.overview-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;margin-bottom:30px;}
+.overview-item{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:10px;padding:16px;text-align:center;}
+.overview-item .icon{font-size:22px;margin-bottom:8px;}
+.overview-item .label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.5);}
+.overview-item .value{font-size:14px;font-weight:600;color:white;margin-top:4px;}
+.session-list{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;}
+.session-list li{background:rgba(255,180,50,0.1);border-left:3px solid #ffb432;padding:10px 14px;border-radius:0 8px 8px 0;font-size:14px;color:rgba(255,255,255,0.85);}
+.session-list li span{color:#ffb432;font-weight:700;margin-right:6px;}
+
+.section-header{display:flex;align-items:center;gap:16px;margin-bottom:30px;margin-top:60px;}
+.section-number{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:22px;font-weight:700;flex-shrink:0;color:white;}
+.s1 .section-number{background:linear-gradient(135deg,#e74c3c,#c0392b);}
+.s2 .section-number{background:linear-gradient(135deg,#8e44ad,#6c3483);}
+.s3 .section-number{background:linear-gradient(135deg,#2980b9,#1a6fa0);}
+.s4 .section-number{background:linear-gradient(135deg,#e67e22,#ca6f1e);}
+.s5 .section-number{background:linear-gradient(135deg,#6c3483,#4a1e5a);}
+.s6 .section-number{background:linear-gradient(135deg,#27ae60,#1e8449);}
+.s7 .section-number{background:linear-gradient(135deg,#2c3e50,#1a252f);}
+.section-title-block h2{font-family:'Playfair Display',serif;font-size:28px;line-height:1.2;}
+.s1 .section-title-block h2{color:#c0392b;}
+.s2 .section-title-block h2{color:#6c3483;}
+.s3 .section-title-block h2{color:#1a6fa0;}
+.s4 .section-title-block h2{color:#ca6f1e;}
+.s5 .section-title-block h2{color:#4a1e5a;}
+.s6 .section-title-block h2{color:#1e8449;}
+.s7 .section-title-block h2{color:#2c3e50;}
+.section-title-block .section-tag{font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:600;opacity:0.6;}
+.section-divider-line{height:3px;border-radius:2px;margin-bottom:30px;}
+.s1 .section-divider-line{background:linear-gradient(90deg,#e74c3c,transparent);}
+.s2 .section-divider-line{background:linear-gradient(90deg,#8e44ad,transparent);}
+.s3 .section-divider-line{background:linear-gradient(90deg,#2980b9,transparent);}
+.s4 .section-divider-line{background:linear-gradient(90deg,#e67e22,transparent);}
+.s5 .section-divider-line{background:linear-gradient(90deg,#6c3483,transparent);}
+.s6 .section-divider-line{background:linear-gradient(90deg,#27ae60,transparent);}
+.s7 .section-divider-line{background:linear-gradient(90deg,#2c3e50,transparent);}
+
+p{font-family:'Lora',serif;font-size:16px;line-height:1.9;margin-bottom:16px;color:#333;}
+
+.leader-box{background:#fff8e6;border:1px solid #ffd97d;border-left:5px solid #ffb432;border-radius:8px;padding:18px 22px;margin:24px 0;font-family:'Inter',sans-serif;font-size:14px;color:#7a5c00;}
+.leader-box strong{display:block;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#b8860b;margin-bottom:6px;}
+
+.scripture{background:linear-gradient(135deg,#eaf4fb,#d6eaf8);border-left:5px solid #2980b9;border-radius:0 12px 12px 0;padding:22px 28px;margin:28px 0;position:relative;}
+.scripture::before{content:'\201C';position:absolute;top:-10px;left:14px;font-size:80px;color:#2980b9;opacity:0.2;font-family:'Playfair Display',serif;line-height:1;}
+.scripture p{font-family:'Playfair Display',serif;font-size:17px;font-style:italic;color:#1a5276;margin:0 0 8px 0;line-height:1.7;}
+.scripture .ref{font-family:'Inter',sans-serif;font-size:12px;font-weight:700;letter-spacing:1px;color:#2980b9;text-transform:uppercase;}
+
+.question-box{border-radius:12px;padding:20px 24px;margin:24px 0;display:flex;gap:16px;align-items:flex-start;}
+.s1 .question-box{background:#fdf2f2;border:1px solid #f5c6cb;}
+.s2 .question-box{background:#f5eef8;border:1px solid #d7bde2;}
+.s3 .question-box{background:#eaf4fb;border:1px solid #aed6f1;}
+.s4 .question-box{background:#fef9e7;border:1px solid #f9e79f;}
+.s5 .question-box{background:#f4ecf7;border:1px solid #c39bd3;}
+.s6 .question-box{background:#eafaf1;border:1px solid #a9dfbf;}
+.s7 .question-box{background:#f2f3f4;border:1px solid #cacfd2;}
+.question-icon{font-size:26px;flex-shrink:0;margin-top:2px;}
+.question-content strong{display:block;font-family:'Inter',sans-serif;font-size:10px;letter-spacing:2px;text-transform:uppercase;font-weight:700;margin-bottom:6px;color:#c9922a;}
+.question-content p{font-family:'Inter',sans-serif;font-size:15px;font-weight:600;margin:0;color:#2c2c2c;font-style:italic;}
+
+.stage-card{background:white;border-radius:14px;box-shadow:0 4px 16px rgba(0,0,0,0.07);padding:22px 26px;margin:14px 0;display:flex;gap:18px;align-items:flex-start;border-left:5px solid #8e44ad;}
+.stage-icon-large{font-size:32px;flex-shrink:0;}
+.stage-content h3{font-family:'Playfair Display',serif;font-size:19px;color:var(--navy);margin-bottom:6px;}
+.stage-content .stage-tag{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#6c3483;margin-bottom:6px;}
+.stage-content p{font-family:'Lora',serif;font-size:14px;color:var(--text-light);margin:0;line-height:1.7;}
+
+.name-card{background:white;border-radius:14px;box-shadow:0 4px 16px rgba(0,0,0,0.07);padding:26px 28px;margin:14px 0;border-top:4px solid #e67e22;}
+.name-card .name-tag{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#ca6f1e;margin-bottom:6px;}
+.name-card h3{font-family:'Playfair Display',serif;font-size:20px;color:var(--navy);margin-bottom:10px;font-style:italic;}
+
+.dim-card{background:white;border-radius:14px;box-shadow:0 4px 16px rgba(0,0,0,0.07);padding:26px 28px;margin:14px 0;border-left:5px solid #6c3483;}
+.dim-card .dim-tag{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#6c3483;margin-bottom:6px;}
+.dim-card h3{font-family:'Playfair Display',serif;font-size:20px;color:var(--navy);margin-bottom:10px;}
+
+.fruit-card{background:white;border-radius:14px;box-shadow:0 4px 16px rgba(0,0,0,0.06);padding:22px 26px;margin:12px 0;border-top:3px solid #27ae60;display:flex;gap:16px;align-items:flex-start;}
+.fruit-icon-big{font-size:26px;flex-shrink:0;}
+.fruit-content h3{font-family:'Playfair Display',serif;font-size:18px;color:var(--navy);margin-bottom:6px;font-style:italic;}
+.fruit-content p{font-family:'Lora',serif;font-size:14px;color:var(--text-light);margin-bottom:6px;line-height:1.7;}
+.fruit-diagnostic{font-size:13px;font-weight:600;color:#1e8449;font-family:'Inter',sans-serif;font-style:italic;}
+
+.highlight-box{background:linear-gradient(135deg,#1a1a2e,#0f3460);color:white;border-radius:16px;padding:32px 36px;margin:30px 0;text-align:center;page-break-inside:avoid;break-inside:avoid;}
+.highlight-box p{font-family:'Playfair Display',serif;font-size:20px;font-style:italic;color:white;margin:0;line-height:1.7;}
+.highlight-box .highlight-label{font-family:'Inter',sans-serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#ffb432;font-style:normal;margin-bottom:14px;display:block;font-weight:700;}
+
+.fathers-note{background:#fff8e6;border:2px dashed #ffb432;border-radius:16px;padding:30px;margin:40px 0;}
+.fathers-note h3{font-family:'Inter',sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#b8860b;font-weight:700;margin-bottom:14px;}
+.fathers-note p{font-family:'Lora',serif;font-size:15px;color:#7a5c00;line-height:1.8;}
+
+.reflection-box{background:linear-gradient(160deg,#0f3460,#1a1a2e);border-radius:20px;padding:50px 44px;margin:40px 0;position:relative;overflow:hidden;}
+.reflection-box::before{content:'';position:absolute;top:-60px;right:-60px;width:250px;height:250px;background:radial-gradient(circle,rgba(255,180,50,0.12),transparent 70%);border-radius:50%;}
+.reflection-box p{font-family:'Playfair Display',serif;font-size:18px;font-style:italic;color:rgba(255,255,255,0.9);line-height:2;margin-bottom:18px;}
+.final-question{background:rgba(255,180,50,0.15);border:1px solid rgba(255,180,50,0.4);border-radius:12px;padding:24px 28px;margin-top:30px;text-align:center;}
+.final-question p{font-family:'Playfair Display',serif;font-size:21px;font-style:italic;color:#ffb432;margin:0;}
+
+footer{background:#0d0d1e;padding:36px 40px;text-align:center;}
+footer p{font-family:'Lora',serif;font-size:13px;color:rgba(255,255,255,0.4);font-style:italic;}
+footer a{color:#c9922a;text-decoration:none;}
+
+@media(max-width:700px){
+  nav{padding:0 20px;}
+  .cover{padding:60px 20px 50px;}.cover h1{font-size:36px;}
+  .content{padding:40px 20px;}
+  .overview-grid{grid-template-columns:1fr 1fr;}
+  .stage-card,.fruit-card{flex-direction:column;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="nav-logo">
+    <svg width="36" height="36" viewBox="0 0 36 36">
+      <circle cx="18" cy="18" r="17" fill="#1a1a2e"/>
+      <path d="M 10 12 A 8 1.5 0 0 0 26 12" fill="none" stroke="#ffd166" stroke-width="0.9" stroke-linecap="round"/>
+      <rect x="10" y="12" width="16" height="3.5" rx="1" fill="#ffb432"/>
+      <rect x="15.5" y="15.5" width="5" height="11" rx="1" fill="#ffb432"/>
+      <rect x="13" y="26.5" width="10" height="2" rx="1" fill="#ffb432" opacity="0.75"/>
+    </svg>
+    <span class="nav-logo-text">THE TABLE</span>
+  </a>
+  <a href="../index.html" class="nav-back">
+    <svg width="16" height="16" viewBox="0 0 16 16"><path d="M10 3L5 8L10 13" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Back to Home
+  </a>
+</nav>
+
+<div class="cover">
+  <div class="cover-badge">Session 05 · Facilitator Guide · August 2026</div>
+  <h1>"The Table Becomes<br><span>the Temple"</span></h1>
+  <p class="cover-subtitle">The Helper Who Lives Within</p>
+  <p class="cover-scriptures">Genesis 1:2 · John 14–16 · 1 Corinthians 3, 6 · Galatians 5</p>
+  <div class="cover-divider"></div>
+  <div class="cover-meta">
+    <div class="cover-meta-item"><div class="cover-meta-label">Date</div><div class="cover-meta-value">Sunday, 2 August 2026</div></div>
+    <div class="cover-meta-item"><div class="cover-meta-label">Time</div><div class="cover-meta-value">4:00 – 6:00pm</div></div>
+    <div class="cover-meta-item"><div class="cover-meta-label">Duration</div><div class="cover-meta-value">60 – 75 Minutes</div></div>
+    <div class="cover-meta-item"><div class="cover-meta-label">Audience</div><div class="cover-meta-value">Ages 13 and Above</div></div>
+  </div>
+</div>
+
+<div class="content">
+
+  <div class="overview-box">
+    <h2>📋 Session Overview</h2>
+    <div class="overview-grid">
+      <div class="overview-item"><div class="icon">🕊️</div><div class="label">Focus</div><div class="value">Holy Spirit</div></div>
+      <div class="overview-item"><div class="icon">🏛️</div><div class="label">Central Shift</div><div class="value">Table → Temple</div></div>
+      <div class="overview-item"><div class="icon">💬</div><div class="label">Discussions</div><div class="value">6 Questions</div></div>
+      <div class="overview-item"><div class="icon">🌿</div><div class="label">Fruit</div><div class="value">Galatians 5</div></div>
+    </div>
+    <ul class="session-list">
+      <li><span>1.</span> Opening Hook</li>
+      <li><span>2.</span> Setting the Scene</li>
+      <li><span>3.</span> Why "Better"</li>
+      <li><span>4.</span> Meet the Helper</li>
+      <li><span>5.</span> The Great Shift · The Spinal Cord Within</li>
+      <li><span>6.</span> The Fruit of a Living Temple</li>
+      <li><span>7.</span> Closing Reflection</li>
+    </ul>
+  </div>
+
+  <!-- SECTION 1 -->
+  <div class="s1">
+    <div class="section-header">
+      <div class="section-number">1</div>
+      <div class="section-title-block"><div class="section-tag">To Open</div><h2>Opening Hook</h2></div>
+    </div>
+    <div class="section-divider-line"></div>
+    <div class="leader-box"><strong>🎤 Leader Instruction</strong>Start with this question. Do not explain it yet. Let it sit.</div>
+    <div class="highlight-box">
+      <span class="highlight-label">Ask the Group</span>
+      <p>"If someone you love told you tomorrow — 'It is better for you that I leave' — what would you feel?"</p>
+    </div>
+    <p>They will say hurt. Rejected. Abandoned. Confused. Then say slowly — <em>"Those are exactly the words Jesus said to the people who loved him most, on the night before he died. And he said they were better off if he left. Better. Not sadder. Not lonelier. Better."</em></p>
+    <p>Imagine finding the one person in the world who understands you completely — and then sitting at a table with them and hearing them say <em>"It is for your good that I am going away."</em> That is what the disciples were feeling. John 16:7 — the most confusing sentence Jesus ever spoke.</p>
+    <p>Everything we have discovered in the last three months has been building toward this moment. Session 03 — the Father has already given every spiritual blessing. Session 04 — the Shepherd has become the Host who prepares the table. But at every table Jesus ever sat at, he sat across from his disciples. That night, he told them something was about to change. The Host who had been sitting across from them was going to move. Not backwards. Not away. Inward. The Table was about to become the Temple.</p>
+    <div class="question-box">
+      <div class="question-icon">💭</div>
+      <div class="question-content"><strong>Discussion Pause</strong><p>"If you knew — really knew — that God himself had taken up residence inside you, what would change about how you moved through this coming week?"</p></div>
+    </div>
+  </div>
+
+  <!-- SECTION 2 -->
+  <div class="s2">
+    <div class="section-header">
+      <div class="section-number">2</div>
+      <div class="section-title-block"><div class="section-tag">Background</div><h2>Setting the Scene</h2></div>
+    </div>
+    <div class="section-divider-line"></div>
+    <div class="leader-box"><strong>📖 Leader Instruction</strong>Take time on the five stages of God's dwelling. This is the theological backbone of the whole session.</div>
+    <p>It was Passover. Jesus and his twelve closest friends were in a rented upper room. They did not know that within twenty-four hours, one would betray him, another would deny him three times, and Jesus would be crucified. They just knew the mood at the table was strange.</p>
+    <p>For their entire history, the presence of God had lived in a place. First a portable tent. Then a stone temple in Jerusalem. Behind a thick curtain in a room called the Holy of Holies. Only one man could enter. Only once a year. That was how these disciples had grown up understanding God's presence. External. Located. You went <em>to</em> God's presence. You did not carry it.</p>
+    <p>That night, everything was about to change. Jesus was going to tell them God's presence was moving. Not just from one place to another. From a place to a person. And not just to one person — but to every person who believed in him. The Temple was about to become mobile. The Holy of Holies was about to walk through the streets in bodies of ordinary men and women.</p>
+
+    <div class="highlight-box">
+      <span class="highlight-label">The Movement of God's Dwelling</span>
+      <p>Stone temple → Christ's body → Your body. The presence has been on the move all along.</p>
+    </div>
+
+    <div class="stage-card">
+      <div class="stage-icon-large">🌊</div>
+      <div class="stage-content">
+        <div class="stage-tag">Stage One · Genesis 1:2</div>
+        <h3>The Spirit hovering over the waters</h3>
+        <p>Before there was a world. Before there was light. The Spirit was already at work — bringing form from formlessness, order from chaos. This is the very first appearance of the Holy Spirit in scripture. His role from the beginning has been to bring order where there was none.</p>
+      </div>
+    </div>
+    <div class="stage-card">
+      <div class="stage-icon-large">⛺</div>
+      <div class="stage-content">
+        <div class="stage-tag">Stage Two · Tabernacle and Temple</div>
+        <h3>Behind a curtain</h3>
+        <p>God's presence dwelt behind a thick curtain. Approached carefully. Located in one place. One priest. Once a year. After elaborate preparation.</p>
+      </div>
+    </div>
+    <div class="stage-card">
+      <div class="stage-icon-large">✝</div>
+      <div class="stage-content">
+        <div class="stage-tag">Stage Three · Jesus</div>
+        <h3>The Word became flesh</h3>
+        <p>John 1:14 — God himself walked among us in a human body. The presence had left the stone temple and moved into the person of Jesus. Now the presence could look you in the eye, share your meals, weep at your funerals.</p>
+      </div>
+    </div>
+    <div class="stage-card">
+      <div class="stage-icon-large">🪑</div>
+      <div class="stage-content">
+        <div class="stage-tag">Stage Four · The Upper Room</div>
+        <h3>The Table where the shift was announced</h3>
+        <p>The night before the cross. Around a table. Jesus announced that God's presence was moving again. Not to a new building. To the bodies of his disciples. Every one of them was about to become a living temple.</p>
+      </div>
+    </div>
+    <div class="stage-card">
+      <div class="stage-icon-large">🔥</div>
+      <div class="stage-content">
+        <div class="stage-tag">Stage Five · Pentecost onward</div>
+        <h3>The Temple moved into flesh</h3>
+        <p>The Spirit descended. Every believer became a walking, breathing Temple. The dwelling place of God is no longer a stone building. It is every believer who has received the Holy Spirit.</p>
+      </div>
+    </div>
+
+    <div class="question-box">
+      <div class="question-icon">💭</div>
+      <div class="question-content"><strong>Discussion Question</strong><p>"What would it mean for you if you started to see your own body — right now, this evening — as the place where God has chosen to make his home?"</p></div>
+    </div>
+  </div>
+
+  <!-- SECTION 3 -->
+  <div class="s3">
+    <div class="section-header">
+      <div class="section-number">3</div>
+      <div class="section-title-block"><div class="section-tag">John 16:7</div><h2>Why "Better"</h2></div>
+    </div>
+    <div class="section-divider-line"></div>
+    <div class="leader-box"><strong>📖 Leader Instruction</strong>Walk through the three shifts carefully. This is where the theological mystery gets answered.</div>
+
+    <div class="scripture">
+      <p>"But very truly I tell you, it is for your good that I am going away. Unless I go away, the Advocate will not come to you; but if I go, I will send him to you."</p>
+      <span class="ref">John 16:7</span>
+    </div>
+
+    <p>The word Jesus uses — <em>Parakletos</em> — means one called alongside. But Jesus does not just say the Helper is coming. He says the Helper cannot come <em>unless he leaves.</em> There is a condition. Why? The answer comes down to three shifts.</p>
+
+    <div class="highlight-box">
+      <span class="highlight-label">Shift One</span>
+      <p>From beside you — to inside you.</p>
+    </div>
+
+    <p>Jesus in his physical body could only be in one place at a time. Wonderful for those in the room. Inaccessible to everyone else. But the Spirit can be in every believer, in every city, in every century, simultaneously. And more than that — the Spirit does not just come near you. The Spirit comes <em>inside</em> you. Jesus at the table sat across from his disciples. The Spirit takes up residence in the disciples themselves. That is not a downgrade. That is an unimaginable upgrade.</p>
+
+    <div class="highlight-box">
+      <span class="highlight-label">Shift Two</span>
+      <p>From an external voice — to an internal witness.</p>
+    </div>
+
+    <p>John 14:26 — <em>"The Helper will teach you all things and will remind you of everything I have said to you."</em> Teach AND remind. Every conversation, every parable, every lesson would be preserved, retrieved, and applied by the Spirit inside them at exactly the right moment. The Teacher had been outside. Now the Teacher would be inside — with total access to everything the outside Teacher had ever said.</p>
+
+    <div class="highlight-box">
+      <span class="highlight-label">Shift Three</span>
+      <p>From a companion for the journey — to a power for the mission.</p>
+    </div>
+
+    <p>Acts 1:8 — <em>"You will receive power when the Holy Spirit comes on you."</em> The power was no longer something they went back to Jesus to receive. The power lived in them. That is why within one generation of that upper room, the message of Jesus had spread across the Roman Empire. Not because these men were extraordinary. Because the Spirit inside them was.</p>
+
+    <div class="question-box">
+      <div class="question-icon">💬</div>
+      <div class="question-content"><strong>Discussion Question</strong><p>"When you pray, do you pray as though God is far away and you are shouting up to him — or do you pray as though he is already inside you, closer than your own breath?"</p></div>
+    </div>
+  </div>
+
+  <!-- SECTION 4 -->
+  <div class="s4">
+    <div class="section-header">
+      <div class="section-number">4</div>
+      <div class="section-title-block"><div class="section-tag">Four Names · One Person</div><h2>Meet the Helper</h2></div>
+    </div>
+    <div class="section-divider-line"></div>
+    <div class="leader-box"><strong>📖 Leader Instruction</strong>Take time on each name. Emphasise that these functions happen not at a distance but from within.</div>
+
+    <div class="scripture">
+      <p>"And I will ask the Father, and he will give you another Advocate to help you and be with you forever — the Spirit of truth. But you know him, for he lives with you and will be in you."</p>
+      <span class="ref">John 14:16–17</span>
+    </div>
+
+    <p>The word <em>another</em> in Greek is <em>allos</em> — meaning another of exactly the same kind. Not a different helper. Not a lesser one. Everything Jesus has been to them, the Helper will be to them forever. The Helper is not the consolation prize. He is Jesus's own presence in a form that can dwell inside you.</p>
+
+    <div class="name-card">
+      <div class="name-tag">Name One</div>
+      <h3>The Advocate</h3>
+      <p>A <em>parakletos</em> was a legal defender. Someone called to stand beside you in your defence. Every time the accuser whispers against you, every time your conscience piles on, the Spirit is inside you making the case for who you actually are in Christ. Romans 8 — the Spirit intercedes with groans that words cannot express. You never stand alone. Ever.</p>
+    </div>
+
+    <div class="name-card">
+      <div class="name-tag">Name Two</div>
+      <h3>The Counsellor</h3>
+      <p>Not a therapist. A wise advisor — the one a king would sit down with before a major decision. For a teenager working out what to study, who to marry, what to believe, how to spend money — this is enormous. Isaiah 11:2 lists his qualifications: wisdom, understanding, counsel, might, knowledge, and the fear of the Lord. All of that is now available inside you.</p>
+    </div>
+
+    <div class="name-card">
+      <div class="name-tag">Name Three</div>
+      <h3>The Comforter</h3>
+      <p>Because pain does not always want an answer. Sometimes pain needs a presence. When you lose someone. When your family breaks. When you sit awake at 3am and cannot name what is wrong — the Comforter is there. Inside you. Already. 2 Corinthians 1 uses the same root — <em>parakletos.</em> One called alongside. The Spirit comforts you from within.</p>
+    </div>
+
+    <div class="name-card">
+      <div class="name-tag">Name Four</div>
+      <h3>The Spirit of Truth</h3>
+      <p>Not the spirit of comfortable feelings. The Spirit of Truth. He will surface what you would rather leave hidden. He will name what you would rather leave nameless. John 16:13 — <em>"He will guide you into all the truth."</em> This is why the Spirit and the word of God cannot be separated. The word is the scalpel. The Spirit is the surgeon.</p>
+    </div>
+
+    <div class="highlight-box">
+      <span class="highlight-label">The Four Together</span>
+      <p>Advocate — he defends you. Counsellor — he guides you. Comforter — he sustains you. Spirit of Truth — he transforms you. All four. From within. Right now.</p>
+    </div>
+
+    <div class="question-box">
+      <div class="question-icon">💬</div>
+      <div class="question-content"><strong>Discussion Question</strong><p>"Which of those four names of the Helper does your life most need this evening — Advocate, Counsellor, Comforter, or Spirit of Truth?"</p></div>
+    </div>
+  </div>
+
+  <!-- SECTION 5 -->
+  <div class="s5">
+    <div class="section-header">
+      <div class="section-number">5</div>
+      <div class="section-title-block"><div class="section-tag">The Theological Centre</div><h2>The Great Shift · The Spinal Cord Within</h2></div>
+    </div>
+    <div class="section-divider-line"></div>
+    <div class="leader-box"><strong>📖 Leader Instruction</strong>This is the heart of the session. Slow down. The spinal cord metaphor is the answer to the question every honest person is asking — if the Spirit is inside me, what is he actually doing in there?</div>
+
+    <div class="scripture">
+      <p>"Do you not know that your bodies are temples of the Holy Spirit, who is in you, whom you have received from God? You are not your own; you were bought at a price. Therefore honour God with your bodies."</p>
+      <span class="ref">1 Corinthians 6:19–20</span>
+    </div>
+
+    <p>Paul is not being poetic. He is being architectural. The dwelling place of God is no longer a stone building in Jerusalem. It is not even limited to the single body of Jesus of Nazareth. The Temple is now every believer who has received the Holy Spirit. The young person next to you is a temple. The parent across from you is a temple. You yourself are a temple.</p>
+
+    <div class="highlight-box">
+      <span class="highlight-label">The Table Has Become the Temple</span>
+      <p>The presence of God that used to require a curtain, a priest, and elaborate preparation to approach is now dwelling permanently in bodies of flesh.</p>
+    </div>
+
+    <p>Now here is the question every honest teenager will ask — <em>if the Spirit is inside me, what is he actually doing in there?</em> Think about your spinal cord. It sits hidden. Behind you. Receives no praise. Shows up in no photograph. Nobody stands in front of a mirror admiring their spinal cord. And yet — if it stops functioning even for a moment — nothing else works. This is exactly what the Holy Spirit does inside the Temple.</p>
+
+    <div class="dim-card">
+      <div class="dim-tag">Dimension One</div>
+      <h3>Firm and Flexible</h3>
+      <p>The spinal cord is not one solid piece of bone. It is many small vertebrae interconnected. Firm enough to hold the entire weight of your body upright. Flexible enough to bend, twist, dance. The genius is that it is <em>both.</em></p>
+      <p>The Spirit gives you firmness — conviction, backbone, moral clarity, the ability to stand for truth when the culture around you is bending. But he does not make you rigid. He gives you flexibility to bend without breaking, to respond with wisdom rather than reaction, to move in step with what God is doing.</p>
+    </div>
+
+    <div class="dim-card">
+      <div class="dim-tag">Dimension Two</div>
+      <h3>Soft and Tender</h3>
+      <p>Cerebrospinal fluid runs inside the cord. Clear when healthy. It delivers nutrients, clears waste, regulates temperature, carries antibodies, balances pressure. When there is injury, it turns red — a diagnostic signal that something needs attention.</p>
+      <p>The Spirit is intimate. He delivers spiritual nourishment. He clears away the waste of guilt, shame and bitterness. He regulates temperature — cooling anger, warming compassion. And when there is spiritual injury in your life, he surfaces it. That is not condemnation. That is exactly what the fluid does. The turning red is the beginning of the repair.</p>
+    </div>
+
+    <div class="dim-card">
+      <div class="dim-tag">Dimension Three</div>
+      <h3>The Superhighway of Signals</h3>
+      <p>The spinal cord is the central nervous system — the superhighway carrying every signal from the brain to every part of the body, and back. Without it, you cannot move, flee from danger, recognise which part is injured, or relay messages of repair. Every critical organ is sustained through this diverse system of nerves.</p>
+      <p>Romans 8:14 — <em>"For those who are led by the Spirit of God are the children of God."</em> The Spirit carries the signal from heaven to your hands. Every prayer that reaches the throne, every conviction that reaches your conscience, every impulse to obedience that reaches your feet — travels through this internal superhighway.</p>
+    </div>
+
+    <div class="dim-card">
+      <div class="dim-tag">Dimension Four</div>
+      <h3>Hidden but Central</h3>
+      <p>The spinal cord sits behind. It does not draw attention to itself. It is not on display. It receives no praise. Yet without it, nothing else functions.</p>
+      <p>John 16:14 — <em>"He will glorify me by taking from what is mine and making it known to you."</em> The Spirit's whole purpose is to point to Jesus. Not to himself. If someone tells you a spiritual experience is genuine because it focuses on the Spirit himself, on the manifestation, on the phenomenon — check that carefully. The Spirit's fingerprint is always that he lifts up Jesus. He is the divine humility that makes everything else possible.</p>
+    </div>
+
+    <div class="dim-card">
+      <div class="dim-tag">Dimension Five</div>
+      <h3>Bringer of Form, Shape and Order</h3>
+      <p>Genesis 1:2 — <em>"The earth was formless and void, and the Spirit of God was hovering over the waters."</em> The very first thing the Spirit does in the Bible is hover over chaos. And what emerges? Form. Shape. Order. Light. Life.</p>
+      <p>Without a spinal cord, the body has no upright shape. And wherever there is chaos in your life — confusion, fragmentation, a sense that nothing quite holds together — the Spirit is the one whose specific ministry is to bring form, shape and order. Not overnight. Faithfully. Progressively. Until what was formless takes shape.</p>
+    </div>
+
+    <div class="dim-card">
+      <div class="dim-tag">Dimension Six</div>
+      <h3>Wisdom, Knowledge and Understanding</h3>
+      <p>The fluid and nerves inside the cord carry information, signals, coordination. Ensuring every finger does its work at the right time. Coordinating change between the fingers so the body functions as a whole.</p>
+      <p>Isaiah 11:2 — <em>"The Spirit of wisdom and understanding, the Spirit of counsel and might, the Spirit of knowledge and the fear of the Lord."</em> Wisdom — knowing what to do. Knowledge — knowing what is true. Understanding — knowing why it matters. Distributed through your life at exactly the right moment, to exactly the right part of your life.</p>
+    </div>
+
+    <div class="highlight-box">
+      <span class="highlight-label">The Whole Picture</span>
+      <p>The Table has not just become the Temple. The Temple has an intelligent, living, coordinated presence running through it — designed by God himself — connecting you to heaven and organising every dimension of your life around the person of Jesus Christ.</p>
+    </div>
+
+    <div class="question-box">
+      <div class="question-icon">💬</div>
+      <div class="question-content"><strong>Discussion Question</strong><p>"Knowing all six dimensions are already living inside you through the Holy Spirit — what would it look like this week to actually cooperate with what he is already doing?"</p></div>
+    </div>
+  </div>
+
+  <!-- SECTION 6 -->
+  <div class="s6">
+    <div class="section-header">
+      <div class="section-number">6</div>
+      <div class="section-title-block"><div class="section-tag">Galatians 5:22–23</div><h2>The Fruit of a Living Temple</h2></div>
+    </div>
+    <div class="section-divider-line"></div>
+    <div class="leader-box"><strong>📖 Leader Instruction</strong>Walk through each of the nine fruits with the diagnostic question. Give the young people space to examine themselves honestly.</div>
+
+    <div class="scripture">
+      <p>"But the fruit of the Spirit is love, joy, peace, forbearance, kindness, goodness, faithfulness, gentleness and self-control. Against such things there is no law."</p>
+      <span class="ref">Galatians 5:22–23</span>
+    </div>
+
+    <p>Paul does not say <em>fruits</em> — plural. He says <em>fruit</em> — singular. Nine attributes. One fruit. One character. One life. You do not get to pick a favourite. The fruit comes as a whole. Just as one spinal cord coordinates every finger, one Spirit produces every dimension of the fruit.</p>
+
+    <p>And notice the word he uses — <em>fruit.</em> Not manufacture. Not achievement. Fruit is what a healthy tree produces naturally over time when it is rooted well. You have never seen a mango tree straining to produce mangoes. The fruit of the Spirit is not what you produce through religious effort — it is what grows out of a life where the Spirit has taken up residence.</p>
+
+    <div class="fruit-card">
+      <div class="fruit-icon-big">❤️</div>
+      <div class="fruit-content">
+        <h3>Love</h3>
+        <p>Not romantic love. <em>Agape</em> — deliberate, self-giving, seeking-the-good-of-the-other love. The kind that loves even when it costs.</p>
+        <div class="fruit-diagnostic">Is my capacity to love people I do not naturally like growing over time?</div>
+      </div>
+    </div>
+
+    <div class="fruit-card">
+      <div class="fruit-icon-big">✨</div>
+      <div class="fruit-content">
+        <h3>Joy</h3>
+        <p>Not happiness. Happiness depends on happenings. Joy is the settled confidence that God is good, in control, and for you — regardless of circumstances. Paul wrote from prison.</p>
+        <div class="fruit-diagnostic">Is there a settled undercurrent in me that does not disappear when circumstances turn hard?</div>
+      </div>
+    </div>
+
+    <div class="fruit-card">
+      <div class="fruit-icon-big">🕊️</div>
+      <div class="fruit-content">
+        <h3>Peace</h3>
+        <p>Not the absence of trouble. <em>Shalom</em> — wholeness, integration. Jesus offered peace that exists in the middle of trouble, not by removing it.</p>
+        <div class="fruit-diagnostic">When everything around me is anxious, is there a quiet inside me that does not match the noise outside?</div>
+      </div>
+    </div>
+
+    <div class="fruit-card">
+      <div class="fruit-icon-big">⏳</div>
+      <div class="fruit-content">
+        <h3>Forbearance</h3>
+        <p>The ability to bear with people, situations and delays without becoming bitter, resentful or reactive. Particularly relevant for a generation raised on instant everything.</p>
+        <div class="fruit-diagnostic">Am I becoming more patient with difficult people and delayed answers, or less?</div>
+      </div>
+    </div>
+
+    <div class="fruit-card">
+      <div class="fruit-icon-big">🤲</div>
+      <div class="fruit-content">
+        <h3>Kindness</h3>
+        <p>Practical, tangible goodness toward others. Not showy. Small. The moment you notice the person nobody else is noticing. The act of service done without needing credit.</p>
+        <div class="fruit-diagnostic">Is kindness becoming more instinctive in me?</div>
+      </div>
+    </div>
+
+    <div class="fruit-card">
+      <div class="fruit-icon-big">🌿</div>
+      <div class="fruit-content">
+        <h3>Goodness</h3>
+        <p>Moral uprightness expressed in action. Actively pursuing what is right, true and beneficial. Not naive. Not performative. Clean. Aligned. Trustworthy.</p>
+        <div class="fruit-diagnostic">Do people who spend time with me leave better than they arrived?</div>
+      </div>
+    </div>
+
+    <div class="fruit-card">
+      <div class="fruit-icon-big">🗝️</div>
+      <div class="fruit-content">
+        <h3>Faithfulness</h3>
+        <p>Reliability. Following through on what you said you would do. Honouring the small commitments as carefully as the large ones. God is faithful — his character reproduces in you.</p>
+        <div class="fruit-diagnostic">Are the people who depend on me able to depend on me?</div>
+      </div>
+    </div>
+
+    <div class="fruit-card">
+      <div class="fruit-icon-big">🌾</div>
+      <div class="fruit-content">
+        <h3>Gentleness</h3>
+        <p>Strength under control. Not weakness. Not passivity. Genuine strength that chooses restraint. Jesus described himself as <em>"gentle and humble in heart."</em> Power submitted to love.</p>
+        <div class="fruit-diagnostic">Am I becoming someone who handles others with care, or someone who runs over others to get what I want?</div>
+      </div>
+    </div>
+
+    <div class="fruit-card">
+      <div class="fruit-icon-big">⚖️</div>
+      <div class="fruit-content">
+        <h3>Self-Control</h3>
+        <p>The ability to say no to what your flesh wants when what your flesh wants would harm you or someone else. Every major disaster in a young life traces back to a moment when self-control was absent.</p>
+        <div class="fruit-diagnostic">Are the things I do in secret the same things I would be comfortable doing in public?</div>
+      </div>
+    </div>
+
+    <div class="highlight-box">
+      <span class="highlight-label">How the Fruit Grows</span>
+      <p>Slowly. Visibly. Inevitably where the Spirit is at work. That is how you know he is in you. Not by feelings. Not by dramatic experiences. By fruit.</p>
+    </div>
+
+    <div class="question-box">
+      <div class="question-icon">💬</div>
+      <div class="question-content"><strong>Discussion Question</strong><p>"Which one of the nine has been growing most visibly in you? And which has been hardest — are you willing to name it honestly, so the Spirit can begin his work there?"</p></div>
+    </div>
+  </div>
+
+  <!-- SECTION 7 -->
+  <div class="s7">
+    <div class="section-header">
+      <div class="section-number">7</div>
+      <div class="section-title-block"><div class="section-tag">To Close</div><h2>Closing Reflection · Carrying the Table</h2></div>
+    </div>
+    <div class="section-divider-line"></div>
+    <div class="leader-box"><strong>📖 Leader Instruction</strong>Read this slowly. This is the landing place of five months of gathering.</div>
+
+    <div class="reflection-box">
+      <p>Four months ago we opened this table for the first time. We asked <em>who do you say that I am?</em></p>
+      <p>Three months ago we sat with David crying out from a hillside. <em>But you, Lord.</em></p>
+      <p>Two months ago we discovered every spiritual blessing had already been given, and the only question was what vessel we were presenting.</p>
+      <p>Last month we watched the Shepherd of Psalm 23 quietly become the Host who prepared a table before us in the presence of our enemies.</p>
+      <p>And tonight — we have come to the moment when everything shifts. The Host who prepared the table for us is not staying seated across from us anymore. He has moved. Not backwards. Not away. <em>Inward.</em></p>
+      <p>The Table has become the Temple.</p>
+      <p>Jesus for us. Jesus with us. Jesus in us. That is the gospel. That is the whole story. That is what every believer across every century has been invited into. Do you see what has happened? The whole arc of the Christian life has been walked in miniature around this table over four gatherings.</p>
+      <p>Somewhere tomorrow morning — in a hundred different homes, at a hundred different breakfast tables — the young people and parents who sat around this table this evening will be sitting down again. But something will be different. Every one of them will be carrying inside them the very presence of God. A walking Temple in the middle of an ordinary morning.</p>
+      <div class="final-question">
+        <p>"Which of the nine fruits is God asking you to allow him to grow in you this month — and are you willing to cooperate with him in that?"</p>
+      </div>
+    </div>
+
+    <div class="fathers-note">
+      <h3>✍ A Note for the Facilitator — Your Personal Moment</h3>
+      <p>Share briefly — when did the Holy Spirit stop being an abstract idea for you and become a real presence in your life? When did you first realise you were not just visited by God but that his presence had actually taken up residence inside you? What has the Helper been to you in the seasons when you needed him most — an Advocate, a Counsellor, a Comforter, or a Spirit of Truth? Two or three honest sentences will land deeper than everything else this evening.</p>
+    </div>
+
+    <div class="highlight-box" style="margin-top:40px;">
+      <span class="highlight-label">A Final Word</span>
+      <p>Five months. Five sessions. Every young person and parent who leaves your home this evening walks out as a moving Temple. The Table is now the Temple. And the Temples are on the move. Lead well. 🪑✝</p>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <p>The Table · <a href="../index.html">thetable-hub.github.io/session-01</a> · Encounter. Community. Truth.</p>
+</footer>
+
+</body>
+</html>
