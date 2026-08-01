@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Prep Guide — Session 05 | The Table</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:#1a1a2e;--navy-mid:#16213e;--gold:#ffb432;--gold-dark:#c9922a;
+  --gold-light:#ffd166;--latte:#fdf8f3;--latte-dark:#f0e8dc;
+  --latte-mid:#e8ddd0;--text:#2c2c2c;--text-light:#6b5b45;
+  --white:#ffffff;--border:#e0d4c4;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:var(--latte);color:var(--text);line-height:1.7;}
+
+nav{background:rgba(253,248,243,0.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.nav-logo-text{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--navy);letter-spacing:2px;}
+.nav-back{font-size:13px;font-weight:600;color:var(--text-light);text-decoration:none;display:flex;align-items:center;gap:6px;transition:color 0.2s;}
+.nav-back:hover{color:var(--navy);}
+
+.cover{background:linear-gradient(150deg,var(--navy) 0%,var(--navy-mid) 100%);padding:80px 40px 70px;text-align:center;position:relative;overflow:hidden;}
+.cover::before{content:'';position:absolute;top:-100px;right:-100px;width:400px;height:400px;background:radial-gradient(circle,rgba(255,180,50,0.1),transparent 70%);border-radius:50%;}
+.cover-badge{display:inline-block;font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);background:rgba(255,180,50,0.15);border:1px solid rgba(255,180,50,0.3);padding:6px 18px;border-radius:30px;margin-bottom:28px;}
+.cover h1{font-family:'Playfair Display',serif;font-size:52px;color:var(--white);line-height:1.15;margin-bottom:18px;font-style:italic;}
+.cover h1 span{font-style:normal;color:var(--gold);}
+.cover-sub{font-family:'Lora',serif;font-size:17px;color:rgba(255,255,255,0.65);font-style:italic;margin-bottom:10px;}
+.cover-scriptures{font-family:'Inter',sans-serif;font-size:12px;color:rgba(255,255,255,0.4);letter-spacing:2px;margin-bottom:36px;}
+.cover-meta{display:inline-flex;gap:36px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:18px 32px;flex-wrap:wrap;justify-content:center;}
+.cover-meta-item{text-align:center;}
+.cover-meta-item .val{font-family:'Playfair Display',serif;font-size:18px;color:var(--white);font-weight:700;}
+.cover-meta-item .lbl{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-top:3px;}
+
+.main{max-width:760px;margin:0 auto;padding:70px 40px 100px;}
+
+.welcome-box{background:var(--white);border-radius:16px;border:1px solid var(--border);padding:40px;margin-bottom:50px;border-top:4px solid var(--gold);}
+.welcome-box h2{font-family:'Playfair Display',serif;font-size:26px;color:var(--navy);margin-bottom:14px;}
+.welcome-box p{font-family:'Lora',serif;font-size:16px;color:var(--text-light);line-height:1.9;font-style:italic;}
+.welcome-box p+p{margin-top:14px;}
+
+.section-divider{display:flex;align-items:center;gap:16px;margin:50px 0 32px;}
+.section-divider .divider-label{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold-dark);white-space:nowrap;}
+.section-divider::before,.section-divider::after{content:'';flex:1;height:1px;background:var(--border);}
+
+.reading-list{display:flex;flex-direction:column;gap:14px;margin-bottom:50px;}
+.reading-item{background:var(--white);border-radius:12px;border:1px solid var(--border);padding:22px 26px;display:flex;gap:20px;align-items:flex-start;transition:all 0.2s;}
+.reading-item:hover{border-color:var(--gold);transform:translateX(4px);}
+.reading-num{width:36px;height:36px;background:var(--navy);color:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:16px;font-weight:700;flex-shrink:0;}
+.reading-content .ref{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold-dark);margin-bottom:4px;}
+.reading-content h4{font-family:'Playfair Display',serif;font-size:18px;color:var(--navy);margin-bottom:6px;}
+.reading-content p{font-size:14px;color:var(--text-light);line-height:1.7;}
+
+.stages-box{background:linear-gradient(135deg,var(--navy),var(--navy-mid));border-radius:16px;padding:40px;margin-bottom:50px;}
+.stages-box .stages-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:24px;text-align:center;}
+.stages-box h3{font-family:'Playfair Display',serif;font-size:22px;color:var(--white);text-align:center;margin-bottom:28px;font-style:italic;}
+.stage-row{display:flex;gap:16px;align-items:flex-start;padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.08);}
+.stage-row:last-child{border-bottom:none;padding-bottom:0;}
+.stage-row:first-child{padding-top:0;}
+.stage-icon{width:40px;height:40px;border-radius:50%;background:rgba(255,180,50,0.15);border:1px solid rgba(255,180,50,0.3);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.stage-content h4{font-family:'Playfair Display',serif;font-size:16px;color:var(--gold);margin-bottom:4px;}
+.stage-content p{font-family:'Lora',serif;font-size:14px;color:rgba(255,255,255,0.7);line-height:1.7;font-style:italic;}
+
+.names-box{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:36px;margin-bottom:50px;}
+.names-box .n-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold-dark);font-weight:700;margin-bottom:20px;text-align:center;}
+.names-box h3{font-family:'Playfair Display',serif;font-size:22px;color:var(--navy);text-align:center;margin-bottom:24px;font-style:italic;}
+.names-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.name-card{background:var(--latte);border:1px solid var(--border);border-left:4px solid var(--gold);border-radius:8px;padding:18px;}
+.name-card h4{font-family:'Playfair Display',serif;font-size:17px;color:var(--navy);margin-bottom:6px;}
+.name-card p{font-size:13px;color:var(--text-light);line-height:1.65;}
+
+.spine-box{background:linear-gradient(135deg,#2c1a3d,#1a1a2e);border-radius:16px;padding:44px;margin-bottom:50px;color:var(--white);}
+.spine-box .s-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:18px;text-align:center;}
+.spine-box h3{font-family:'Playfair Display',serif;font-size:24px;color:var(--white);text-align:center;margin-bottom:14px;font-style:italic;}
+.spine-box>p{font-family:'Lora',serif;font-size:15px;color:rgba(255,255,255,0.75);line-height:1.8;font-style:italic;margin-bottom:24px;text-align:center;}
+.dimensions-grid{display:grid;grid-template-columns:1fr;gap:12px;}
+.dim-row{background:rgba(255,255,255,0.05);border:1px solid rgba(255,180,50,0.2);border-radius:10px;padding:16px 18px;display:flex;gap:14px;align-items:flex-start;}
+.dim-num{width:28px;height:28px;background:var(--gold);color:var(--navy);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;font-family:'Playfair Display',serif;}
+.dim-content h4{font-size:14px;color:var(--gold-light);font-weight:700;margin-bottom:4px;}
+.dim-content p{font-size:13px;color:rgba(255,255,255,0.7);line-height:1.65;font-style:italic;margin:0;font-family:'Lora',serif;}
+
+.fruit-box{background:linear-gradient(135deg,#1e3a1e,#0f2617);border-radius:16px;padding:40px;margin-bottom:50px;color:var(--white);}
+.fruit-box .f-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#9be89b;font-weight:700;margin-bottom:16px;text-align:center;}
+.fruit-box h3{font-family:'Playfair Display',serif;font-size:22px;color:var(--white);text-align:center;margin-bottom:8px;font-style:italic;}
+.fruit-box .f-verse{font-family:'Lora',serif;font-size:13px;color:rgba(255,255,255,0.55);text-align:center;font-style:italic;margin-bottom:24px;}
+.fruits-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+.fruit-card{background:rgba(255,255,255,0.08);border:1px solid rgba(155,232,155,0.25);border-radius:10px;padding:14px 10px;text-align:center;}
+.fruit-icon{font-size:22px;margin-bottom:4px;}
+.fruit-card h4{font-size:13px;color:#c8f0c8;font-weight:700;font-family:'Inter',sans-serif;}
+
+.questions-list{display:flex;flex-direction:column;gap:20px;margin-bottom:50px;}
+.question-item{background:var(--white);border-radius:12px;border:1px solid var(--border);padding:28px 30px;border-left:4px solid var(--gold);}
+.question-item .q-num{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold-dark);margin-bottom:10px;}
+.question-item p{font-family:'Playfair Display',serif;font-size:19px;color:var(--navy);line-height:1.5;font-style:italic;}
+.question-item .q-note{font-family:'Lora',serif;font-size:13px;color:var(--text-light);margin-top:10px;font-style:italic;}
+
+.expect-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:50px;}
+.expect-item{background:var(--white);border-radius:12px;border:1px solid var(--border);padding:22px;}
+.expect-item .e-icon{width:38px;height:38px;background:var(--latte-dark);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;}
+.expect-item h4{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:6px;}
+.expect-item p{font-size:13px;color:var(--text-light);line-height:1.7;}
+
+.prayer-box{background:var(--latte-dark);border-radius:16px;border:1px solid var(--border);padding:40px;text-align:center;margin-bottom:40px;}
+.prayer-box .prayer-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold-dark);font-weight:700;margin-bottom:20px;}
+.prayer-box p{font-family:'Playfair Display',serif;font-size:18px;color:var(--navy);line-height:1.8;font-style:italic;}
+
+.session-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;padding-top:20px;border-top:1px solid var(--border);}
+.btn-outline{background:transparent;color:var(--navy);padding:13px 26px;border-radius:8px;text-decoration:none;font-weight:700;font-size:14px;border:2px solid var(--navy);transition:all 0.2s;display:inline-block;}
+.btn-outline:hover{background:var(--navy);color:var(--gold);}
+
+footer{background:var(--navy);padding:36px 40px;text-align:center;}
+footer p{font-family:'Lora',serif;font-size:13px;color:rgba(255,255,255,0.4);font-style:italic;}
+footer a{color:var(--gold-dark);text-decoration:none;}
+
+@media(max-width:700px){
+  nav{padding:0 20px;}
+  .cover{padding:60px 24px 50px;}.cover h1{font-size:36px;}
+  .main{padding:50px 20px 80px;}
+  .names-grid{grid-template-columns:1fr;}
+  .fruits-grid{grid-template-columns:repeat(2,1fr);}
+  .expect-grid{grid-template-columns:1fr;}
+  .session-actions{flex-direction:column;align-items:center;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="nav-logo">
+    <svg width="32" height="32" viewBox="0 0 36 36">
+      <circle cx="18" cy="18" r="17" fill="#1a1a2e"/>
+      <path d="M 10 12 A 8 1.5 0 0 0 26 12" fill="none" stroke="#ffd166" stroke-width="0.9" stroke-linecap="round"/>
+      <rect x="10" y="12" width="16" height="3.5" rx="1" fill="#ffb432"/>
+      <rect x="15.5" y="15.5" width="5" height="11" rx="1" fill="#ffb432"/>
+      <rect x="13" y="26.5" width="10" height="2" rx="1" fill="#ffb432" opacity="0.75"/>
+    </svg>
+    <span class="nav-logo-text">THE TABLE</span>
+  </a>
+  <a href="../index.html" class="nav-back">
+    <svg width="16" height="16" viewBox="0 0 16 16"><path d="M10 3L5 8L10 13" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Back to Home
+  </a>
+</nav>
+
+<div class="cover">
+  <div class="cover-badge">Session 05 · Student Prep Guide · August 2026</div>
+  <h1>"The Table Becomes<br><span>the Temple"</span></h1>
+  <p class="cover-sub">The Helper Who Lives Within</p>
+  <p class="cover-scriptures">Genesis 1:2 · John 14–16 · 1 Corinthians 3, 6 · Galatians 5</p>
+  <div class="cover-meta">
+    <div class="cover-meta-item"><div class="val">2 Aug</div><div class="lbl">Session Date</div></div>
+    <div class="cover-meta-item"><div class="val">4–6pm</div><div class="lbl">Time</div></div>
+    <div class="cover-meta-item"><div class="val">5</div><div class="lbl">Passages</div></div>
+    <div class="cover-meta-item"><div class="val">3</div><div class="lbl">Questions</div></div>
+  </div>
+</div>
+
+<div class="main">
+
+  <div class="welcome-box">
+    <h2>Before you pull up a chair...</h2>
+    <p>Last month we discovered that the Shepherd of Psalm 23 became the Host who prepared a table before us in the presence of our enemies. This month we discover something even more extraordinary. The Host who sat across from us at that table is no longer content to sit across from us.</p>
+    <p>On the night before the cross Jesus said the strangest sentence he ever spoke — <em>"It is for your good that I am going away."</em> Better that he leave? How could that possibly be true? Read these passages slowly this week. What you find will change how you understand your own body.</p>
+  </div>
+
+  <div class="section-divider"><span class="divider-label">Step 1 — Read</span></div>
+
+  <div class="reading-list">
+    <div class="reading-item">
+      <div class="reading-num">1</div>
+      <div class="reading-content">
+        <div class="ref">Genesis 1:1–2</div>
+        <h4>Before the world had form.</h4>
+        <p>The very first appearance of the Holy Spirit in scripture — hovering over the waters, bringing form and order out of what was formless and void. His role from the beginning has been to bring order out of chaos.</p>
+      </div>
+    </div>
+    <div class="reading-item">
+      <div class="reading-num">2</div>
+      <div class="reading-content">
+        <div class="ref">John 14:15–27</div>
+        <h4>The promise of another Helper.</h4>
+        <p>Jesus promises the coming of the Advocate — the Spirit of Truth — who will live with the disciples and be in them forever. Notice the shift from <em>with</em> to <em>in</em>. Everything changes on that preposition.</p>
+      </div>
+    </div>
+    <div class="reading-item">
+      <div class="reading-num">3</div>
+      <div class="reading-content">
+        <div class="ref">John 16:5–15</div>
+        <h4>Why it is better that he go.</h4>
+        <p>The strangest sentence Jesus ever spoke — and the reason behind it. If he does not leave, the Helper cannot come. If he leaves, the Helper will fill every believer forever.</p>
+      </div>
+    </div>
+    <div class="reading-item">
+      <div class="reading-num">4</div>
+      <div class="reading-content">
+        <div class="ref">1 Corinthians 3:16 & 6:19</div>
+        <h4>Your body is a temple.</h4>
+        <p>Paul makes it unmistakable. The dwelling place of God is no longer a stone building. It is now every believer who has received the Holy Spirit. You are a Temple. Not one you are building — one you are.</p>
+      </div>
+    </div>
+    <div class="reading-item">
+      <div class="reading-num">5</div>
+      <div class="reading-content">
+        <div class="ref">Galatians 5:22–23</div>
+        <h4>The fruit of a living Temple.</h4>
+        <p>Nine attributes. One fruit. One Spirit. This is the visible evidence that the Helper has taken up residence in the Temple. What grows on the outside reveals what is at work on the inside.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-divider"><span class="divider-label">Step 2 — The Temple on the Move</span></div>
+
+  <div class="stages-box">
+    <div class="stages-label">Where God Has Chosen to Dwell</div>
+    <h3>The presence has been moving all along.</h3>
+    <div class="stage-row">
+      <div class="stage-icon">🌊</div>
+      <div class="stage-content">
+        <h4>Stage One · Genesis 1</h4>
+        <p>The Spirit hovering over the waters. Bringing form and shape from formlessness. His first ministry — order out of chaos.</p>
+      </div>
+    </div>
+    <div class="stage-row">
+      <div class="stage-icon">⛺</div>
+      <div class="stage-content">
+        <h4>Stage Two · The Tabernacle and Temple</h4>
+        <p>God's presence dwelt behind a curtain. Approached carefully by one priest, once a year, after elaborate preparation.</p>
+      </div>
+    </div>
+    <div class="stage-row">
+      <div class="stage-icon">✝</div>
+      <div class="stage-content">
+        <h4>Stage Three · Jesus</h4>
+        <p>The Word became flesh. God's presence walking among us in a human body — able to look you in the eye and share your meals.</p>
+      </div>
+    </div>
+    <div class="stage-row">
+      <div class="stage-icon">🪑</div>
+      <div class="stage-content">
+        <h4>Stage Four · The Upper Room</h4>
+        <p>The night before the cross. At the Table, Jesus announced that the presence was about to move again — inward, into every believer.</p>
+      </div>
+    </div>
+    <div class="stage-row">
+      <div class="stage-icon">🔥</div>
+      <div class="stage-content">
+        <h4>Stage Five · Pentecost onward</h4>
+        <p>The Spirit descended. The Temple moved into flesh. Every believer became a living, breathing, walking dwelling place of God.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-divider"><span class="divider-label">Step 3 — Meet the Helper</span></div>
+
+  <div class="names-box">
+    <div class="n-label">Four Names · One Person</div>
+    <h3>Everything Jesus was to them, the Helper is to you.</h3>
+    <div class="names-grid">
+      <div class="name-card">
+        <h4>The Advocate</h4>
+        <p>He stands in your defence. When accusation whispers against you, he speaks on your behalf — inside you, to the Father.</p>
+      </div>
+      <div class="name-card">
+        <h4>The Counsellor</h4>
+        <p>The internal wisdom of God, applied to your specific life. Every decision has access to the counsel of heaven.</p>
+      </div>
+      <div class="name-card">
+        <h4>The Comforter</h4>
+        <p>The one who draws near in your pain. Not distant. Not delayed. Already there — inside the room of your grief.</p>
+      </div>
+      <div class="name-card">
+        <h4>The Spirit of Truth</h4>
+        <p>He leads you toward what is real, even when what is real is uncomfortable. He surfaces what needs to be surfaced.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-divider"><span class="divider-label">Step 4 — The Great Shift</span></div>
+
+  <div class="spine-box">
+    <div class="s-label">The Table Becomes the Temple</div>
+    <h3>The Helper Within — Six Dimensions</h3>
+    <p>Consider your spinal cord. Hidden. Central. Silent. And without it nothing else works. Six of its features mirror exactly what the Holy Spirit does inside every believer.</p>
+    <div class="dimensions-grid">
+      <div class="dim-row">
+        <div class="dim-num">1</div>
+        <div class="dim-content">
+          <h4>Firm and Flexible</h4>
+          <p>Not rigid. Not brittle. Firm enough to hold the weight of your convictions — flexible enough to move with every new season of life.</p>
+        </div>
+      </div>
+      <div class="dim-row">
+        <div class="dim-num">2</div>
+        <div class="dim-content">
+          <h4>Soft and Tender</h4>
+          <p>The intimate presence that delivers spiritual nourishment, clears away waste, and surfaces injury so healing can begin.</p>
+        </div>
+      </div>
+      <div class="dim-row">
+        <div class="dim-num">3</div>
+        <div class="dim-content">
+          <h4>The Superhighway of Signals</h4>
+          <p>How the will of the Father becomes the movement of your life. Every prayer, every conviction, every step of obedience travels through him.</p>
+        </div>
+      </div>
+      <div class="dim-row">
+        <div class="dim-num">4</div>
+        <div class="dim-content">
+          <h4>Hidden but Central</h4>
+          <p>He never draws attention to himself. His whole purpose is to glorify Jesus. Yet without him, nothing else in your spiritual life functions.</p>
+        </div>
+      </div>
+      <div class="dim-row">
+        <div class="dim-num">5</div>
+        <div class="dim-content">
+          <h4>Bringer of Form, Shape and Order</h4>
+          <p>The same Spirit who brought order out of chaos in Genesis 1 is at work in every formless corner of your life — bringing shape where there was none.</p>
+        </div>
+      </div>
+      <div class="dim-row">
+        <div class="dim-num">6</div>
+        <div class="dim-content">
+          <h4>Wisdom, Knowledge and Understanding</h4>
+          <p>Isaiah 11:2. He carries these through your spiritual nervous system, coordinating every dimension of your life around the person of Jesus Christ.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-divider"><span class="divider-label">Step 5 — The Evidence</span></div>
+
+  <div class="fruit-box">
+    <div class="f-label">Galatians 5:22–23</div>
+    <h3>The Fruit of a Living Temple</h3>
+    <p class="f-verse">Nine attributes · One fruit · One Spirit at work in you</p>
+    <div class="fruits-grid">
+      <div class="fruit-card"><div class="fruit-icon">❤️</div><h4>Love</h4></div>
+      <div class="fruit-card"><div class="fruit-icon">✨</div><h4>Joy</h4></div>
+      <div class="fruit-card"><div class="fruit-icon">🕊️</div><h4>Peace</h4></div>
+      <div class="fruit-card"><div class="fruit-icon">⏳</div><h4>Forbearance</h4></div>
+      <div class="fruit-card"><div class="fruit-icon">🤲</div><h4>Kindness</h4></div>
+      <div class="fruit-card"><div class="fruit-icon">🌿</div><h4>Goodness</h4></div>
+      <div class="fruit-card"><div class="fruit-icon">🗝️</div><h4>Faithfulness</h4></div>
+      <div class="fruit-card"><div class="fruit-icon">🌾</div><h4>Gentleness</h4></div>
+      <div class="fruit-card"><div class="fruit-icon">⚖️</div><h4>Self-Control</h4></div>
+    </div>
+  </div>
+
+  <div class="section-divider"><span class="divider-label">Step 6 — Journal</span></div>
+
+  <div class="questions-list">
+    <div class="question-item">
+      <div class="q-num">Question 1</div>
+      <p>"Which of the four names of the Helper does your life most need right now — Advocate, Counsellor, Comforter, or Spirit of Truth?"</p>
+      <div class="q-note">The Helper is all four at once. But there is likely one your soul is reaching for this week. Which is it?</div>
+    </div>
+    <div class="question-item">
+      <div class="q-num">Question 2</div>
+      <p>"Which of the nine fruits has been growing most visibly in you over the last year — and which has been hardest to grow?"</p>
+      <div class="q-note">Do not be falsely humble. Notice what the Spirit has been doing. Then name honestly where the ground is still hard.</div>
+    </div>
+    <div class="question-item">
+      <div class="q-num">Question 3</div>
+      <p>"What would this coming week look like if you moved through it as a walking Temple — knowing every room you enter is a room the Spirit has already entered with you?"</p>
+      <div class="q-note">This is the question the whole session is building toward. Sit with it before Sunday.</div>
+    </div>
+  </div>
+
+  <div class="section-divider"><span class="divider-label">Step 7 — Come Ready</span></div>
+
+  <div class="expect-grid">
+    <div class="expect-item">
+      <div class="e-icon">
+        <svg width="20" height="20" viewBox="0 0 20 20"><rect x="3" y="2" width="14" height="16" rx="2" fill="none" stroke="#c9922a" stroke-width="1.3"/><line x1="7" y1="7" x2="13" y2="7" stroke="#c9922a" stroke-width="1.1" stroke-linecap="round"/><line x1="7" y1="10" x2="13" y2="10" stroke="#c9922a" stroke-width="1.1" stroke-linecap="round"/></svg>
+      </div>
+      <h4>Bring your Bible</h4>
+      <p>We will work through John 14–16, 1 Corinthians 3 and 6, and Galatians 5 together. Any translation you are comfortable with.</p>
+    </div>
+    <div class="expect-item">
+      <div class="e-icon">
+        <svg width="20" height="20" viewBox="0 0 20 20"><circle cx="10" cy="10" r="7" fill="none" stroke="#c9922a" stroke-width="1.3"/><line x1="10" y1="7" x2="10" y2="10" stroke="#c9922a" stroke-width="1.3" stroke-linecap="round"/><line x1="10" y1="10" x2="13" y2="13" stroke="#c9922a" stroke-width="1.3" stroke-linecap="round"/></svg>
+      </div>
+      <h4>4–6pm on Sunday</h4>
+      <p>Two hours together. Come settled and ready to engage. We start and end on time.</p>
+    </div>
+    <div class="expect-item">
+      <div class="e-icon">
+        <svg width="20" height="20" viewBox="0 0 20 20"><circle cx="10" cy="7" r="3" fill="none" stroke="#c9922a" stroke-width="1.3"/><path d="M4 17 c0-4 12-4 12 0" fill="none" stroke="#c9922a" stroke-width="1.3" stroke-linecap="round"/></svg>
+      </div>
+      <h4>Ages 13 and above</h4>
+      <p>Teenagers, young adults, and parents all welcome. Every voice around the table matters.</p>
+    </div>
+    <div class="expect-item">
+      <div class="e-icon">
+        <svg width="20" height="20" viewBox="0 0 20 20"><path d="M5 10 A5 2 0 0 0 15 10" fill="none" stroke="#c9922a" stroke-width="1.2" stroke-linecap="round"/><rect x="5" y="10" width="10" height="3" rx="1" fill="none" stroke="#c9922a" stroke-width="1.2"/><line x1="8" y1="13" x2="7" y2="17" stroke="#c9922a" stroke-width="1.2" stroke-linecap="round"/><line x1="12" y1="13" x2="13" y2="17" stroke="#c9922a" stroke-width="1.2" stroke-linecap="round"/></svg>
+      </div>
+      <h4>No pressure</h4>
+      <p>The Helper does not require you to arrive impressive. He requires you to arrive open.</p>
+    </div>
+  </div>
+
+  <div class="prayer-box">
+    <div class="prayer-label">A Prayer Before You Come</div>
+    <p>"Holy Spirit, teach me to notice you. You have lived inside me longer than I have known to look for you. Make yourself known to me this week as Advocate, Counsellor, Comforter and Spirit of Truth. Amen."</p>
+  </div>
+
+  <div class="session-actions">
+    <a href="../index.html" class="btn-outline">Back to Home</a>
+  </div>
+
+</div>
+
+<footer>
+  <p>The Table · <a href="../index.html">thetable-hub.github.io/session-01</a> · Encounter. Community. Truth.</p>
+</footer>
+
+</body>
+</html>
