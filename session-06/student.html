@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Prep Guide — Session 06 | The Table</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:#1a1a2e;--navy-mid:#16213e;--gold:#ffb432;--gold-dark:#c9922a;
+  --gold-light:#ffd166;--latte:#fdf8f3;--latte-dark:#f0e8dc;
+  --latte-mid:#e8ddd0;--text:#2c2c2c;--text-light:#6b5b45;
+  --white:#ffffff;--border:#e0d4c4;
+  --fire-deep:#7a1e0f;--fire-mid:#c0392b;--fire-bright:#e67e22;--ember:#f39c12;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:var(--latte);color:var(--text);line-height:1.7;}
+
+nav{background:rgba(253,248,243,0.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.nav-logo-text{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--navy);letter-spacing:2px;}
+.nav-back{font-size:13px;font-weight:600;color:var(--text-light);text-decoration:none;display:flex;align-items:center;gap:6px;transition:color 0.2s;}
+.nav-back:hover{color:var(--navy);}
+
+.cover{background:linear-gradient(150deg,var(--navy) 0%,#3d1a0f 60%,var(--fire-deep) 100%);padding:80px 40px 70px;text-align:center;position:relative;overflow:hidden;}
+.cover::before{content:'';position:absolute;top:-100px;right:-100px;width:400px;height:400px;background:radial-gradient(circle,rgba(243,156,18,0.2),transparent 70%);border-radius:50%;}
+.cover::after{content:'';position:absolute;bottom:-120px;left:-80px;width:350px;height:350px;background:radial-gradient(circle,rgba(230,126,34,0.15),transparent 70%);border-radius:50%;}
+.cover-badge{display:inline-block;font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--ember);background:rgba(243,156,18,0.15);border:1px solid rgba(243,156,18,0.3);padding:6px 18px;border-radius:30px;margin-bottom:28px;position:relative;z-index:1;}
+.cover h1{font-family:'Playfair Display',serif;font-size:52px;color:var(--white);line-height:1.15;margin-bottom:18px;font-style:italic;position:relative;z-index:1;}
+.cover h1 span{font-style:normal;color:var(--ember);}
+.cover-sub{font-family:'Lora',serif;font-size:17px;color:rgba(255,255,255,0.7);font-style:italic;margin-bottom:10px;position:relative;z-index:1;}
+.cover-scriptures{font-family:'Inter',sans-serif;font-size:12px;color:rgba(255,255,255,0.45);letter-spacing:2px;margin-bottom:36px;position:relative;z-index:1;}
+.cover-meta{display:inline-flex;gap:36px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:18px 32px;flex-wrap:wrap;justify-content:center;position:relative;z-index:1;}
+.cover-meta-item{text-align:center;}
+.cover-meta-item .val{font-family:'Playfair Display',serif;font-size:18px;color:var(--white);font-weight:700;}
+.cover-meta-item .lbl{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-top:3px;}
+
+.main{max-width:760px;margin:0 auto;padding:70px 40px 100px;}
+
+.welcome-box{background:var(--white);border-radius:16px;border:1px solid var(--border);padding:40px;margin-bottom:50px;border-top:4px solid var(--fire-mid);}
+.welcome-box h2{font-family:'Playfair Display',serif;font-size:26px;color:var(--navy);margin-bottom:14px;}
+.welcome-box p{font-family:'Lora',serif;font-size:16px;color:var(--text-light);line-height:1.9;font-style:italic;}
+.welcome-box p+p{margin-top:14px;}
+
+.section-divider{display:flex;align-items:center;gap:16px;margin:50px 0 32px;}
+.section-divider .divider-label{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--fire-mid);white-space:nowrap;}
+.section-divider::before,.section-divider::after{content:'';flex:1;height:1px;background:var(--border);}
+
+.reading-list{display:flex;flex-direction:column;gap:14px;margin-bottom:50px;}
+.reading-item{background:var(--white);border-radius:12px;border:1px solid var(--border);padding:22px 26px;display:flex;gap:20px;align-items:flex-start;transition:all 0.2s;}
+.reading-item:hover{border-color:var(--fire-mid);transform:translateX(4px);}
+.reading-num{width:36px;height:36px;background:var(--navy);color:var(--ember);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:16px;font-weight:700;flex-shrink:0;}
+.reading-content .ref{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--fire-mid);margin-bottom:4px;}
+.reading-content h4{font-family:'Playfair Display',serif;font-size:18px;color:var(--navy);margin-bottom:6px;}
+.reading-content p{font-size:14px;color:var(--text-light);line-height:1.7;}
+
+.fire-box{background:linear-gradient(135deg,#3d1a0f,var(--navy));border-radius:16px;padding:44px;margin-bottom:50px;color:var(--white);position:relative;overflow:hidden;}
+.fire-box::before{content:'';position:absolute;top:-60px;right:-60px;width:250px;height:250px;background:radial-gradient(circle,rgba(243,156,18,0.15),transparent 70%);border-radius:50%;}
+.fire-box .f-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--ember);font-weight:700;margin-bottom:18px;text-align:center;position:relative;z-index:1;}
+.fire-box h3{font-family:'Playfair Display',serif;font-size:24px;color:var(--white);text-align:center;margin-bottom:14px;font-style:italic;position:relative;z-index:1;}
+.fire-box>p{font-family:'Lora',serif;font-size:15px;color:rgba(255,255,255,0.75);line-height:1.85;font-style:italic;text-align:center;margin-bottom:24px;position:relative;z-index:1;}
+.covenant-moments{display:flex;flex-direction:column;gap:10px;position:relative;z-index:1;}
+.covenant-moment{background:rgba(255,255,255,0.05);border:1px solid rgba(243,156,18,0.15);border-radius:8px;padding:12px 16px;display:flex;gap:14px;align-items:center;}
+.moment-icon{width:32px;height:32px;background:rgba(243,156,18,0.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;}
+.moment-content h4{font-size:13px;color:var(--ember);font-weight:700;margin-bottom:2px;font-family:'Inter',sans-serif;}
+.moment-content p{font-size:12px;color:rgba(255,255,255,0.65);margin:0;font-family:'Lora',serif;font-style:italic;line-height:1.55;}
+
+.kings-box{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:36px;margin-bottom:50px;}
+.kings-box .k-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--fire-mid);font-weight:700;margin-bottom:20px;text-align:center;}
+.kings-box h3{font-family:'Playfair Display',serif;font-size:24px;color:var(--navy);text-align:center;margin-bottom:24px;font-style:italic;}
+.kings-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;}
+.king-card{border-radius:12px;padding:24px;text-align:center;}
+.king-saul{background:linear-gradient(135deg,#2c1810,#4a2a1a);color:var(--white);border:1px solid #6b3a1f;}
+.king-david{background:linear-gradient(135deg,#1a3a2a,#0f2617);color:var(--white);border:1px solid #2d5a3f;}
+.king-name{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;margin-bottom:6px;}
+.king-saul .king-name{color:#e8946e;}
+.king-david .king-name{color:#9be89b;}
+.king-tag{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:12px;}
+.king-losses{font-family:'Lora',serif;font-size:13px;color:rgba(255,255,255,0.75);font-style:italic;line-height:1.7;margin-bottom:12px;}
+.king-outcome{font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding-top:10px;border-top:1px solid rgba(255,255,255,0.15);}
+.king-saul .king-outcome{color:#e8946e;}
+.king-david .king-outcome{color:#9be89b;}
+.difference-line{text-align:center;padding:16px;background:var(--latte-dark);border-radius:8px;font-family:'Playfair Display',serif;font-style:italic;color:var(--navy);font-size:15px;}
+
+.practices-box{background:linear-gradient(135deg,#3d1a0f,#2c1810);border-radius:16px;padding:40px;margin-bottom:50px;color:var(--white);}
+.practices-box .p-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--ember);font-weight:700;margin-bottom:18px;text-align:center;}
+.practices-box h3{font-family:'Playfair Display',serif;font-size:24px;color:var(--white);text-align:center;margin-bottom:8px;font-style:italic;}
+.practices-box .p-sub{text-align:center;font-family:'Lora',serif;font-size:13px;color:rgba(255,255,255,0.55);font-style:italic;margin-bottom:24px;}
+.practices-list{display:flex;flex-direction:column;gap:12px;}
+.practice-row{background:rgba(255,255,255,0.05);border:1px solid rgba(243,156,18,0.2);border-radius:10px;padding:16px 20px;display:flex;gap:14px;align-items:flex-start;}
+.practice-num{width:32px;height:32px;background:var(--ember);color:var(--navy);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;font-family:'Playfair Display',serif;}
+.practice-content h4{font-size:14px;color:var(--ember);font-weight:700;margin-bottom:4px;font-family:'Inter',sans-serif;}
+.practice-content p{font-size:13px;color:rgba(255,255,255,0.75);line-height:1.7;margin:0;font-family:'Lora',serif;font-style:italic;}
+
+.psalm-box{background:linear-gradient(135deg,var(--navy),var(--navy-mid));border-radius:16px;padding:40px;margin-bottom:50px;color:var(--white);position:relative;overflow:hidden;}
+.psalm-box::before{content:'';position:absolute;top:-40px;right:-40px;width:180px;height:180px;background:radial-gradient(circle,rgba(243,156,18,0.12),transparent 70%);border-radius:50%;}
+.psalm-box .ps-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--ember);font-weight:700;margin-bottom:18px;text-align:center;position:relative;z-index:1;}
+.psalm-box h3{font-family:'Playfair Display',serif;font-size:22px;color:var(--white);text-align:center;margin-bottom:24px;font-style:italic;position:relative;z-index:1;}
+.psalm-verses{position:relative;z-index:1;}
+.psalm-verse-item{margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,0.08);}
+.psalm-verse-item:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+.psalm-verse-item .v-num{font-size:11px;font-weight:700;color:var(--ember);letter-spacing:2px;margin-bottom:6px;text-transform:uppercase;}
+.psalm-verse-item p{font-family:'Lora',serif;font-size:16px;color:rgba(255,255,255,0.88);line-height:1.85;font-style:italic;margin:0;}
+.psalm-verse-item.highlight{background:rgba(243,156,18,0.08);border-radius:8px;padding:14px 16px;border-bottom:none;}
+.psalm-verse-item.highlight p{color:var(--ember);}
+
+.questions-list{display:flex;flex-direction:column;gap:20px;margin-bottom:50px;}
+.question-item{background:var(--white);border-radius:12px;border:1px solid var(--border);padding:28px 30px;border-left:4px solid var(--fire-mid);}
+.question-item .q-num{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--fire-mid);margin-bottom:10px;}
+.question-item p{font-family:'Playfair Display',serif;font-size:19px;color:var(--navy);line-height:1.5;font-style:italic;}
+.question-item .q-note{font-family:'Lora',serif;font-size:13px;color:var(--text-light);margin-top:10px;font-style:italic;}
+
+.expect-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:50px;}
+.expect-item{background:var(--white);border-radius:12px;border:1px solid var(--border);padding:22px;}
+.expect-item .e-icon{width:38px;height:38px;background:var(--latte-dark);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;}
+.expect-item h4{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:6px;}
+.expect-item p{font-size:13px;color:var(--text-light);line-height:1.7;}
+
+.prayer-box{background:var(--latte-dark);border-radius:16px;border:1px solid var(--border);padding:40px;text-align:center;margin-bottom:40px;}
+.prayer-box .prayer-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--fire-mid);font-weight:700;margin-bottom:20px;}
+.prayer-box p{font-family:'Playfair Display',serif;font-size:18px;color:var(--navy);line-height:1.8;font-style:italic;}
+
+.session-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;padding-top:20px;border-top:1px solid var(--border);}
+.btn-outline{background:transparent;color:var(--navy);padding:13px 26px;border-radius:8px;text-decoration:none;font-weight:700;font-size:14px;border:2px solid var(--navy);transition:all 0.2s;display:inline-block;}
+.btn-outline:hover{background:var(--navy);color:var(--ember);}
+
+footer{background:var(--navy);padding:36px 40px;text-align:center;}
+footer p{font-family:'Lora',serif;font-size:13px;color:rgba(255,255,255,0.4);font-style:italic;}
+footer a{color:var(--gold-dark);text-decoration:none;}
+
+@media(max-width:700px){
+  nav{padding:0 20px;}
+  .cover{padding:60px 24px 50px;}.cover h1{font-size:36px;}
+  .main{padding:50px 20px 80px;}
+  .kings-grid{grid-template-columns:1fr;}
+  .expect-grid{grid-template-columns:1fr;}
+  .session-actions{flex-direction:column;align-items:center;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="nav-logo">
+    <svg width="32" height="32" viewBox="0 0 36 36">
+      <circle cx="18" cy="18" r="17" fill="#1a1a2e"/>
+      <path d="M 10 12 A 8 1.5 0 0 0 26 12" fill="none" stroke="#ffd166" stroke-width="0.9" stroke-linecap="round"/>
+      <rect x="10" y="12" width="16" height="3.5" rx="1" fill="#ffb432"/>
+      <rect x="15.5" y="15.5" width="5" height="11" rx="1" fill="#ffb432"/>
+      <rect x="13" y="26.5" width="10" height="2" rx="1" fill="#ffb432" opacity="0.75"/>
+    </svg>
+    <span class="nav-logo-text">THE TABLE</span>
+  </a>
+  <a href="../index.html" class="nav-back">
+    <svg width="16" height="16" viewBox="0 0 16 16"><path d="M10 3L5 8L10 13" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Back to Home
+  </a>
+</nav>
+
+<div class="cover">
+  <div class="cover-badge">Session 06 · Student Prep Guide · September 2026</div>
+  <h1>"The Temple Becomes<br><span>the Fire"</span></h1>
+  <p class="cover-sub">The Sacrifice God Actually Wants</p>
+  <p class="cover-scriptures">Psalm 51 · 1 Samuel 15–16 · Leviticus 6 · Acts 2</p>
+  <div class="cover-meta">
+    <div class="cover-meta-item"><div class="val">6 Sep</div><div class="lbl">Session Date</div></div>
+    <div class="cover-meta-item"><div class="val">4–6pm</div><div class="lbl">Time</div></div>
+    <div class="cover-meta-item"><div class="val">5</div><div class="lbl">Passages</div></div>
+    <div class="cover-meta-item"><div class="val">3</div><div class="lbl">Questions</div></div>
+  </div>
+</div>
+
+<div class="main">
+
+  <div class="welcome-box">
+    <h2>Before you pull up a chair...</h2>
+    <p>Last month we discovered that the Table has become the Temple. The Helper lives inside every believer. This month we go one step further. The Temple becomes the fire. And we discover the one sacrifice God has been looking for all along.</p>
+    <p>We will meet two kings who both lost almost everything a man can lose. Same losses. Same magnitude. Same pain. But one ended his life destroyed. The other ended his life restored. The single difference between them is the most important lesson this session has to offer. Read the passages slowly this week.</p>
+  </div>
+
+  <div class="section-divider"><span class="divider-label">Step 1 — Read</span></div>
+
+  <div class="reading-list">
+    <div class="reading-item">
+      <div class="reading-num">1</div>
+      <div class="reading-content">
+        <div class="ref">Psalm 51</div>
+        <h4>David's prayer after Nathan.</h4>
+        <p>The most famous prayer of repentance in the Bible. Read it slowly. Notice verse 11 — <em>do not take your Holy Spirit from me</em>. Ask yourself why David feared this above every other loss.</p>
+      </div>
+    </div>
+    <div class="reading-item">
+      <div class="reading-num">2</div>
+      <div class="reading-content">
+        <div class="ref">1 Samuel 15</div>
+        <h4>The moment Saul lost the Spirit.</h4>
+        <p>Saul kept the best animals to sacrifice to God instead of obeying the specific word. Samuel's response — <em>to obey is better than sacrifice</em> — is one of the most important sentences in the Old Testament.</p>
+      </div>
+    </div>
+    <div class="reading-item">
+      <div class="reading-num">3</div>
+      <div class="reading-content">
+        <div class="ref">1 Samuel 16:14–23</div>
+        <h4>Where David saw it happen.</h4>
+        <p>The Spirit departed from Saul. An evil spirit tormented him. And David was brought in to play the harp when the torment came. David had a front row seat to what losing the Spirit looks like.</p>
+      </div>
+    </div>
+    <div class="reading-item">
+      <div class="reading-num">4</div>
+      <div class="reading-content">
+        <div class="ref">Leviticus 6:8–13</div>
+        <h4>The fire must be kept burning.</h4>
+        <p>The instruction to the Old Testament priest — <em>the fire on the altar must not go out.</em> Every morning, fresh wood was added. Every single morning. This is now the pattern for the New Covenant Temple.</p>
+      </div>
+    </div>
+    <div class="reading-item">
+      <div class="reading-num">5</div>
+      <div class="reading-content">
+        <div class="ref">Acts 2:1–4</div>
+        <h4>Fire in the Upper Room.</h4>
+        <p>Tongues of fire rested on each of the disciples. The New Covenant was officially inaugurated inside every believer — visualised as fire. The same fire that walked between the pieces for Abram now burns inside you.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-divider"><span class="divider-label">Step 2 — Fire at Every Covenant Moment</span></div>
+
+  <div class="fire-box">
+    <div class="f-label">The Visible Signature of God's Covenant Presence</div>
+    <h3>Fire has always been how God shows up.</h3>
+    <p>Every major covenant moment in scripture is marked by fire. This is not decoration. It is signature. And it means the fire inside you today has been burning since Abram.</p>
+    <div class="covenant-moments">
+      <div class="covenant-moment">
+        <div class="moment-icon">🔥</div>
+        <div class="moment-content">
+          <h4>Genesis 15 · Abram</h4>
+          <p>A smoking firepot and blazing torch pass between the pieces. God alone seals the covenant — as fire.</p>
+        </div>
+      </div>
+      <div class="covenant-moment">
+        <div class="moment-icon">🌿</div>
+        <div class="moment-content">
+          <h4>Exodus 3 · Moses</h4>
+          <p>The burning bush. The covenant God comes down to rescue his people — speaking from fire.</p>
+        </div>
+      </div>
+      <div class="covenant-moment">
+        <div class="moment-icon">☁️</div>
+        <div class="moment-content">
+          <h4>Exodus 13 · The Wilderness</h4>
+          <p>God leads his rescued people by day as cloud and by night as fire. The covenant God travels with his covenant people.</p>
+        </div>
+      </div>
+      <div class="covenant-moment">
+        <div class="moment-icon">⛰️</div>
+        <div class="moment-content">
+          <h4>Exodus 19 · Sinai</h4>
+          <p>God descends on the mountain in fire and smoke. The Old Covenant is officially inaugurated.</p>
+        </div>
+      </div>
+      <div class="covenant-moment">
+        <div class="moment-icon">🕯️</div>
+        <div class="moment-content">
+          <h4>Leviticus 6 · The Altar</h4>
+          <p>Fire from heaven falls. And the instruction is given — <em>the fire must be kept burning. It must not go out.</em></p>
+        </div>
+      </div>
+      <div class="covenant-moment">
+        <div class="moment-icon">⚡</div>
+        <div class="moment-content">
+          <h4>1 Kings 18 · Carmel</h4>
+          <p>Elijah calls down fire against the prophets of Baal. The covenant God alone answers by fire.</p>
+        </div>
+      </div>
+      <div class="covenant-moment">
+        <div class="moment-icon">🕊️</div>
+        <div class="moment-content">
+          <h4>Acts 2 · Pentecost</h4>
+          <p>Tongues of fire rest on the disciples. The New Covenant is inaugurated inside every believer.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-divider"><span class="divider-label">Step 3 — Two Kings, One Difference</span></div>
+
+  <div class="kings-box">
+    <div class="k-label">The Central Comparison of This Session</div>
+    <h3>Same losses. Different endings.</h3>
+    <div class="kings-grid">
+      <div class="king-card king-saul">
+        <div class="king-tag">1 Samuel 15–31</div>
+        <div class="king-name">Saul</div>
+        <div class="king-losses">Lost his son Jonathan. Lost his kingdom. Lost his family. Lost his sanity. Lost his life on Mount Gilboa.</div>
+        <div class="king-outcome">Destroyed</div>
+      </div>
+      <div class="king-card king-david">
+        <div class="king-tag">2 Samuel</div>
+        <div class="king-name">David</div>
+        <div class="king-losses">Lost his son Absalom. Lost his kingdom. Lost his family. Lost his wives to public humiliation. Lost his closest friend.</div>
+        <div class="king-outcome">Restored</div>
+      </div>
+    </div>
+    <div class="difference-line">One offered a substitute. The other kept the fire.</div>
+  </div>
+
+  <div class="section-divider"><span class="divider-label">Step 4 — The Prayer at the Centre</span></div>
+
+  <div class="psalm-box">
+    <div class="ps-label">Psalm 51 — David's Response</div>
+    <h3>A prayer against becoming Saul</h3>
+    <div class="psalm-verses">
+      <div class="psalm-verse-item">
+        <div class="v-num">Verse 10</div>
+        <p>Create in me a pure heart, O God, and renew a steadfast spirit within me.</p>
+      </div>
+      <div class="psalm-verse-item highlight">
+        <div class="v-num">Verse 11 · The Centre</div>
+        <p>Do not cast me from your presence or take your Holy Spirit from me.</p>
+      </div>
+      <div class="psalm-verse-item">
+        <div class="v-num">Verse 12</div>
+        <p>Restore to me the joy of your salvation and grant me a willing spirit, to sustain me.</p>
+      </div>
+      <div class="psalm-verse-item">
+        <div class="v-num">Verse 17 · The Sacrifice God Wants</div>
+        <p>The sacrifices of God are a broken spirit; a broken and contrite heart, O God, you will not despise.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-divider"><span class="divider-label">Step 5 — Six Practices for Keeping the Fire</span></div>
+
+  <div class="practices-box">
+    <div class="p-label">The Daily Rhythm of a Temple That Refuses to Go Cold</div>
+    <h3>Keep the Fire Burning</h3>
+    <p class="p-sub">Six practices. One continuous rhythm. Start with one.</p>
+    <div class="practices-list">
+      <div class="practice-row">
+        <div class="practice-num">1</div>
+        <div class="practice-content">
+          <h4>Feed the Fire Daily With the Word</h4>
+          <p>The Old Covenant priest added fresh wood every morning. The New Covenant Temple must do the same with scripture. Ten minutes. Every day. Faithfully.</p>
+        </div>
+      </div>
+      <div class="practice-row">
+        <div class="practice-num">2</div>
+        <div class="practice-content">
+          <h4>Search Me and Know Me</h4>
+          <p>Psalm 139:23–24. Invite the Spirit to surface what does not belong. Because what you cannot surface, you cannot repent of.</p>
+        </div>
+      </div>
+      <div class="practice-row">
+        <div class="practice-num">3</div>
+        <div class="practice-content">
+          <h4>Offer a Broken and Contrite Heart</h4>
+          <p>Psalm 51:17. When the Spirit convicts, do not delay. Do not negotiate. Bow immediately. That reflex is what kept David's fire alive.</p>
+        </div>
+      </div>
+      <div class="practice-row">
+        <div class="practice-num">4</div>
+        <div class="practice-content">
+          <h4>Live in a Posture of Thanksgiving</h4>
+          <p>1 Thessalonians 5:16–18. Not thanksgiving for what happens. Thanksgiving <em>in</em> all circumstances. The atmosphere of a burning Temple.</p>
+        </div>
+      </div>
+      <div class="practice-row">
+        <div class="practice-num">5</div>
+        <div class="practice-content">
+          <h4>Renew Your Mind Through the Word</h4>
+          <p>Romans 12:1–2. The world pours in a pattern that will slowly extinguish the fire. The word is the counter-current. Give it enough time to actually renew.</p>
+        </div>
+      </div>
+      <div class="practice-row">
+        <div class="practice-num">6</div>
+        <div class="practice-content">
+          <h4>Cooperate With the Spirit to Break Bondages</h4>
+          <p>Hebrews 4:12. Every bondage has a corresponding truth in scripture. When the word goes in and the Spirit applies it, the chains begin to fall.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-divider"><span class="divider-label">Step 6 — Journal</span></div>
+
+  <div class="questions-list">
+    <div class="question-item">
+      <div class="q-num">Question 1</div>
+      <p>"Have you ever watched someone lose the presence of God in their life? What did that teach you about your own walk?"</p>
+      <div class="q-note">David watched Saul. That front row seat shaped every prayer he ever prayed afterward. Who have you watched?</div>
+    </div>
+    <div class="question-item">
+      <div class="q-num">Question 2</div>
+      <p>"Is there a specific word from God — through scripture, conscience, or a person he has put in your life — that you have been quietly offering a substitute for instead of obeying?"</p>
+      <div class="q-note">Sacrifice looked spiritual for Saul. But it cost him everything. What are you offering as substitute?</div>
+    </div>
+    <div class="question-item">
+      <div class="q-num">Question 3</div>
+      <p>"Of the six practices above — which one is the Helper putting his finger on for you right now? And what one small thing can you do this week to add fresh wood to the fire?"</p>
+      <div class="q-note">Start one. Faithfully. Every day. This is the question the whole session is building toward.</div>
+    </div>
+  </div>
+
+  <div class="section-divider"><span class="divider-label">Step 7 — Come Ready</span></div>
+
+  <div class="expect-grid">
+    <div class="expect-item">
+      <div class="e-icon">
+        <svg width="20" height="20" viewBox="0 0 20 20"><rect x="3" y="2" width="14" height="16" rx="2" fill="none" stroke="#c0392b" stroke-width="1.3"/><line x1="7" y1="7" x2="13" y2="7" stroke="#c0392b" stroke-width="1.1" stroke-linecap="round"/><line x1="7" y1="10" x2="13" y2="10" stroke="#c0392b" stroke-width="1.1" stroke-linecap="round"/></svg>
+      </div>
+      <h4>Bring your Bible</h4>
+      <p>We will work through Psalm 51, 1 Samuel 15–16, and Leviticus 6 together. Any translation you are comfortable with.</p>
+    </div>
+    <div class="expect-item">
+      <div class="e-icon">
+        <svg width="20" height="20" viewBox="0 0 20 20"><circle cx="10" cy="10" r="7" fill="none" stroke="#c0392b" stroke-width="1.3"/><line x1="10" y1="7" x2="10" y2="10" stroke="#c0392b" stroke-width="1.3" stroke-linecap="round"/><line x1="10" y1="10" x2="13" y2="13" stroke="#c0392b" stroke-width="1.3" stroke-linecap="round"/></svg>
+      </div>
+      <h4>4–6pm on Sunday</h4>
+      <p>Two hours together. Come settled and ready to engage. We start and end on time.</p>
+    </div>
+    <div class="expect-item">
+      <div class="e-icon">
+        <svg width="20" height="20" viewBox="0 0 20 20"><circle cx="10" cy="7" r="3" fill="none" stroke="#c0392b" stroke-width="1.3"/><path d="M4 17 c0-4 12-4 12 0" fill="none" stroke="#c0392b" stroke-width="1.3" stroke-linecap="round"/></svg>
+      </div>
+      <h4>Ages 13 and above</h4>
+      <p>Teenagers, young adults, and parents all welcome. Every voice around the table matters.</p>
+    </div>
+    <div class="expect-item">
+      <div class="e-icon">
+        <svg width="20" height="20" viewBox="0 0 20 20"><path d="M10 3 L7 10 L10 10 L8 17 L14 8 L11 8 Z" fill="none" stroke="#c0392b" stroke-width="1.3" stroke-linejoin="round"/></svg>
+      </div>
+      <h4>Bring an honest heart</h4>
+      <p>This session will ask hard questions. The Helper does not need you to arrive composed. He needs you to arrive open.</p>
+    </div>
+  </div>
+
+  <div class="prayer-box">
+    <div class="prayer-label">A Prayer Before You Come</div>
+    <p>"Create in me a pure heart, O God, and renew a steadfast spirit within me. Do not cast me from your presence or take your Holy Spirit from me. Amen."</p>
+  </div>
+
+  <div class="session-actions">
+    <a href="../index.html" class="btn-outline">Back to Home</a>
+  </div>
+
+</div>
+
+<footer>
+  <p>The Table · <a href="../index.html">thetable-hub.github.io/session-01</a> · Encounter. Community. Truth.</p>
+</footer>
+
+</body>
+</html>
