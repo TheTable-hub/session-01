@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Facilitator Guide — Session 06 | The Table</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#1a1a2e;--navy-mid:#16213e;--gold:#ffb432;--gold-dark:#c9922a;
+  --gold-light:#ffd166;--latte:#fdf8f3;--latte-dark:#f0e8dc;
+  --text:#2c2c2c;--text-light:#6b5b45;--white:#ffffff;--border:#e0d4c4;
+  --fire-deep:#7a1e0f;--fire-mid:#c0392b;--fire-bright:#e67e22;--ember:#f39c12;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:var(--latte);color:var(--text);line-height:1.7;}
+nav{background:rgba(253,248,243,0.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:68px;position:sticky;top:0;z-index:100;}
+.nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo-text{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--navy);letter-spacing:2px;}
+.nav-back{font-size:13px;font-weight:600;color:var(--text-light);text-decoration:none;display:flex;align-items:center;gap:6px;transition:color 0.2s;}
+.nav-back:hover{color:var(--navy);}
+
+.cover{background:linear-gradient(135deg,#1a1a2e 0%,#3d1a0f 50%,#7a1e0f 100%);min-height:50vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 40px;position:relative;overflow:hidden;}
+.cover::before{content:'';position:absolute;top:-100px;left:-100px;width:400px;height:400px;background:radial-gradient(circle,rgba(243,156,18,0.18) 0%,transparent 70%);border-radius:50%;}
+.cover::after{content:'';position:absolute;bottom:-120px;right:-100px;width:400px;height:400px;background:radial-gradient(circle,rgba(230,126,34,0.15),transparent 70%);border-radius:50%;}
+.cover-badge{background:rgba(243,156,18,0.2);border:1px solid rgba(243,156,18,0.5);color:var(--ember);font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;padding:8px 20px;border-radius:30px;margin-bottom:40px;position:relative;z-index:1;}
+.cover h1{font-family:'Playfair Display',serif;font-size:52px;color:#fff;line-height:1.2;margin-bottom:20px;font-style:italic;position:relative;z-index:1;}
+.cover h1 span{color:var(--ember);font-style:normal;}
+.cover-subtitle{font-family:'Lora',serif;font-size:17px;color:rgba(255,255,255,0.7);margin-bottom:10px;font-style:italic;position:relative;z-index:1;}
+.cover-scriptures{font-size:11px;color:rgba(255,255,255,0.4);letter-spacing:2px;margin-bottom:50px;position:relative;z-index:1;}
+.cover-divider{width:80px;height:3px;background:linear-gradient(90deg,transparent,var(--ember),transparent);margin:0 auto 40px;position:relative;z-index:1;}
+.cover-meta{display:flex;gap:40px;justify-content:center;flex-wrap:wrap;position:relative;z-index:1;}
+.cover-meta-item{text-align:center;}
+.cover-meta-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:4px;}
+.cover-meta-value{font-size:14px;color:rgba(255,255,255,0.85);font-weight:600;}
+
+.content{max-width:850px;margin:0 auto;padding:60px 40px;}
+
+.overview-box{background:linear-gradient(135deg,#1a1a2e,#3d1a0f);border-radius:16px;padding:40px;margin-bottom:60px;color:white;}
+.overview-box h2{font-family:'Playfair Display',serif;font-size:24px;color:var(--ember);margin-bottom:24px;letter-spacing:1px;}
+.overview-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;margin-bottom:30px;}
+.overview-item{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:10px;padding:16px;text-align:center;}
+.overview-item .icon{font-size:22px;margin-bottom:8px;}
+.overview-item .label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.5);}
+.overview-item .value{font-size:14px;font-weight:600;color:white;margin-top:4px;}
+.session-list{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;}
+.session-list li{background:rgba(243,156,18,0.12);border-left:3px solid var(--ember);padding:10px 14px;border-radius:0 8px 8px 0;font-size:14px;color:rgba(255,255,255,0.85);}
+.session-list li span{color:var(--ember);font-weight:700;margin-right:6px;}
+
+.section-header{display:flex;align-items:center;gap:16px;margin-bottom:30px;margin-top:60px;}
+.section-number{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:22px;font-weight:700;flex-shrink:0;color:white;}
+.s1 .section-number{background:linear-gradient(135deg,#e74c3c,#c0392b);}
+.s2 .section-number{background:linear-gradient(135deg,#e67e22,#ca6f1e);}
+.s3 .section-number{background:linear-gradient(135deg,#8e44ad,#6c3483);}
+.s4 .section-number{background:linear-gradient(135deg,#c0392b,#7a1e0f);}
+.s5 .section-number{background:linear-gradient(135deg,#27ae60,#1e8449);}
+.s6 .section-number{background:linear-gradient(135deg,#d4a017,#b8860b);}
+.s7 .section-number{background:linear-gradient(135deg,#2c3e50,#1a252f);}
+.section-title-block h2{font-family:'Playfair Display',serif;font-size:28px;line-height:1.2;}
+.s1 .section-title-block h2{color:#c0392b;}
+.s2 .section-title-block h2{color:#ca6f1e;}
+.s3 .section-title-block h2{color:#6c3483;}
+.s4 .section-title-block h2{color:#7a1e0f;}
+.s5 .section-title-block h2{color:#1e8449;}
+.s6 .section-title-block h2{color:#b8860b;}
+.s7 .section-title-block h2{color:#2c3e50;}
+.section-title-block .section-tag{font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:600;opacity:0.6;}
+.section-divider-line{height:3px;border-radius:2px;margin-bottom:30px;}
+.s1 .section-divider-line{background:linear-gradient(90deg,#e74c3c,transparent);}
+.s2 .section-divider-line{background:linear-gradient(90deg,#e67e22,transparent);}
+.s3 .section-divider-line{background:linear-gradient(90deg,#8e44ad,transparent);}
+.s4 .section-divider-line{background:linear-gradient(90deg,#c0392b,transparent);}
+.s5 .section-divider-line{background:linear-gradient(90deg,#27ae60,transparent);}
+.s6 .section-divider-line{background:linear-gradient(90deg,#d4a017,transparent);}
+.s7 .section-divider-line{background:linear-gradient(90deg,#2c3e50,transparent);}
+
+p{font-family:'Lora',serif;font-size:16px;line-height:1.9;margin-bottom:16px;color:#333;}
+
+.leader-box{background:#fff8e6;border:1px solid #ffd97d;border-left:5px solid var(--ember);border-radius:8px;padding:18px 22px;margin:24px 0;font-family:'Inter',sans-serif;font-size:14px;color:#7a5c00;}
+.leader-box strong{display:block;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#b8860b;margin-bottom:6px;}
+
+.scripture{background:linear-gradient(135deg,#eaf4fb,#d6eaf8);border-left:5px solid #2980b9;border-radius:0 12px 12px 0;padding:22px 28px;margin:28px 0;position:relative;}
+.scripture::before{content:'\201C';position:absolute;top:-10px;left:14px;font-size:80px;color:#2980b9;opacity:0.2;font-family:'Playfair Display',serif;line-height:1;}
+.scripture p{font-family:'Playfair Display',serif;font-size:17px;font-style:italic;color:#1a5276;margin:0 0 8px 0;line-height:1.7;}
+.scripture .ref{font-family:'Inter',sans-serif;font-size:12px;font-weight:700;letter-spacing:1px;color:#2980b9;text-transform:uppercase;}
+
+.question-box{border-radius:12px;padding:20px 24px;margin:24px 0;display:flex;gap:16px;align-items:flex-start;}
+.s1 .question-box{background:#fdf2f2;border:1px solid #f5c6cb;}
+.s2 .question-box{background:#fef9e7;border:1px solid #f9e79f;}
+.s3 .question-box{background:#f5eef8;border:1px solid #d7bde2;}
+.s4 .question-box{background:#fadbd8;border:1px solid #f1948a;}
+.s5 .question-box{background:#eafaf1;border:1px solid #a9dfbf;}
+.s6 .question-box{background:#fffbf0;border:1px solid #fde68a;}
+.s7 .question-box{background:#f2f3f4;border:1px solid #cacfd2;}
+.question-icon{font-size:26px;flex-shrink:0;margin-top:2px;}
+.question-content strong{display:block;font-family:'Inter',sans-serif;font-size:10px;letter-spacing:2px;text-transform:uppercase;font-weight:700;margin-bottom:6px;color:#c9922a;}
+.question-content p{font-family:'Inter',sans-serif;font-size:15px;font-weight:600;margin:0;color:#2c2c2c;font-style:italic;}
+
+.covenant-card{background:white;border-radius:14px;box-shadow:0 4px 16px rgba(0,0,0,0.07);padding:22px 26px;margin:12px 0;display:flex;gap:18px;align-items:flex-start;border-left:5px solid var(--fire-bright);}
+.cov-icon{font-size:28px;flex-shrink:0;}
+.cov-content h3{font-family:'Playfair Display',serif;font-size:18px;color:var(--navy);margin-bottom:6px;}
+.cov-content .cov-tag{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--fire-bright);margin-bottom:6px;}
+.cov-content p{font-family:'Lora',serif;font-size:14px;color:var(--text-light);margin:0;line-height:1.7;font-style:italic;}
+
+.kings-comparison{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:28px 0;}
+.king-panel{border-radius:14px;padding:28px;color:white;}
+.king-panel.saul{background:linear-gradient(135deg,#2c1810,#4a2a1a);border:1px solid #6b3a1f;}
+.king-panel.david{background:linear-gradient(135deg,#1a3a2a,#0f2617);border:1px solid #2d5a3f;}
+.king-panel h3{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;margin-bottom:6px;font-style:italic;}
+.king-panel.saul h3{color:#e8946e;}
+.king-panel.david h3{color:#9be89b;}
+.king-panel .k-ref{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:16px;}
+.king-panel ul{list-style:none;padding:0;margin:0 0 16px 0;}
+.king-panel li{padding:6px 0;font-family:'Lora',serif;font-size:14px;color:rgba(255,255,255,0.8);border-bottom:1px solid rgba(255,255,255,0.08);}
+.king-panel li:last-child{border-bottom:none;}
+.king-panel .outcome{margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.15);text-align:center;font-family:'Playfair Display',serif;font-size:18px;font-style:italic;}
+.king-panel.saul .outcome{color:#e8946e;}
+.king-panel.david .outcome{color:#9be89b;}
+
+.practice-card{background:white;border-radius:14px;box-shadow:0 4px 16px rgba(0,0,0,0.06);padding:24px 28px;margin:14px 0;border-left:5px solid var(--gold-dark);}
+.practice-card .p-tag{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold-dark);margin-bottom:6px;}
+.practice-card h3{font-family:'Playfair Display',serif;font-size:20px;color:var(--navy);margin-bottom:10px;font-style:italic;}
+.practical-app{background:var(--latte-dark);border-radius:8px;padding:12px 16px;margin-top:12px;font-size:13px;color:var(--text-light);font-family:'Inter',sans-serif;font-style:italic;line-height:1.7;}
+.practical-app strong{display:block;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold-dark);margin-bottom:4px;font-style:normal;}
+
+.highlight-box{background:linear-gradient(135deg,#1a1a2e,#3d1a0f);color:white;border-radius:16px;padding:32px 36px;margin:30px 0;text-align:center;page-break-inside:avoid;break-inside:avoid;position:relative;overflow:hidden;}
+.highlight-box::before{content:'';position:absolute;top:-40px;right:-40px;width:180px;height:180px;background:radial-gradient(circle,rgba(243,156,18,0.15),transparent 70%);border-radius:50%;}
+.highlight-box p{font-family:'Playfair Display',serif;font-size:20px;font-style:italic;color:white;margin:0;line-height:1.7;position:relative;z-index:1;}
+.highlight-box .highlight-label{font-family:'Inter',sans-serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--ember);font-style:normal;margin-bottom:14px;display:block;font-weight:700;position:relative;z-index:1;}
+
+.fathers-note{background:#fff8e6;border:2px dashed var(--ember);border-radius:16px;padding:30px;margin:40px 0;}
+.fathers-note h3{font-family:'Inter',sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#b8860b;font-weight:700;margin-bottom:14px;}
+.fathers-note p{font-family:'Lora',serif;font-size:15px;color:#7a5c00;line-height:1.8;}
+
+.reflection-box{background:linear-gradient(160deg,#3d1a0f,#1a1a2e);border-radius:20px;padding:50px 44px;margin:40px 0;position:relative;overflow:hidden;}
+.reflection-box::before{content:'';position:absolute;top:-60px;right:-60px;width:250px;height:250px;background:radial-gradient(circle,rgba(243,156,18,0.15),transparent 70%);border-radius:50%;}
+.reflection-box p{font-family:'Playfair Display',serif;font-size:18px;font-style:italic;color:rgba(255,255,255,0.9);line-height:2;margin-bottom:18px;position:relative;z-index:1;}
+.final-question{background:rgba(243,156,18,0.15);border:1px solid rgba(243,156,18,0.4);border-radius:12px;padding:24px 28px;margin-top:30px;text-align:center;position:relative;z-index:1;}
+.final-question p{font-family:'Playfair Display',serif;font-size:21px;font-style:italic;color:var(--ember);margin:0;}
+
+footer{background:#0d0d1e;padding:36px 40px;text-align:center;}
+footer p{font-family:'Lora',serif;font-size:13px;color:rgba(255,255,255,0.4);font-style:italic;}
+footer a{color:#c9922a;text-decoration:none;}
+
+@media(max-width:700px){
+  nav{padding:0 20px;}
+  .cover{padding:60px 20px 50px;}.cover h1{font-size:36px;}
+  .content{padding:40px 20px;}
+  .overview-grid{grid-template-columns:1fr 1fr;}
+  .kings-comparison{grid-template-columns:1fr;}
+  .covenant-card{flex-direction:column;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="nav-logo">
+    <svg width="36" height="36" viewBox="0 0 36 36">
+      <circle cx="18" cy="18" r="17" fill="#1a1a2e"/>
+      <path d="M 10 12 A 8 1.5 0 0 0 26 12" fill="none" stroke="#ffd166" stroke-width="0.9" stroke-linecap="round"/>
+      <rect x="10" y="12" width="16" height="3.5" rx="1" fill="#ffb432"/>
+      <rect x="15.5" y="15.5" width="5" height="11" rx="1" fill="#ffb432"/>
+      <rect x="13" y="26.5" width="10" height="2" rx="1" fill="#ffb432" opacity="0.75"/>
+    </svg>
+    <span class="nav-logo-text">THE TABLE</span>
+  </a>
+  <a href="../index.html" class="nav-back">
+    <svg width="16" height="16" viewBox="0 0 16 16"><path d="M10 3L5 8L10 13" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Back to Home
+  </a>
+</nav>
+
+<div class="cover">
+  <div class="cover-badge">Session 06 · Facilitator Guide · September 2026</div>
+  <h1>"The Temple Becomes<br><span>the Fire"</span></h1>
+  <p class="cover-subtitle">The Sacrifice God Actually Wants</p>
+  <p class="cover-scriptures">Psalm 51 · 1 Samuel 15–16 · Leviticus 6 · Acts 2</p>
+  <div class="cover-divider"></div>
+  <div class="cover-meta">
+    <div class="cover-meta-item"><div class="cover-meta-label">Date</div><div class="cover-meta-value">Sunday, 6 September 2026</div></div>
+    <div class="cover-meta-item"><div class="cover-meta-label">Time</div><div class="cover-meta-value">4:00 – 6:00pm</div></div>
+    <div class="cover-meta-item"><div class="cover-meta-label">Duration</div><div class="cover-meta-value">60 – 75 Minutes</div></div>
+    <div class="cover-meta-item"><div class="cover-meta-label">Audience</div><div class="cover-meta-value">Ages 13 and Above</div></div>
+  </div>
+</div>
+
+<div class="content">
+
+  <div class="overview-box">
+    <h2>📋 Session Overview</h2>
+    <div class="overview-grid">
+      <div class="overview-item"><div class="icon">🔥</div><div class="label">Central Image</div><div class="value">Covenant Fire</div></div>
+      <div class="overview-item"><div class="icon">👑</div><div class="label">Two Kings</div><div class="value">Saul & David</div></div>
+      <div class="overview-item"><div class="icon">💬</div><div class="label">Discussions</div><div class="value">6 Questions</div></div>
+      <div class="overview-item"><div class="icon">⚡</div><div class="label">Practices</div><div class="value">6 Daily Rhythms</div></div>
+    </div>
+    <ul class="session-list">
+      <li><span>1.</span> Opening Hook</li>
+      <li><span>2.</span> Fire at Every Covenant Moment</li>
+      <li><span>3.</span> Two Kings, One Difference</li>
+      <li><span>4.</span> Why Saul Lost the Spirit</li>
+      <li><span>5.</span> Why David Feared it Above All Else</li>
+      <li><span>6.</span> Keeping the Fire Burning</li>
+      <li><span>7.</span> A Broken and Contrite Heart</li>
+    </ul>
+  </div>
+
+  <!-- SECTION 1 -->
+  <div class="s1">
+    <div class="section-header">
+      <div class="section-number">1</div>
+      <div class="section-title-block"><div class="section-tag">To Open</div><h2>Opening Hook</h2></div>
+    </div>
+    <div class="section-divider-line"></div>
+    <div class="leader-box"><strong>🎤 Leader Instruction</strong>Start with this question. Do not explain it yet. Let the group think.</div>
+    <div class="highlight-box">
+      <span class="highlight-label">Ask the Group</span>
+      <p>"What is the one thing in your life you could not survive losing?"</p>
+    </div>
+    <p>They will say different things. My family. My health. My future. My mind. Then say slowly — <em>"There was a king in the Bible who lost almost everything a person can lose. His son turned against him. His kingdom was taken. His wives were violated in public. His closest friends betrayed him. But when he finally sat down to write the most famous prayer of repentance in the entire Bible — he was not begging God for any of that back. He was begging God for one thing."</em></p>
+    <p>Turn to Psalm 51. This is the psalm David wrote after Nathan confronted him about Bathsheba. Most of us know verse 10 — <em>Create in me a pure heart, O God.</em> But there is a verse in the middle most of us read past. Verse 11. <em>"Do not cast me from your presence or take your Holy Spirit from me."</em></p>
+    <p>Here is the question that should stop us. <strong>Where in scripture had God threatened to take the Holy Spirit from David?</strong> Nowhere. God had not said this. So why is this David's greatest fear? There is only one explanation. David had seen it happen to someone else. And that someone else had been destroyed by it.</p>
+    <div class="question-box">
+      <div class="question-icon">💭</div>
+      <div class="question-content"><strong>Discussion Pause</strong><p>"Have you ever watched someone lose the presence of God in their life? What did that look like from the outside? And what did it teach you about your own walk?"</p></div>
+    </div>
+  </div>
+
+  <!-- SECTION 2 -->
+  <div class="s2">
+    <div class="section-header">
+      <div class="section-number">2</div>
+      <div class="section-title-block"><div class="section-tag">The Thread Through Scripture</div><h2>Fire at Every Covenant Moment</h2></div>
+    </div>
+    <div class="section-divider-line"></div>
+    <div class="leader-box"><strong>📖 Leader Instruction</strong>Take time on the covenant pattern. Once the group sees the thread, they cannot unsee it.</div>
+
+    <p>The thing David was afraid to lose was not just an idea. It was a fire. And fire, in scripture, is never decoration. Fire is how God has always shown up when he is making a covenant. Let me walk you through it.</p>
+
+    <div class="covenant-card">
+      <div class="cov-icon">🔥</div>
+      <div class="cov-content">
+        <div class="cov-tag">Genesis 15 · Abram</div>
+        <h3>The fire that walked between the pieces</h3>
+        <p>Abram cut the animals in half. In ancient covenant tradition, both parties would walk between the pieces. But that night Abram fell asleep — and a smoking firepot and blazing torch passed through alone. God alone will keep this covenant. And how does he do it? As fire.</p>
+      </div>
+    </div>
+    <div class="covenant-card">
+      <div class="cov-icon">🌿</div>
+      <div class="cov-content">
+        <div class="cov-tag">Exodus 3 · Moses</div>
+        <h3>The burning bush</h3>
+        <p>A bush on fire that does not burn up. The covenant God arrives to rescue his covenant people — speaking from fire.</p>
+      </div>
+    </div>
+    <div class="covenant-card">
+      <div class="cov-icon">☁️</div>
+      <div class="cov-content">
+        <div class="cov-tag">Exodus 13 · The Wilderness</div>
+        <h3>The pillar of fire</h3>
+        <p>God leads his rescued people by day as cloud and by night as fire. The covenant God travels with his covenant people — as fire.</p>
+      </div>
+    </div>
+    <div class="covenant-card">
+      <div class="cov-icon">⛰️</div>
+      <div class="cov-content">
+        <div class="cov-tag">Exodus 19 · Sinai</div>
+        <h3>The mountain that burned</h3>
+        <p>God descends on the mountain to give the Law itself. Smoke rises. Fire pours down. The Old Covenant is officially inaugurated. As fire.</p>
+      </div>
+    </div>
+    <div class="covenant-card">
+      <div class="cov-icon">🕯️</div>
+      <div class="cov-content">
+        <div class="cov-tag">Leviticus 9 & 6 · The Altar</div>
+        <h3>Fire from heaven that must never go out</h3>
+        <p>Fire falls and consumes the sacrifice. The sacrificial system is activated. And the instruction is given in Leviticus 6:13 — <em>"The fire must be kept burning on the altar continuously. It must not go out."</em> Every morning, the priest added fresh wood.</p>
+      </div>
+    </div>
+    <div class="covenant-card">
+      <div class="cov-icon">⚡</div>
+      <div class="cov-content">
+        <div class="cov-tag">1 Kings 18 · Carmel</div>
+        <h3>Elijah's contest</h3>
+        <p>The prophets of Baal fail to call down fire. Elijah pours water three times. Then he prays — and fire falls from heaven consuming the sacrifice, wood, stones and water. The covenant God alone answers by fire.</p>
+      </div>
+    </div>
+    <div class="covenant-card">
+      <div class="cov-icon">🕊️</div>
+      <div class="cov-content">
+        <div class="cov-tag">Acts 2 · Pentecost</div>
+        <h3>Tongues of fire on the disciples</h3>
+        <p>The disciples gathered in Jerusalem. A sound like a violent wind. Tongues of fire resting on each of them. The New Covenant is officially inaugurated inside every believer. As fire.</p>
+      </div>
+    </div>
+
+    <div class="highlight-box">
+      <span class="highlight-label">The Truth That Should Stop Us</span>
+      <p>The same fire that walked between the pieces for Abram in Genesis 15 is the same fire that landed on the disciples in Acts 2. And that same fire is now burning inside every believer sitting around this table.</p>
+    </div>
+
+    <p>Last month we said the Table has become the Temple. You are the dwelling place of God. Now we say something more precise. <strong>The Temple has become the fire.</strong> And what Leviticus 6:13 said about the altar now applies to you. <em>The fire must be kept burning. It must not go out.</em></p>
+
+    <div class="question-box">
+      <div class="question-icon">💭</div>
+      <div class="question-content"><strong>Discussion Question</strong><p>"When you think about the fire of God being alive in your own life right now — is it burning brightly, flickering, or has it started to go dim in ways you have not wanted to admit?"</p></div>
+    </div>
+  </div>
+
+  <!-- SECTION 3 -->
+  <div class="s3">
+    <div class="section-header">
+      <div class="section-number">3</div>
+      <div class="section-title-block"><div class="section-tag">The Central Comparison</div><h2>Two Kings, One Difference</h2></div>
+    </div>
+    <div class="section-divider-line"></div>
+    <div class="leader-box"><strong>📖 Leader Instruction</strong>This is the theological heart of the session. Slow down. The comparison between Saul and David must be made clearly.</div>
+
+    <p>Both were kings of Israel. Both were chosen by God. Both were anointed by Samuel. Both had the Holy Spirit come upon them. Both walked with God at the beginning. And both ended their lives having lost almost everything a man can lose. But one ended destroyed. The other ended restored.</p>
+
+    <div class="kings-comparison">
+      <div class="king-panel saul">
+        <h3>Saul</h3>
+        <div class="k-ref">1 Samuel 15 – 31</div>
+        <ul>
+          <li>Lost his son Jonathan</li>
+          <li>Lost his kingdom</li>
+          <li>Lost his sanity to paranoia</li>
+          <li>Lost his family</li>
+          <li>Lost his life on Mount Gilboa</li>
+        </ul>
+        <div class="outcome">Destroyed</div>
+      </div>
+      <div class="king-panel david">
+        <h3>David</h3>
+        <div class="k-ref">2 Samuel</div>
+        <ul>
+          <li>Lost his son Absalom</li>
+          <li>Lost his kingdom to rebellion</li>
+          <li>Lost his wives to public humiliation</li>
+          <li>Lost his closest friend Ahithophel</li>
+          <li>Lost his reputation</li>
+        </ul>
+        <div class="outcome">Restored</div>
+      </div>
+    </div>
+
+    <p>Same losses. Same magnitude. Same pain. But one thing is missing from David's list. <strong>David never lost the Holy Spirit.</strong> That is the entire difference between these two men. Not the size of their sin. Not their moral discipline. But what they did when they failed.</p>
+
+    <p>Saul's line ended. David's line produced the Messiah. Same losses. One difference. The fire.</p>
+
+    <div class="highlight-box">
+      <span class="highlight-label">The Warning for the Young People</span>
+      <p>You will lose things in your life. The difference between whether you become Saul or become David will not be measured by how much you lose. It will be measured by whether — in the middle of losing — the fire stays alive.</p>
+    </div>
+
+    <div class="question-box">
+      <div class="question-icon">💬</div>
+      <div class="question-content"><strong>Discussion Question</strong><p>"Looking honestly at your own life — if you had to name one loss that has hurt you the most, would you say the fire of the Spirit is stronger or weaker as a result of that loss?"</p></div>
+    </div>
+  </div>
+
+  <!-- SECTION 4 -->
+  <div class="s4">
+    <div class="section-header">
+      <div class="section-number">4</div>
+      <div class="section-title-block"><div class="section-tag">1 Samuel 15</div><h2>Why Saul Lost the Spirit</h2></div>
+    </div>
+    <div class="section-divider-line"></div>
+    <div class="leader-box"><strong>📖 Leader Instruction</strong>Take time on this section. What cost Saul the Spirit is a mistake most of us are more capable of making than we realise.</div>
+
+    <p>Samuel arrives at Saul with a very specific instruction. Attack the Amalekites and totally destroy everything. Do not spare anything. Saul went out, defeated the Amalekites, but kept the best animals alive. He edited the instruction. He decided some parts made sense and some did not.</p>
+
+    <p>Then Samuel arrived. Saul greeted him with a smile — <em>"I have carried out the Lord's instructions."</em> And Samuel replied quietly — <em>"What then is this bleating of sheep in my ears?"</em> The sound of the animals gave Saul away.</p>
+
+    <p>Watch Saul's response. Because this is the moment that reveals the deepest sickness in his heart. He blames the soldiers. Then he dresses up his disobedience in religious language. <em>"The soldiers spared the best of the sheep to sacrifice to the Lord your God."</em> In other words — I did not obey you. But look what I am going to do for God instead. He is proposing a substitute.</p>
+
+    <div class="scripture">
+      <p>"Does the Lord delight in burnt offerings and sacrifices as much as in obeying the Lord? To obey is better than sacrifice, and to heed is better than the fat of rams. For rebellion is like the sin of divination, and arrogance like the evil of idolatry. Because you have rejected the word of the Lord, he has rejected you as king."</p>
+      <span class="ref">1 Samuel 15:22–23</span>
+    </div>
+
+    <p>Divination in the Old Testament was consulting demonic spirits. Idolatry was worshipping false gods. Both carried the death penalty. And Samuel says — <em>your disobedience is spiritually equivalent to those two things.</em> Because at the root, it is the same posture. <em>I know better than God. I will decide what pleases him.</em></p>
+
+    <div class="highlight-box">
+      <span class="highlight-label">The Mistake We All Make</span>
+      <p>God is never impressed by a beautiful substitute for what he actually asked. The most spectacular sacrifice cannot make up for a small act of disobedience.</p>
+    </div>
+
+    <p>Here is what Saul teaches us. The word and the Spirit travel together. They are not two separate things. Wherever the word is being honoured, the Spirit is present. Wherever the word is being ignored, the Spirit begins to withdraw. The word is the fuel. The Spirit is the fire. When you stop honouring the word, you stop feeding the fire. And when you stop feeding the fire — it does what any fire does when you stop feeding it. It goes out.</p>
+
+    <div class="scripture">
+      <p>"Now the Spirit of the Lord had departed from Saul, and an evil spirit from the Lord tormented him."</p>
+      <span class="ref">1 Samuel 16:14</span>
+    </div>
+
+    <p>The Spirit did not just leave. Something else moved in. <strong>An empty Temple does not stay empty.</strong> When the fire dies, something else comes to occupy the space it was meant to fill. Saul's paranoia. Saul's attempted murder of David. Saul's consultation with the witch at Endor. Saul's suicide on Mount Gilboa. All of it flowed from this one moment when the Spirit departed because the word had been rejected.</p>
+
+    <div class="question-box">
+      <div class="question-icon">💬</div>
+      <div class="question-content"><strong>Discussion Question</strong><p>"Is there a specific word from God — through scripture, through your conscience, through a person he has put in your life — that you have been quietly offering a substitute for instead of obeying?"</p></div>
+    </div>
+  </div>
+
+  <!-- SECTION 5 -->
+  <div class="s5">
+    <div class="section-header">
+      <div class="section-number">5</div>
+      <div class="section-title-block"><div class="section-tag">Psalm 51 · The Heart of the Session</div><h2>Why David Feared it Above All Else</h2></div>
+    </div>
+    <div class="section-divider-line"></div>
+    <div class="leader-box"><strong>📖 Leader Instruction</strong>This is the moment the whole session has been building toward. Slow down. Make the connection between David watching Saul and David writing Psalm 51 unmistakable.</div>
+
+    <div class="scripture">
+      <p>"Create in me a pure heart, O God, and renew a steadfast spirit within me. Do not cast me from your presence or take your Holy Spirit from me. Restore to me the joy of your salvation and grant me a willing spirit, to sustain me."</p>
+      <span class="ref">Psalm 51:10–12</span>
+    </div>
+
+    <p>Look at what David is asking for. <em>Create in me a pure heart</em> — the very thing Saul did not have. <em>Renew a steadfast spirit</em> — not the wavering spirit that decides which parts of God's word to obey. <em>Do not cast me from your presence</em> — David has just watched Saul be cast from God's presence. <em>Do not take your Holy Spirit from me</em> — the centre of the prayer.</p>
+
+    <p>Why is David asking this? Because he had a front row seat to what losing the Spirit looks like.</p>
+
+    <div class="highlight-box">
+      <span class="highlight-label">David Was the Harp Player</span>
+      <p>1 Samuel 16 tells us David was brought in to play the harp when the evil spirit came upon Saul. David was in the room. David watched Saul in the grip of the tormenting spirit. David saw what an empty Temple looks like when something else has moved in.</p>
+    </div>
+
+    <p>David watched Saul throw a spear at him twice. David watched Saul chase him through the wilderness for years. David watched Saul consult a witch at Endor. David watched Saul die on Mount Gilboa. Every moment was etched into his memory. And he spent the rest of his life determined not to walk that path.</p>
+
+    <p>Now look at what happened to David. His losses were, in almost every category, the same as Saul's. Son. Kingdom. Family. Public humiliation. Betrayal. <strong>Same losses. Same magnitude.</strong> But David was restored. His line continued to Jesus of Nazareth. Because David never lost the Spirit.</p>
+
+    <div class="highlight-box">
+      <span class="highlight-label">This Is Why He Is Called a Man After God's Own Heart</span>
+      <p>Not because David sinned less than Saul. Not because he was more moral. But because David valued the presence of the Spirit above every other treasure in his life. The refusal to let the fire go out.</p>
+    </div>
+
+    <p>When you lose the Spirit, you also lose the capacity to be repaired by God. You lose the internal witness who convicts you. You lose the Advocate. You lose the Comforter. You lose the Counsellor. Saul lost the Spirit and then had no one inside to help him find his way back. That is why he consulted the witch. That is why he fell into paranoia. That is why he ended in despair.</p>
+
+    <p>David understood this. Which is why his prayer, at its centre, was <em>do not take your Holy Spirit from me.</em> He was saying — take anything else. Take my kingdom. Take my son. Take my reputation. But do not take the Spirit. Because if you take him, there is no way back.</p>
+
+    <div class="question-box">
+      <div class="question-icon">💬</div>
+      <div class="question-content"><strong>Discussion Question</strong><p>"When you last failed at something spiritually significant — did your first instinct look more like Saul (make an excuse, offer a substitute, dress it up religiously) or more like David (fall on your knees and beg God not to remove his presence)?"</p></div>
+    </div>
+  </div>
+
+  <!-- SECTION 6 -->
+  <div class="s6">
+    <div class="section-header">
+      <div class="section-number">6</div>
+      <div class="section-title-block"><div class="section-tag">The Daily Rhythm</div><h2>Keeping the Fire Burning</h2></div>
+    </div>
+    <div class="section-divider-line"></div>
+    <div class="leader-box"><strong>📖 Leader Instruction</strong>Walk through each of the six practices. Then invite the young people to choose just one to start this week.</div>
+
+    <p>How do we actually keep the fire burning in our own lives? Let me give you six practices. Six things the covenant Temple does — every day, every week — to keep the fire alive. None of them are new. All of them are in scripture. But together they form the daily rhythm of a person who has decided they will not become Saul.</p>
+
+    <div class="practice-card">
+      <div class="p-tag">Practice One · Leviticus 6:13</div>
+      <h3>Feed the Fire Daily With the Word</h3>
+      <p>The priest under the Old Covenant added fresh wood every morning. Not weekly. Not when inspired. Every morning. The New Covenant Temple must do the same with the word. When the word stops going in, the Spirit begins to withdraw.</p>
+      <div class="practical-app"><strong>Practical Application</strong>Ten minutes in the morning is enough to add one log. What matters is not the length. What matters is the daily faithfulness. If you cannot manage ten, start with one verse. But start.</div>
+    </div>
+
+    <div class="practice-card">
+      <div class="p-tag">Practice Two · Psalm 139:23–24</div>
+      <h3>Search Me and Know Me</h3>
+      <p>David wrote this prayer because he had watched what happened when a heart went unsearched. Saul never invited the search. And the things he refused to let God see became the things that destroyed him.</p>
+      <div class="practical-app"><strong>Practical Application</strong>Every day or every week, sit quietly and invite the Spirit to surface anything that does not belong. Small compromises. Half-obediences. Things you have started dressing in religious language. Let him name them. Repent quickly.</div>
+    </div>
+
+    <div class="practice-card">
+      <div class="p-tag">Practice Three · Psalm 51:17</div>
+      <h3>Offer a Broken and Contrite Heart</h3>
+      <p>David's greatness was not that he did not sin. It was that when Nathan pointed his finger and said <em>you are the man</em>, David did not defend himself. He fell to his knees before the sentence was finished.</p>
+      <div class="practical-app"><strong>Practical Application</strong>When the Spirit convicts you of something — even something small — do not delay. Do not negotiate. Do not offer substitutes. Bow immediately. That reflex is what kept the fire burning in David.</div>
+    </div>
+
+    <div class="practice-card">
+      <div class="p-tag">Practice Four · 1 Thessalonians 5:16–18</div>
+      <h3>Live in a Posture of Thanksgiving</h3>
+      <p>Not thanksgiving for what happens. Thanksgiving <em>in</em> all circumstances. Because the presence of the Spirit within you is a truer reality than anything happening outside you.</p>
+      <div class="practical-app"><strong>Practical Application</strong>Before you check your phone in the morning, thank God for three specific things about who he is. Thanksgiving keeps the atmosphere around the fire dry enough for the flame to keep rising.</div>
+    </div>
+
+    <div class="practice-card">
+      <div class="p-tag">Practice Five · Romans 12:1–2</div>
+      <h3>Renew Your Mind Through the Word</h3>
+      <p>Paul does not say be transformed by trying harder. He says <em>be transformed by the renewing of your mind.</em> The world is constantly pouring in a pattern that does not match the Kingdom. The word is the counter-current.</p>
+      <div class="practical-app"><strong>Practical Application</strong>If you are consuming three hours of social media a day and ten minutes of scripture, you are being formed by the world far more than by the word. Give the word enough time to actually renew.</div>
+    </div>
+
+    <div class="practice-card">
+      <div class="p-tag">Practice Six · Hebrews 4:12 · John 8:31–32</div>
+      <h3>Cooperate With the Spirit to Break Bondages</h3>
+      <p>Every bondage — anxiety, comparison, sexual struggle, bitterness, approval addiction — has a corresponding truth in scripture that can dissolve it. When the word goes in and the Spirit applies it, the chains begin to fall.</p>
+      <div class="practical-app"><strong>Practical Application</strong>Whatever you struggle with, do not fight it alone. Find the specific scriptures. Meditate on them. Pray them back to God. Let the Spirit use the word as a sword in your life.</div>
+    </div>
+
+    <div class="highlight-box">
+      <span class="highlight-label">The Whole Rhythm</span>
+      <p>Feed the fire. Invite the search. Bow quickly. Give thanks. Renew the mind. Cooperate with the Spirit. These are not six separate disciplines. They are one continuous rhythm of a Temple that has decided to keep the fire alive.</p>
+    </div>
+
+    <div class="question-box">
+      <div class="question-icon">💬</div>
+      <div class="question-content"><strong>Discussion Question</strong><p>"Of the six practices — which one is the Helper putting his finger on for you right now? What is one small, specific thing you can do this week — starting tonight — to add fresh wood to the fire?"</p></div>
+    </div>
+  </div>
+
+  <!-- SECTION 7 -->
+  <div class="s7">
+    <div class="section-header">
+      <div class="section-number">7</div>
+      <div class="section-title-block"><div class="section-tag">To Close</div><h2>A Broken and Contrite Heart</h2></div>
+    </div>
+    <div class="section-divider-line"></div>
+    <div class="leader-box"><strong>📖 Leader Instruction</strong>Read this slowly. This is the landing place of six months of gathering.</div>
+
+    <div class="reflection-box">
+      <p>There is a moment in the story of David that many of us have read a hundred times without stopping to notice.</p>
+      <p>Nathan the prophet walks into the palace. He tells David a story about a rich man who steals a poor man's only lamb. David becomes furious. Then Nathan looks at him and says four words that change everything. <em>You are the man.</em></p>
+      <p>David could have done what Saul did. He could have blamed the soldiers. He could have offered a sacrifice to distract from what he had actually done. He could have dressed his sin in religious language. There were a thousand exits available to him.</p>
+      <p>But David did none of them. David bowed. <em>I have sinned against the Lord.</em> Five words. No excuses. No blame. Just the truth.</p>
+      <p>Two kings. Same losses. Same magnitude of sin. One offered bulls. The other offered a broken heart. One lost the Spirit. The other kept him.</p>
+      <p>Six months ago we opened this table. We asked who Jesus is. We learned to cry out — <em>but you, Lord.</em> We discovered every spiritual blessing was already given. We watched the Shepherd become the Host. The Table became the Temple. The Temple became the fire.</p>
+      <p>Tonight we have learned the one thing that keeps the fire alive. Not a formula. Not a technique. A broken and contrite heart that returns quickly to the word.</p>
+      <div class="final-question">
+        <p>"Are you willing to pray, honestly, in your own heart tonight — do not take your Holy Spirit from me?"</p>
+      </div>
+    </div>
+
+    <div class="fathers-note">
+      <h3>✍ A Note for the Facilitator — Your Personal Moment</h3>
+      <p>Share briefly — was there a season in your life when the fire began to dim? A time when you sensed the Helper drawing back because of something you were unwilling to bring into the light? What did the Lord use to bring you to a broken and contrite heart? And what specific practice keeps your fire burning today? Two or three sentences from a father who has walked this road will land deeper than everything else in the session combined.</p>
+    </div>
+
+    <div class="highlight-box" style="margin-top:40px;">
+      <span class="highlight-label">A Final Word</span>
+      <p>Six months. Six sessions. The Table has become the Temple. The Temple has become the fire. And tonight — the fire has learned how to stay alive. Lead well. 🪑🔥</p>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <p>The Table · <a href="../index.html">thetable-hub.github.io/session-01</a> · Encounter. Community. Truth.</p>
+</footer>
+
+</body>
+</html>
