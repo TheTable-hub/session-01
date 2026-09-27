@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Facilitator Guide — Session 07 | The Table</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#1a1a2e;--navy-mid:#16213e;--gold:#ffb432;--gold-dark:#c9922a;
+  --gold-light:#ffd166;--latte:#fdf8f3;--latte-dark:#f0e8dc;
+  --text:#2c2c2c;--text-light:#6b5b45;--white:#ffffff;--border:#e0d4c4;
+  --deep-purple:#2d1b4e;--mid-purple:#4a2d7a;--light-purple:#7a5aa8;
+  --dusk:#3a2c5f;--ember:#f39c12;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:var(--latte);color:var(--text);line-height:1.7;}
+nav{background:rgba(253,248,243,0.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:68px;position:sticky;top:0;z-index:100;}
+.nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo-text{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--navy);letter-spacing:2px;}
+.nav-back{font-size:13px;font-weight:600;color:var(--text-light);text-decoration:none;display:flex;align-items:center;gap:6px;transition:color 0.2s;}
+.nav-back:hover{color:var(--navy);}
+
+.cover{background:linear-gradient(135deg,#1a1a2e 0%,var(--deep-purple) 50%,var(--mid-purple) 100%);min-height:50vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 40px;position:relative;overflow:hidden;}
+.cover::before{content:'';position:absolute;top:-100px;left:-100px;width:400px;height:400px;background:radial-gradient(circle,rgba(243,156,18,0.15) 0%,transparent 70%);border-radius:50%;}
+.cover::after{content:'';position:absolute;bottom:-120px;right:-100px;width:400px;height:400px;background:radial-gradient(circle,rgba(122,90,168,0.25),transparent 70%);border-radius:50%;}
+.cover-badge{background:rgba(243,156,18,0.2);border:1px solid rgba(243,156,18,0.5);color:var(--ember);font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;padding:8px 20px;border-radius:30px;margin-bottom:40px;position:relative;z-index:1;}
+.cover h1{font-family:'Playfair Display',serif;font-size:52px;color:#fff;line-height:1.2;margin-bottom:20px;font-style:italic;position:relative;z-index:1;}
+.cover h1 span{color:var(--ember);font-style:normal;}
+.cover-subtitle{font-family:'Lora',serif;font-size:17px;color:rgba(255,255,255,0.72);margin-bottom:10px;font-style:italic;position:relative;z-index:1;}
+.cover-scriptures{font-size:11px;color:rgba(255,255,255,0.45);letter-spacing:2px;margin-bottom:50px;position:relative;z-index:1;}
+.cover-divider{width:80px;height:3px;background:linear-gradient(90deg,transparent,var(--ember),transparent);margin:0 auto 40px;position:relative;z-index:1;}
+.cover-meta{display:flex;gap:40px;justify-content:center;flex-wrap:wrap;position:relative;z-index:1;}
+.cover-meta-item{text-align:center;}
+.cover-meta-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:4px;}
+.cover-meta-value{font-size:14px;color:rgba(255,255,255,0.85);font-weight:600;}
+
+.content{max-width:850px;margin:0 auto;padding:60px 40px;}
+
+.overview-box{background:linear-gradient(135deg,#1a1a2e,var(--deep-purple));border-radius:16px;padding:40px;margin-bottom:60px;color:white;}
+.overview-box h2{font-family:'Playfair Display',serif;font-size:24px;color:var(--ember);margin-bottom:24px;letter-spacing:1px;}
+.overview-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;margin-bottom:30px;}
+.overview-item{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:10px;padding:16px;text-align:center;}
+.overview-item .icon{font-size:22px;margin-bottom:8px;}
+.overview-item .label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.5);}
+.overview-item .value{font-size:14px;font-weight:600;color:white;margin-top:4px;}
+.session-list{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;}
+.session-list li{background:rgba(243,156,18,0.12);border-left:3px solid var(--ember);padding:10px 14px;border-radius:0 8px 8px 0;font-size:14px;color:rgba(255,255,255,0.85);}
+.session-list li span{color:var(--ember);font-weight:700;margin-right:6px;}
+
+.section-header{display:flex;align-items:center;gap:16px;margin-bottom:30px;margin-top:60px;}
+.section-number{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:22px;font-weight:700;flex-shrink:0;color:white;}
+.s1 .section-number{background:linear-gradient(135deg,#e74c3c,#c0392b);}
+.s2 .section-number{background:linear-gradient(135deg,#8e44ad,#6c3483);}
+.s3 .section-number{background:linear-gradient(135deg,#2980b9,#1a6fa0);}
+.s4 .section-number{background:linear-gradient(135deg,#4a2d7a,#2d1b4e);}
+.s5 .section-number{background:linear-gradient(135deg,#27ae60,#1e8449);}
+.s6 .section-number{background:linear-gradient(135deg,#e67e22,#ca6f1e);}
+.s7 .section-number{background:linear-gradient(135deg,#2c3e50,#1a252f);}
+.section-title-block h2{font-family:'Playfair Display',serif;font-size:28px;line-height:1.2;}
+.s1 .section-title-block h2{color:#c0392b;}
+.s2 .section-title-block h2{color:#6c3483;}
+.s3 .section-title-block h2{color:#1a6fa0;}
+.s4 .section-title-block h2{color:#2d1b4e;}
+.s5 .section-title-block h2{color:#1e8449;}
+.s6 .section-title-block h2{color:#ca6f1e;}
+.s7 .section-title-block h2{color:#2c3e50;}
+.section-title-block .section-tag{font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:600;opacity:0.6;}
+.section-divider-line{height:3px;border-radius:2px;margin-bottom:30px;}
+.s1 .section-divider-line{background:linear-gradient(90deg,#e74c3c,transparent);}
+.s2 .section-divider-line{background:linear-gradient(90deg,#8e44ad,transparent);}
+.s3 .section-divider-line{background:linear-gradient(90deg,#2980b9,transparent);}
+.s4 .section-divider-line{background:linear-gradient(90deg,#4a2d7a,transparent);}
+.s5 .section-divider-line{background:linear-gradient(90deg,#27ae60,transparent);}
+.s6 .section-divider-line{background:linear-gradient(90deg,#e67e22,transparent);}
+.s7 .section-divider-line{background:linear-gradient(90deg,#2c3e50,transparent);}
+
+p{font-family:'Lora',serif;font-size:16px;line-height:1.9;margin-bottom:16px;color:#333;}
+
+.leader-box{background:#fff8e6;border:1px solid #ffd97d;border-left:5px solid var(--ember);border-radius:8px;padding:18px 22px;margin:24px 0;font-family:'Inter',sans-serif;font-size:14px;color:#7a5c00;}
+.leader-box strong{display:block;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#b8860b;margin-bottom:6px;}
+
+.scripture{background:linear-gradient(135deg,#eaf4fb,#d6eaf8);border-left:5px solid #2980b9;border-radius:0 12px 12px 0;padding:22px 28px;margin:28px 0;position:relative;}
+.scripture::before{content:'\201C';position:absolute;top:-10px;left:14px;font-size:80px;color:#2980b9;opacity:0.2;font-family:'Playfair Display',serif;line-height:1;}
+.scripture p{font-family:'Playfair Display',serif;font-size:17px;font-style:italic;color:#1a5276;margin:0 0 8px 0;line-height:1.7;}
+.scripture .ref{font-family:'Inter',sans-serif;font-size:12px;font-weight:700;letter-spacing:1px;color:#2980b9;text-transform:uppercase;}
+
+.question-box{border-radius:12px;padding:20px 24px;margin:24px 0;display:flex;gap:16px;align-items:flex-start;}
+.s1 .question-box{background:#fdf2f2;border:1px solid #f5c6cb;}
+.s2 .question-box{background:#f5eef8;border:1px solid #d7bde2;}
+.s3 .question-box{background:#eaf4fb;border:1px solid #aed6f1;}
+.s4 .question-box{background:#f0e8f8;border:1px solid #c8b3e0;}
+.s5 .question-box{background:#eafaf1;border:1px solid #a9dfbf;}
+.s6 .question-box{background:#fef9e7;border:1px solid #f9e79f;}
+.s7 .question-box{background:#f2f3f4;border:1px solid #cacfd2;}
+.question-icon{font-size:26px;flex-shrink:0;margin-top:2px;}
+.question-content strong{display:block;font-family:'Inter',sans-serif;font-size:10px;letter-spacing:2px;text-transform:uppercase;font-weight:700;margin-bottom:6px;color:#c9922a;}
+.question-content p{font-family:'Inter',sans-serif;font-size:15px;font-weight:600;margin:0;color:#2c2c2c;font-style:italic;}
+
+.doubter-card{background:white;border-radius:14px;box-shadow:0 4px 16px rgba(0,0,0,0.07);padding:22px 26px;margin:14px 0;border-left:5px solid var(--mid-purple);}
+.doubter-card .d-tag{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--mid-purple);margin-bottom:6px;}
+.doubter-card h3{font-family:'Playfair Display',serif;font-size:20px;color:var(--navy);margin-bottom:8px;font-style:italic;}
+.doubter-card .d-verdict{background:var(--latte-dark);border-radius:8px;padding:10px 14px;margin-top:12px;font-size:13px;color:var(--navy);font-family:'Inter',sans-serif;font-weight:600;font-style:italic;}
+
+.why-panel{border-radius:14px;padding:26px;margin:14px 0;border-left:5px solid;}
+.why-panel.head{background:#eef4fb;border-color:#2980b9;}
+.why-panel.heart{background:#fdf2f2;border-color:#c0392b;}
+.why-panel.will{background:#fef9e7;border-color:#c9922a;}
+.why-panel .wp-tag{font-size:10px;letter-spacing:2px;text-transform:uppercase;font-weight:700;margin-bottom:6px;}
+.why-panel.head .wp-tag{color:#2980b9;}
+.why-panel.heart .wp-tag{color:#c0392b;}
+.why-panel.will .wp-tag{color:#c9922a;}
+.why-panel h3{font-family:'Playfair Display',serif;font-size:20px;color:var(--navy);margin-bottom:10px;font-style:italic;}
+
+.framework-card{background:white;border-radius:14px;box-shadow:0 4px 16px rgba(0,0,0,0.06);padding:24px 28px;margin:14px 0;border-left:5px solid var(--ember);}
+.framework-card .fc-tag{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold-dark);margin-bottom:6px;}
+.framework-card h3{font-family:'Playfair Display',serif;font-size:19px;color:var(--navy);margin-bottom:10px;font-style:italic;}
+
+.highlight-box{background:linear-gradient(135deg,#1a1a2e,var(--deep-purple));color:white;border-radius:16px;padding:32px 36px;margin:30px 0;text-align:center;position:relative;overflow:hidden;}
+.highlight-box::before{content:'';position:absolute;top:-40px;right:-40px;width:180px;height:180px;background:radial-gradient(circle,rgba(243,156,18,0.15),transparent 70%);border-radius:50%;}
+.highlight-box p{font-family:'Playfair Display',serif;font-size:20px;font-style:italic;color:white;margin:0;line-height:1.7;position:relative;z-index:1;}
+.highlight-box .highlight-label{font-family:'Inter',sans-serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--ember);font-style:normal;margin-bottom:14px;display:block;font-weight:700;position:relative;z-index:1;}
+
+.fathers-note{background:#fff8e6;border:2px dashed var(--ember);border-radius:16px;padding:30px;margin:40px 0;}
+.fathers-note h3{font-family:'Inter',sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#b8860b;font-weight:700;margin-bottom:14px;}
+.fathers-note p{font-family:'Lora',serif;font-size:15px;color:#7a5c00;line-height:1.8;}
+
+.reflection-box{background:linear-gradient(160deg,var(--deep-purple),#1a1a2e);border-radius:20px;padding:50px 44px;margin:40px 0;position:relative;overflow:hidden;}
+.reflection-box::before{content:'';position:absolute;top:-60px;right:-60px;width:250px;height:250px;background:radial-gradient(circle,rgba(243,156,18,0.15),transparent 70%);border-radius:50%;}
+.reflection-box p{font-family:'Playfair Display',serif;font-size:18px;font-style:italic;color:rgba(255,255,255,0.9);line-height:2;margin-bottom:18px;position:relative;z-index:1;}
+.final-question{background:rgba(243,156,18,0.15);border:1px solid rgba(243,156,18,0.4);border-radius:12px;padding:24px 28px;margin-top:30px;text-align:center;position:relative;z-index:1;}
+.final-question p{font-family:'Playfair Display',serif;font-size:21px;font-style:italic;color:var(--ember);margin:0;}
+
+footer{background:#0d0d1e;padding:36px 40px;text-align:center;}
+footer p{font-family:'Lora',serif;font-size:13px;color:rgba(255,255,255,0.4);font-style:italic;}
+footer a{color:#c9922a;text-decoration:none;}
+
+@media(max-width:700px){
+  nav{padding:0 20px;}
+  .cover{padding:60px 20px 50px;}.cover h1{font-size:36px;}
+  .content{padding:40px 20px;}
+  .overview-grid{grid-template-columns:1fr 1fr;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="nav-logo">
+    <svg width="36" height="36" viewBox="0 0 36 36">
+      <circle cx="18" cy="18" r="17" fill="#1a1a2e"/>
+      <path d="M 10 12 A 8 1.5 0 0 0 26 12" fill="none" stroke="#ffd166" stroke-width="0.9" stroke-linecap="round"/>
+      <rect x="10" y="12" width="16" height="3.5" rx="1" fill="#ffb432"/>
+      <rect x="15.5" y="15.5" width="5" height="11" rx="1" fill="#ffb432"/>
+      <rect x="13" y="26.5" width="10" height="2" rx="1" fill="#ffb432" opacity="0.75"/>
+    </svg>
+    <span class="nav-logo-text">THE TABLE</span>
+  </a>
+  <a href="../index.html" class="nav-back">
+    <svg width="16" height="16" viewBox="0 0 16 16"><path d="M10 3L5 8L10 13" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Back to Home
+  </a>
+</nav>
+
+<div class="cover">
+  <div class="cover-badge">Session 07 · Facilitator Guide · October 2026</div>
+  <h1>"When Doubt Sits<br><span>at the Table"</span></h1>
+  <p class="cover-subtitle">Why Your Questions Do Not Embarrass God</p>
+  <p class="cover-scriptures">Psalm 51 · John 20 · Mark 9 · Matthew 11 · Job · Habakkuk · Jude 22</p>
+  <div class="cover-divider"></div>
+  <div class="cover-meta">
+    <div class="cover-meta-item"><div class="cover-meta-label">Date</div><div class="cover-meta-value">Sunday, 4 October 2026</div></div>
+    <div class="cover-meta-item"><div class="cover-meta-label">Time</div><div class="cover-meta-value">4:00 – 6:00pm</div></div>
+    <div class="cover-meta-item"><div class="cover-meta-label">Duration</div><div class="cover-meta-value">75 – 90 Minutes</div></div>
+    <div class="cover-meta-item"><div class="cover-meta-label">Audience</div><div class="cover-meta-value">Ages 13 and Above</div></div>
+  </div>
+</div>
+
+<div class="content">
+
+  <div class="overview-box">
+    <h2>📋 Session Overview</h2>
+    <div class="overview-grid">
+      <div class="overview-item"><div class="icon">💭</div><div class="label">Central Posture</div><div class="value">Sincere Wrestling</div></div>
+      <div class="overview-item"><div class="icon">📖</div><div class="label">Six Doubters</div><div class="value">Thomas to John</div></div>
+      <div class="overview-item"><div class="icon">🔍</div><div class="label">Three Kinds</div><div class="value">Head · Heart · Will</div></div>
+      <div class="overview-item"><div class="icon">🕊️</div><div class="label">The Helper</div><div class="value">All Three in One</div></div>
+    </div>
+    <ul class="session-list">
+      <li><span>1.</span> Opening Hook · The Friend Who Lost a Son</li>
+      <li><span>2.</span> The Bible is Full of Honest Doubters</li>
+      <li><span>3.</span> Why Doubt is Not the Opposite of Faith</li>
+      <li><span>4.</span> The Three Kinds of Why</li>
+      <li><span>5.</span> How Jesus Himself Handled Doubters</li>
+      <li><span>6.</span> Where the Answers Actually Come From</li>
+      <li><span>7.</span> When Doubt Sits at the Table, Feed It</li>
+    </ul>
+  </div>
+
+  <!-- SECTION 1 -->
+  <div class="s1">
+    <div class="section-header">
+      <div class="section-number">1</div>
+      <div class="section-title-block"><div class="section-tag">To Open</div><h2>Opening Hook</h2></div>
+    </div>
+    <div class="section-divider-line"></div>
+    <div class="leader-box"><strong>🎤 Leader Instruction</strong>Open the session by pouring tea, letting the room settle, and then telling the story slowly. This is the pastoral entry to the whole evening.</div>
+
+    <p>Before we open scripture this evening, I want to tell you about someone. He was a father. A believer. A church-going man. And one day, without warning, he lost his son. He stopped coming to church. Not because he stopped believing in God. He believed. That was the problem. He believed in a God who could have saved his son. And he could not understand why that God did not. Nobody sat with him long enough to help him find the answer. So he simply stopped coming.</p>
+
+    <p>I have been thinking about that story all week. When I was in campus, I was not yet born again. I watched people who had come into first year as passionate believers slowly become something else. Many of them had been strong believers in school. On fire. Bold. And by third or fourth year, they had drifted somewhere I could not follow. I remember what I concluded as a young man who did not yet know Christ. <em>This Christianity thing must be for hypocrites.</em> Because nobody around me was answering the question those young believers were quietly carrying.</p>
+
+    <p>If we are honest around this Table this evening, most of us know somebody who has walked away from faith over a question that was never answered. A childhood friend. A former classmate. A cousin. A neighbour. Some of us are also carrying our own questions right now that we have never quite been able to voice inside a church.</p>
+
+    <div class="highlight-box">
+      <span class="highlight-label">The Three Options</span>
+      <p>When the Christianity we were given cannot hold our real questions, we have three options — pretend, walk away, or discover the Christianity that Jesus actually taught is far bigger than what we were handed. This evening we choose option three.</p>
+    </div>
+
+    <div class="leader-box"><strong>🔗 Connection to Session 06</strong>Bring this in carefully — it is the new thread the Helper placed on your heart. Do not skip it.</div>
+
+    <p>Last month we discovered that the Temple has become the fire. The Helper lives inside every believer. And the Helper does not just live silently inside us. He speaks. He convicts. He guides. He nudges. Constantly. But here is what I have been sitting with these past few weeks. Sometimes the Helper is speaking to us, and we can hear him clearly, and yet we do not obey. He tells you to forgive someone and you delay. He tells you to end something and you negotiate. He tells you to speak up and you stay silent. Why? Because underneath our silence, we are quietly asking a <em>why</em> question of our own. <em>Why should I forgive her? Why should I end it? Why should I obey when nobody around me is obeying?</em></p>
+
+    <div class="highlight-box">
+      <span class="highlight-label">The Central Insight</span>
+      <p>The Helper is speaking. But an unanswered <em>why</em> is keeping us from following. This is the same pattern that makes our young people walk away at university. And the same pattern happening quietly in every believer's daily life.</p>
+    </div>
+
+    <div class="question-box">
+      <div class="question-icon">💭</div>
+      <div class="question-content"><strong>Opening Discussion Question</strong><p>"Is there a question you have carried for a long time — about God, about faith, about something that happened in your life, or something the Helper has been asking you to do — that you have never felt safe to voice out loud?"</p></div>
+    </div>
+  </div>
+
+  <!-- SECTION 2 -->
+  <div class="s2">
+    <div class="section-header">
+      <div class="section-number">2</div>
+      <div class="section-title-block"><div class="section-tag">You Are in Good Company</div><h2>The Bible is Full of Honest Doubters</h2></div>
+    </div>
+    <div class="section-divider-line"></div>
+    <div class="leader-box"><strong>📖 Leader Instruction</strong>Walk through the six doubters slowly. Pause between each one to let it land. This section gives the room permission to breathe.</div>
+
+    <p>Many of us grew up believing that doubt was the enemy of faith. That a real Christian never questions. That is not what the Bible teaches. The Bible is not embarrassed by doubters. The Bible is full of them. And the doubters in the Bible are not fringe characters. Many are the most faithful people in the entire book.</p>
+
+    <div class="doubter-card">
+      <div class="d-tag">One · John 20</div>
+      <h3>Thomas — the devoted man who needed evidence</h3>
+      <p>We call him <em>doubting Thomas</em>, but the nickname is unfair. Thomas walked with Jesus for three years. In John 11 he told the other disciples <em>let us also go, that we may die with him.</em> That is not a coward.</p>
+      <p>But when the other disciples told him Jesus had risen, Thomas said — <em>unless I see the nail marks in his hands and put my finger where the nails were, I will not believe.</em> A week later Jesus appeared. He did not scold Thomas. He gave Thomas exactly the evidence Thomas asked for. <em>Put your finger here. Reach out your hand.</em></p>
+      <div class="d-verdict">Thomas fell to his knees — "my Lord and my God." Tradition tells us he took the gospel further east than any other apostle. All the way to India. The doubter became a missionary to a continent.</div>
+    </div>
+
+    <div class="doubter-card">
+      <div class="d-tag">Two · Mark 9</div>
+      <h3>The father — the honest cry every believer knows</h3>
+      <p>A father brings his possessed son to Jesus. The disciples have failed. He is exhausted. And he says the words every honest believer has felt — <em>I believe. Help my unbelief.</em></p>
+      <p>Read that again. He said both things in one breath. The man is not a stranger to faith. He came to Jesus for help. But underneath the faith is doubt. And what does Jesus do? Does he say <em>sort out your theology first, then I will help you?</em> No. Jesus heals the boy. Immediately. Because the father brought the honest cry, not a pretence of certainty.</p>
+      <div class="d-verdict">Jesus does not require our doubt to be finished before he acts. He honours the mixed heart. As long as the mixed heart is honest.</div>
+    </div>
+
+    <div class="doubter-card">
+      <div class="d-tag">Three · Habakkuk 1–3</div>
+      <h3>The prophet who confronted God twice</h3>
+      <p>Habakkuk opens his book with one of the most confrontational questions any human has ever asked God. <em>How long, Lord, must I call for help, but you do not listen?</em> He is not being poetic. He is angry.</p>
+      <p>Then God answers him. But God's answer makes things worse. God says he is going to use the Babylonians to judge Judah. And Habakkuk essentially says — <em>hold on. You are going to punish evil with a nation that is even more evil?</em> Habakkuk questions God twice. Directly. Openly. And God does not strike him down. God explains himself.</p>
+      <div class="d-verdict">By chapter 3, Habakkuk writes one of the most beautiful sentences in the Old Testament — "though the fig tree does not bud... yet I will rejoice in the Lord." He arrived there by staying in the conversation.</div>
+    </div>
+
+    <div class="doubter-card">
+      <div class="d-tag">Four · Job 1–42</div>
+      <h3>The man God called "my servant"</h3>
+      <p>Job lost everything. His children. His wealth. His health. His reputation. And for over thirty chapters, Job argues with God. He accuses God. He demands answers. He says things that would make a modern Sunday School teacher uncomfortable.</p>
+      <p>Then in chapter 38, God finally speaks. And God does not answer any of Job's questions. Instead, God asks Job seventy questions of his own. Until Job finally puts his hand over his mouth and says — <em>I have heard of you by the hearing of the ear, but now my eye sees you.</em></p>
+      <div class="d-verdict">At the end of the book, God turns to Job's theologically correct friends and says — "my anger burns against you, for you have not spoken of me what is right, as my servant Job has." God would rather have an honest complaint than a dishonest defence.</div>
+    </div>
+
+    <div class="doubter-card">
+      <div class="d-tag">Five · Psalm 13</div>
+      <h3>David — the man after God's own heart</h3>
+      <p>Listen to how David opens Psalm 13. <em>How long, Lord? Will you forget me forever? How long will you hide your face from me? How long must I wrestle with my thoughts?</em> Four times in two verses David says <em>how long?</em></p>
+      <p>The book of Psalms is full of this kind of prayer. Psalms of lament. Psalms where the writer accuses God of forgetting. God included these psalms in scripture on purpose.</p>
+      <div class="d-verdict">If you are carrying a question and you have never known how to bring it to God — start with the Psalms. Every one of your questions is already there, prayed by someone who loved God with everything they had.</div>
+    </div>
+
+    <div class="doubter-card">
+      <div class="d-tag">Six · Matthew 11</div>
+      <h3>John the Baptist — doubting from the prison cell</h3>
+      <p>John the Baptist. The forerunner. The one who leapt in Elizabeth's womb when Mary walked in. The one who said <em>behold, the Lamb of God who takes away the sin of the world.</em> Nobody had more reason to be certain about Jesus than John.</p>
+      <p>And yet, in Matthew 11, John is in prison. Herod has arrested him. He is going to die there. From that prison cell John sends messengers — <em>are you the one who is to come, or should we expect someone else?</em> Jesus does not send back a rebuke. He sends back scripture. <em>The blind receive sight, the lame walk, the dead are raised.</em></p>
+      <div class="d-verdict">Then Jesus turns to the crowd and says one of the most tender things he ever said about another human being — "among those born of women there has not risen anyone greater than John the Baptist." The doubter in the prison cell is the greatest of prophets in Jesus's own eyes.</div>
+    </div>
+
+    <div class="highlight-box">
+      <span class="highlight-label">The Theological Centre</span>
+      <p>God is not embarrassed by our questions. He is embarrassed by our pretending.</p>
+    </div>
+
+    <div class="question-box">
+      <div class="question-icon">💬</div>
+      <div class="question-content"><strong>Discussion Question</strong><p>"Of the six doubters we have just walked through — Thomas, the father in Mark 9, Habakkuk, Job, David, and John the Baptist — which one sounds most like you right now?"</p></div>
+    </div>
+  </div>
+
+  <!-- SECTION 3 -->
+  <div class="s3">
+    <div class="section-header">
+      <div class="section-number">3</div>
+      <div class="section-title-block"><div class="section-tag">What Doubt Actually Is</div><h2>Why Doubt is Not the Opposite of Faith</h2></div>
+    </div>
+    <div class="section-divider-line"></div>
+    <div class="leader-box"><strong>📖 Leader Instruction</strong>Take time to draw the distinction between doubt and unbelief. This reframes something most people have carried their whole lives.</div>
+
+    <p>Doubt is not the opposite of faith. Unbelief is the opposite of faith. And those two things are not the same at all.</p>
+
+    <p><strong>Unbelief closes the door. Doubt keeps knocking.</strong></p>
+
+    <p>Unbelief says — <em>I do not believe, and I do not want to.</em> It has stopped seeking. Doubt says — <em>I want to believe. Something inside me still reaches. But I do not understand what I am seeing right now.</em> Doubt has not left the room.</p>
+
+    <p>The father in Mark 9 was not in unbelief. He was in doubt. He said — <em>I believe. Help my unbelief.</em> He was still asking. Still reaching. Unbelief is different. Unbelief is what you see in the Pharisees who watched Jesus raise Lazarus and then went off to plot how to kill him. They saw the evidence. They did not want the evidence.</p>
+
+    <div class="scripture">
+      <p>"If any of you lacks wisdom, you should ask God, who gives generously to all without finding fault, and it will be given to you. But when you ask, you must believe and not doubt, because the one who doubts is like a wave of the sea, blown and tossed by the wind."</p>
+      <span class="ref">James 1:5–6</span>
+    </div>
+
+    <p>James is not talking about the honest doubter who says <em>I believe, help my unbelief.</em> James is talking about the <em>double-minded</em> person. The Greek word is <em>dipsychos.</em> Two-souled. One part of you is asking God for wisdom. The other part has already decided you will not accept the answer if you do not like it.</p>
+
+    <div class="highlight-box">
+      <span class="highlight-label">The Key Distinction</span>
+      <p>Honest doubt wants the answer, even if the answer is uncomfortable. Double-mindedness wants permission for the conclusion it has already reached.</p>
+    </div>
+
+    <p>Same <em>why</em> question can come from two very different hearts. One heart is honest. It is Job. It is Habakkuk. It is Thomas. That heart God meets every time. The other heart is double-minded. It is looking for a technicality. It is asking a spiritual question to hide a decision it has already made. The Helper knows the difference. And we should learn to know the difference in ourselves.</p>
+
+    <div class="leader-box"><strong>⚡ Critical Section</strong>Ground this claim from scripture. Many believe doubt is sin. We must show them scripture that says otherwise.</div>
+
+    <p><strong>Doubt is not sin. Doubt is not weakness. Doubt is not disqualification.</strong> Let me show you where the Bible itself makes this clear.</p>
+
+    <div class="scripture">
+      <p>"Be merciful to those who doubt."</p>
+      <span class="ref">Jude 22</span>
+    </div>
+
+    <p>Jude does not say <em>rebuke them.</em> He does not say <em>correct them.</em> He says <em>be merciful.</em> You do not offer mercy for sin. You offer mercy for pain. The Bible itself calls doubt a burden to be carried gently.</p>
+
+    <div class="scripture">
+      <p>"When they saw him, they worshipped him; but some doubted."</p>
+      <span class="ref">Matthew 28:17</span>
+    </div>
+
+    <p>This is the Great Commission moment. Jesus has risen. He is standing with the eleven disciples. And Matthew records — <em>some worshipped, but some doubted.</em> Some of the eleven were still doubting at the moment Jesus was about to commission them. What did Jesus do? He commissioned them all together. He did not wait for the doubters to catch up. He sent them.</p>
+
+    <div class="highlight-box">
+      <span class="highlight-label">The Theological Knockout</span>
+      <p>Jesus commissions doubters. He does not disqualify them.</p>
+    </div>
+
+    <p>When someone tells you doubt is sin — respectfully, gently, but firmly — that is not what the Bible teaches. What <em>is</em> sin is unbelief that has closed the door. What <em>is</em> sin is double-mindedness. What <em>is</em> sin is acting against our own convictions. But honest doubt that keeps talking to God? That is not sin. That is Job. That is David. That is John the Baptist. And every one of them is called faithful in scripture.</p>
+
+    <p><strong>Sincerity is the only door the Helper needs.</strong></p>
+
+    <div class="question-box">
+      <div class="question-icon">💬</div>
+      <div class="question-content"><strong>Discussion Question</strong><p>"Think of a why question you have been carrying. Ask yourself honestly — am I asking because I want the answer, or because I want permission?"</p></div>
+    </div>
+  </div>
+
+  <!-- SECTION 4 -->
+  <div class="s4">
+    <div class="section-header">
+      <div class="section-number">4</div>
+      <div class="section-title-block"><div class="section-tag">The Theological Pivot</div><h2>The Three Kinds of Why</h2></div>
+    </div>
+    <div class="section-divider-line"></div>
+    <div class="leader-box"><strong>📖 Leader Instruction</strong>This is the theological centre of the evening. Slow down. Every young person needs to learn this framework.</div>
+
+    <p>There are three different kinds of <em>why</em> questions. Each one needs a completely different kind of answer. Most churches only know how to answer one of the three. And when someone comes with one of the other two, the church answers with the wrong kind of response — and the person walks away, quietly concluding that Christianity does not have room for what they are actually feeling.</p>
+
+    <div class="why-panel head">
+      <div class="wp-tag">The First Kind · The Head</div>
+      <h3>The Intellectual Why</h3>
+      <p><em>How do we know God exists? How do we know the Bible is reliable? How do we know Jesus actually rose from the dead?</em> These are honest questions. They come from a mind trying to understand.</p>
+      <p>The intellectual <em>why</em> needs an intellectual answer. It needs evidence, reasoning, scripture. This is what Peter means in 1 Peter 3:15 when he says be prepared to give an answer for the hope you have. When someone brings an intellectual <em>why</em>, they deserve a thoughtful, well-reasoned response. Not a quick spiritual sentence. A real answer.</p>
+    </div>
+
+    <div class="why-panel heart">
+      <div class="wp-tag">The Second Kind · The Heart</div>
+      <h3>The Emotional Why</h3>
+      <p><em>Why did God allow my son to die? Why did my father leave? Why did I pray for years and nothing changed?</em> These are not questions of information. They are questions of pain.</p>
+      <p>An emotional <em>why</em> does not need an argument. It needs a Person. It needs presence. It needs lament. Job's friends did well for seven days when they sat in silence with him. Then they opened their mouths — and ruined it. Jesus himself, on the cross, prayed Psalm 22:1 — <em>My God, my God, why have you forsaken me?</em> Even the Son of God, in the deepest emotional agony a human has ever felt, used the language of lament.</p>
+    </div>
+
+    <div class="why-panel will">
+      <div class="wp-tag">The Third Kind · The Will</div>
+      <h3>The Moral Why</h3>
+      <p><em>Why should I forgive her when she is not sorry? Why should I stay pure? Why should I obey what the Bible says about marriage when the whole culture is moving in the opposite direction?</em> These come from a will deciding whether to actually do the thing God is asking.</p>
+      <p>The moral <em>why</em> needs a vision. A vision of Jesus that is more compelling than what the world is offering. When the fire dies (Session 06), obedience becomes hard. When the fire burns, obedience becomes natural. The moral <em>why</em> is not answered by rules. It is answered by relationship.</p>
+    </div>
+
+    <div class="highlight-box">
+      <span class="highlight-label">Why This Matters</span>
+      <p>If someone brings you an emotional why and you respond with an intellectual answer — they will walk away thinking Christianity does not have room for their pain. Christianity had not failed them. The people around them had misdiagnosed their questions.</p>
+    </div>
+
+    <p>Now watch how this connects back to Session 06. The Helper lives inside you. And he is all three answers in one Person. <strong>He is your Counsellor</strong> for the intellectual <em>why.</em> <strong>He is your Comforter</strong> for the emotional <em>why.</em> <strong>He is the Spirit of Truth</strong> for the moral <em>why.</em></p>
+
+    <div class="question-box">
+      <div class="question-icon">💬</div>
+      <div class="question-content"><strong>Discussion Question</strong><p>"Think of the biggest why question you are carrying right now. Which of the three is it — head, heart, or will? And knowing that, does the answer you have been looking for suddenly need to look different than what you had assumed?"</p></div>
+    </div>
+  </div>
+
+  <!-- SECTION 5 -->
+  <div class="s5">
+    <div class="section-header">
+      <div class="section-number">5</div>
+      <div class="section-title-block"><div class="section-tag">The Pastoral Heart</div><h2>How Jesus Handled Doubters</h2></div>
+    </div>
+    <div class="section-divider-line"></div>
+    <div class="leader-box"><strong>📖 Leader Instruction</strong>Bring the room very close to Jesus himself. Everything we have taught this evening comes from how he actually behaved.</div>
+
+    <p>We are going to look at three doubters. Three very different men. Three very different kinds of <em>why.</em> And three very different responses from Jesus. Watch him carefully. Because how he responded to them is exactly how he wants to respond to us.</p>
+
+    <div class="scripture">
+      <p>"Put your finger here; see my hands. Reach out your hand and put it into my side. Stop doubting and believe."</p>
+      <span class="ref">John 20:27</span>
+    </div>
+
+    <p><strong>To Thomas — the intellectual doubter — Jesus gave evidence.</strong> He did not lecture Thomas. He did not embarrass him in front of the others. He gave Thomas exactly the evidence Thomas asked for. And notice what Thomas does. He falls to his knees — <em>my Lord and my God.</em> One of the highest confessions of Jesus's divinity in the entire New Testament. Then Jesus gently teaches — <em>blessed are those who have not seen and yet have believed.</em> Not a rebuke. A tender teaching.</p>
+
+    <div class="scripture">
+      <p>"Immediately the father of the boy exclaimed, 'I do believe; help me overcome my unbelief!'"</p>
+      <span class="ref">Mark 9:24</span>
+    </div>
+
+    <p><strong>To the father in Mark 9 — the emotional doubter — Jesus gave action.</strong> Does he say <em>sort out your theology first?</em> Does he say <em>come back when your faith is stronger?</em> No. He does the opposite. He heals the boy. Immediately. Jesus honours the mixed heart. Jesus did not require certainty. He required sincerity.</p>
+
+    <div class="scripture">
+      <p>"Go back and report to John what you hear and see: The blind receive sight, the lame walk, those who have leprosy are cleansed, the deaf hear, the dead are raised, and the good news is proclaimed to the poor."</p>
+      <span class="ref">Matthew 11:4–5</span>
+    </div>
+
+    <p><strong>To John the Baptist — doubting from a prison cell — Jesus gave scripture.</strong> Jesus does not send back a rebuke. He quotes Isaiah 35 and 61 back to John. As if to say — <em>John, remember the prophecies. Look at the evidence. I am who I said I am.</em> Then Jesus turns to the crowd and publicly defends John — <em>truly I tell you, among those born of women there has not risen anyone greater than John the Baptist.</em></p>
+
+    <div class="highlight-box">
+      <span class="highlight-label">What Jesus Never Does</span>
+      <p>He never scolds a doubter. He never shames a doubter. He never sends a doubter away. He never asks a doubter to fake certainty. He never treats a doubter's question as an embarrassment. Not once.</p>
+    </div>
+
+    <div class="leader-box"><strong>⚡ A Hard Truth</strong>Do not skip this. It is important for the ones in the room whose circumstances have not changed.</div>
+
+    <p>In the case of John the Baptist, Jesus did not remove the prison. John still died. Jesus did not answer John's <em>why</em> by rescuing him from the situation. Sometimes God answers our <em>why</em> by changing the circumstances. And sometimes he does not. But even when he does not — he gives us himself. He gives us his word. He gives us the Helper who lives inside us.</p>
+
+    <p>If you are here this evening carrying a <em>why</em> that has not been answered by the removal of the situation — you are in John the Baptist's company. You are not less loved. You are not less faithful. You are being asked to trust in a different way.</p>
+
+    <div class="question-box">
+      <div class="question-icon">💬</div>
+      <div class="question-content"><strong>Discussion Question</strong><p>"Of the three doubters — Thomas, the father in Mark 9, and John the Baptist — which one is closest to where you are right now? And what is the specific answer you would want Jesus to give you if you brought your question to him this evening?"</p></div>
+    </div>
+  </div>
+
+  <!-- SECTION 6 -->
+  <div class="s6">
+    <div class="section-header">
+      <div class="section-number">6</div>
+      <div class="section-title-block"><div class="section-tag">The Portable Framework</div><h2>Where the Answers Actually Come From</h2></div>
+    </div>
+    <div class="section-divider-line"></div>
+    <div class="leader-box"><strong>📖 Leader Instruction</strong>This is the practical scaffolding they carry home. Do not rush. Give them the four questions to remember.</div>
+
+    <p>There are three places God has given us to find answers to our <em>why</em> questions. Only three.</p>
+
+    <p><strong>Source One — Scripture.</strong> Almost every honest human question has already been asked in the Bible. Job asked about suffering. Habakkuk asked about injustice. David asked about being forgotten. The Bible is a book built around hard questions. When a <em>why</em> rises inside you, the first place to go is not Google. Not a friend. Not even a pastor. The first place is scripture.</p>
+
+    <p><strong>Source Two — The Holy Spirit.</strong> John 16:13 — <em>when he, the Spirit of truth, comes, he will guide you into all the truth.</em> The Helper is not silent. He is speaking constantly. But we do not always slow down enough to hear him. Most of us have never given the Helper enough silence to speak to us.</p>
+
+    <p><strong>Source Three — Sincere Wrestling.</strong> Think of Jacob at the ford of the Jabbok. He wrestled with God through the night. And God engaged with him. By morning, Jacob had a new name and a limp. Both were gifts. Sincere wrestling is when you refuse to leave the conversation with God until he speaks.</p>
+
+    <div class="highlight-box">
+      <span class="highlight-label">The Whole Posture in One Sentence</span>
+      <p>It is okay to bring your questions to God. But you must be willing to sit with the scripture, listen to the Holy Spirit, and wrestle sincerely until the answer comes.</p>
+    </div>
+
+    <p>Here are the four questions to carry home this evening. Four portable questions to ask yourself when doubt sits down beside you at the Table.</p>
+
+    <div class="framework-card">
+      <div class="fc-tag">Question One</div>
+      <h3>Is this a head question, a heart question, or a will question?</h3>
+      <p>We covered this in Section 4. Do not skip this step. Before you look for an answer, name the <em>kind</em> of question you are actually asking. The wrong kind of answer will not satisfy the right kind of question.</p>
+    </div>
+
+    <div class="framework-card">
+      <div class="fc-tag">Question Two</div>
+      <h3>Am I asking because I want an answer, or because I want permission?</h3>
+      <p>Sincerity is the door. If you are asking because you genuinely want to know God's mind, he will meet you. But if you are asking because you are secretly hoping God will let you off the hook — the Helper knows. And he loves you too much to give you permission to walk into what will hurt you.</p>
+    </div>
+
+    <div class="framework-card">
+      <div class="fc-tag">Question Three</div>
+      <h3>Where in scripture has God already answered this?</h3>
+      <p>Do not assume your question is new. Almost none of them are. If you are asking about suffering, go to Job and Habakkuk. If you are asking about God's silence, go to the Psalms. If you are asking about grief, go to 2 Samuel 18 and John 11. Search the text before you settle for silence.</p>
+    </div>
+
+    <div class="framework-card">
+      <div class="fc-tag">Question Four</div>
+      <h3>What is the Helper saying to me as I sit with this?</h3>
+      <p>Session 05 taught us the Helper lives inside every believer. He is your Counsellor. He is your Comforter. He is the Spirit of Truth. Bring the question to the Helper and listen. He may bring a verse. He may bring peace. He may bring conviction. But he will speak. To those who bring him a sincere heart.</p>
+    </div>
+
+    <div class="highlight-box">
+      <span class="highlight-label">A Word for Those Carrying Old Questions</span>
+      <p>It is never too late to bring the why back into the light. It is never too late to sit with the scripture and the Helper. It is never too late to wrestle sincerely. Every honest doubter God ever met — Job, David, Thomas, John — he met at the exact moment they finally brought the question honestly.</p>
+    </div>
+
+    <div class="question-box">
+      <div class="question-icon">💬</div>
+      <div class="question-content"><strong>Discussion Question</strong><p>"Of the four questions we just walked through, which one has been missing from how you have been handling your why? What would change this week if you started with that one?"</p></div>
+    </div>
+  </div>
+
+  <!-- SECTION 7 -->
+  <div class="s7">
+    <div class="section-header">
+      <div class="section-number">7</div>
+      <div class="section-title-block"><div class="section-tag">To Close</div><h2>When Doubt Sits at the Table, Feed It</h2></div>
+    </div>
+    <div class="section-divider-line"></div>
+    <div class="leader-box"><strong>📖 Leader Instruction</strong>Read this slowly. This is the landing place of seven months of gathering.</div>
+
+    <div class="reflection-box">
+      <p>Seven months ago we opened this Table for the first time.</p>
+      <p>We asked <em>who do you say that I am?</em> and we discovered Jesus is exactly who he claimed to be. We cried out with David from a hillside — <em>but you, Lord.</em> We learned that every spiritual blessing had already been given to us in Christ. We watched the Shepherd of Psalm 23 become the Host who prepared the table before us. We saw the Table become the Temple. We watched the Temple become the fire. And this evening — <em>we have learned how to sit at the Table with our own honest questions.</em></p>
+      <p>Remember the friend I told you about at the beginning of this evening. The father who lost a son. If he were sitting at this Table now, we would know exactly what to do. We would not scold him. We would not quote Romans 8:28 at him. We would recognise that his <em>why</em> was an emotional <em>why</em>. And we would sit with him. Like Job's friends did well for seven days. We would put the Psalms in his hands and teach him the language of lament.</p>
+      <p>And when our sons and daughters leave home — into that first philosophy class, that first difficult conversation, that first crisis — they will not carry memorised arguments. They will carry a <em>posture.</em></p>
+      <p>They will know their questions are not sin. Jude 22. They will know Jesus commissioned doubters. Matthew 28:17. They will know how to recognise which kind of <em>why</em> they are asking. Head, heart, or will. They will know the answers come from scripture, the Helper, and sincere wrestling.</p>
+      <p>They will not become another Christian Union leader who quietly drifted at university. Because they will know how to bring doubt to the Table instead of carrying it alone.</p>
+      <p>But this session was not only about our children. Every one of us has been carrying a <em>why</em> somewhere. The forgiveness we have delayed. The obedience we have negotiated. The prayer we have not prayed because we were afraid of the answer. Every one of them has a <em>why</em> underneath. And the Helper has been waiting for us to bring it to him.</p>
+      <div class="final-question">
+        <p>"What is the why you have been carrying that you have never brought honestly into the light?"</p>
+      </div>
+    </div>
+
+    <div class="fathers-note">
+      <h3>✍ A Note for the Facilitator — Your Personal Moment</h3>
+      <p>Share briefly — was there a season in your life when you were carrying a <em>why</em> you could not bring into the light? Perhaps from your campus days. Perhaps from later. Perhaps something you are still holding today. What did the Helper do when you finally brought it to him honestly? What did the scripture say to you? What changed? Do not perform this. Do not clean it up. Two or three honest sentences from a father who has walked this road will land deeper than everything else this evening combined. The young people around the Table have never heard a grown man they respect tell them he had a real <em>why</em> of his own. Tell them.</p>
+    </div>
+
+    <div class="highlight-box" style="margin-top:40px;">
+      <span class="highlight-label">A Final Word</span>
+      <p>The Shepherd became the Host. The Table became the Temple. The Temple became the fire. And this evening — the fire has learned how to welcome doubt without fear. Lead well. 🪑💭</p>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <p>The Table · <a href="../index.html">thetable-hub.github.io/session-01</a> · Encounter. Community. Truth.</p>
+</footer>
+
+</body>
+</html>
