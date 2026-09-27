@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Prep Guide — Session 07 | The Table</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:#1a1a2e;--navy-mid:#16213e;--gold:#ffb432;--gold-dark:#c9922a;
+  --gold-light:#ffd166;--latte:#fdf8f3;--latte-dark:#f0e8dc;
+  --latte-mid:#e8ddd0;--text:#2c2c2c;--text-light:#6b5b45;
+  --white:#ffffff;--border:#e0d4c4;
+  --deep-purple:#2d1b4e;--mid-purple:#4a2d7a;--light-purple:#7a5aa8;
+  --dusk:#3a2c5f;--ember:#f39c12;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:var(--latte);color:var(--text);line-height:1.7;}
+
+nav{background:rgba(253,248,243,0.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.nav-logo-text{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--navy);letter-spacing:2px;}
+.nav-back{font-size:13px;font-weight:600;color:var(--text-light);text-decoration:none;display:flex;align-items:center;gap:6px;transition:color 0.2s;}
+.nav-back:hover{color:var(--navy);}
+
+.cover{background:linear-gradient(150deg,var(--navy) 0%,var(--deep-purple) 60%,var(--mid-purple) 100%);padding:80px 40px 70px;text-align:center;position:relative;overflow:hidden;}
+.cover::before{content:'';position:absolute;top:-100px;right:-100px;width:400px;height:400px;background:radial-gradient(circle,rgba(243,156,18,0.15),transparent 70%);border-radius:50%;}
+.cover::after{content:'';position:absolute;bottom:-120px;left:-80px;width:350px;height:350px;background:radial-gradient(circle,rgba(122,90,168,0.25),transparent 70%);border-radius:50%;}
+.cover-badge{display:inline-block;font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--ember);background:rgba(243,156,18,0.15);border:1px solid rgba(243,156,18,0.3);padding:6px 18px;border-radius:30px;margin-bottom:28px;position:relative;z-index:1;}
+.cover h1{font-family:'Playfair Display',serif;font-size:52px;color:var(--white);line-height:1.15;margin-bottom:18px;font-style:italic;position:relative;z-index:1;}
+.cover h1 span{font-style:normal;color:var(--ember);}
+.cover-sub{font-family:'Lora',serif;font-size:17px;color:rgba(255,255,255,0.72);font-style:italic;margin-bottom:10px;position:relative;z-index:1;}
+.cover-scriptures{font-family:'Inter',sans-serif;font-size:12px;color:rgba(255,255,255,0.5);letter-spacing:2px;margin-bottom:36px;position:relative;z-index:1;}
+.cover-meta{display:inline-flex;gap:36px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:12px;padding:18px 32px;flex-wrap:wrap;justify-content:center;position:relative;z-index:1;}
+.cover-meta-item{text-align:center;}
+.cover-meta-item .val{font-family:'Playfair Display',serif;font-size:18px;color:var(--white);font-weight:700;}
+.cover-meta-item .lbl{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-top:3px;}
+
+.main{max-width:760px;margin:0 auto;padding:70px 40px 100px;}
+
+.welcome-box{background:var(--white);border-radius:16px;border:1px solid var(--border);padding:40px;margin-bottom:50px;border-top:4px solid var(--mid-purple);}
+.welcome-box h2{font-family:'Playfair Display',serif;font-size:26px;color:var(--navy);margin-bottom:14px;}
+.welcome-box p{font-family:'Lora',serif;font-size:16px;color:var(--text-light);line-height:1.9;font-style:italic;}
+.welcome-box p+p{margin-top:14px;}
+
+.section-divider{display:flex;align-items:center;gap:16px;margin:50px 0 32px;}
+.section-divider .divider-label{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--mid-purple);white-space:nowrap;}
+.section-divider::before,.section-divider::after{content:'';flex:1;height:1px;background:var(--border);}
+
+.reading-list{display:flex;flex-direction:column;gap:14px;margin-bottom:50px;}
+.reading-item{background:var(--white);border-radius:12px;border:1px solid var(--border);padding:22px 26px;display:flex;gap:20px;align-items:flex-start;transition:all 0.2s;}
+.reading-item:hover{border-color:var(--mid-purple);transform:translateX(4px);}
+.reading-num{width:36px;height:36px;background:var(--navy);color:var(--ember);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:16px;font-weight:700;flex-shrink:0;}
+.reading-content .ref{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--mid-purple);margin-bottom:4px;}
+.reading-content h4{font-family:'Playfair Display',serif;font-size:18px;color:var(--navy);margin-bottom:6px;}
+.reading-content p{font-size:14px;color:var(--text-light);line-height:1.7;}
+
+.doubters-box{background:linear-gradient(135deg,var(--deep-purple),var(--navy));border-radius:16px;padding:44px;margin-bottom:50px;color:var(--white);position:relative;overflow:hidden;}
+.doubters-box::before{content:'';position:absolute;top:-60px;right:-60px;width:250px;height:250px;background:radial-gradient(circle,rgba(243,156,18,0.12),transparent 70%);border-radius:50%;}
+.doubters-box .d-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--ember);font-weight:700;margin-bottom:18px;text-align:center;position:relative;z-index:1;}
+.doubters-box h3{font-family:'Playfair Display',serif;font-size:24px;color:var(--white);text-align:center;margin-bottom:14px;font-style:italic;position:relative;z-index:1;}
+.doubters-box>p{font-family:'Lora',serif;font-size:15px;color:rgba(255,255,255,0.75);line-height:1.85;font-style:italic;text-align:center;margin-bottom:24px;position:relative;z-index:1;}
+.doubters-list{display:flex;flex-direction:column;gap:10px;position:relative;z-index:1;}
+.doubter-item{background:rgba(255,255,255,0.05);border:1px solid rgba(243,156,18,0.15);border-radius:8px;padding:14px 18px;display:flex;gap:14px;align-items:flex-start;}
+.doubter-icon{width:32px;height:32px;background:rgba(243,156,18,0.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;color:var(--ember);font-weight:700;font-family:'Playfair Display',serif;}
+.doubter-content h4{font-size:13px;color:var(--ember);font-weight:700;margin-bottom:3px;font-family:'Inter',sans-serif;}
+.doubter-content p{font-size:13px;color:rgba(255,255,255,0.7);margin:0;font-family:'Lora',serif;font-style:italic;line-height:1.6;}
+
+.whys-box{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:36px;margin-bottom:50px;}
+.whys-box .w-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--mid-purple);font-weight:700;margin-bottom:20px;text-align:center;}
+.whys-box h3{font-family:'Playfair Display',serif;font-size:24px;color:var(--navy);text-align:center;margin-bottom:24px;font-style:italic;}
+.whys-grid{display:flex;flex-direction:column;gap:14px;}
+.why-card{border-radius:12px;padding:22px 24px;border-left:5px solid;}
+.why-head{background:#eef4fb;border-color:#2980b9;}
+.why-heart{background:#fdf2f2;border-color:#c0392b;}
+.why-will{background:#fef9e7;border-color:#c9922a;}
+.why-tag{font-size:10px;letter-spacing:2px;text-transform:uppercase;font-weight:700;margin-bottom:6px;}
+.why-head .why-tag{color:#2980b9;}
+.why-heart .why-tag{color:#c0392b;}
+.why-will .why-tag{color:#c9922a;}
+.why-card h4{font-family:'Playfair Display',serif;font-size:18px;color:var(--navy);margin-bottom:8px;font-style:italic;}
+.why-card p{font-family:'Lora',serif;font-size:14px;color:var(--text-light);line-height:1.7;margin:0;}
+.why-card .why-need{margin-top:10px;padding-top:10px;border-top:1px dashed rgba(0,0,0,0.1);font-size:12px;font-weight:700;color:var(--navy);letter-spacing:0.5px;font-family:'Inter',sans-serif;}
+
+.jesus-box{background:linear-gradient(135deg,#1a3a5f,var(--navy));border-radius:16px;padding:40px;margin-bottom:50px;color:var(--white);position:relative;overflow:hidden;}
+.jesus-box::before{content:'';position:absolute;top:-40px;right:-40px;width:200px;height:200px;background:radial-gradient(circle,rgba(243,156,18,0.12),transparent 70%);border-radius:50%;}
+.jesus-box .j-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--ember);font-weight:700;margin-bottom:18px;text-align:center;position:relative;z-index:1;}
+.jesus-box h3{font-family:'Playfair Display',serif;font-size:24px;color:var(--white);text-align:center;margin-bottom:8px;font-style:italic;position:relative;z-index:1;}
+.jesus-box .j-sub{text-align:center;font-family:'Lora',serif;font-size:13px;color:rgba(255,255,255,0.55);font-style:italic;margin-bottom:24px;position:relative;z-index:1;}
+.jesus-list{position:relative;z-index:1;display:flex;flex-direction:column;gap:14px;}
+.jesus-row{background:rgba(255,255,255,0.05);border:1px solid rgba(243,156,18,0.2);border-radius:10px;padding:18px 20px;}
+.jesus-row h4{font-size:14px;color:var(--ember);font-weight:700;margin-bottom:6px;font-family:'Inter',sans-serif;}
+.jesus-row p{font-size:13px;color:rgba(255,255,255,0.75);line-height:1.7;margin:0;font-family:'Lora',serif;font-style:italic;}
+
+.framework-box{background:linear-gradient(135deg,var(--deep-purple),#1a1a2e);border-radius:16px;padding:40px;margin-bottom:50px;color:var(--white);}
+.framework-box .f-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--ember);font-weight:700;margin-bottom:18px;text-align:center;}
+.framework-box h3{font-family:'Playfair Display',serif;font-size:24px;color:var(--white);text-align:center;margin-bottom:8px;font-style:italic;}
+.framework-box .f-sub{text-align:center;font-family:'Lora',serif;font-size:13px;color:rgba(255,255,255,0.55);font-style:italic;margin-bottom:24px;}
+.framework-list{display:flex;flex-direction:column;gap:12px;}
+.framework-row{background:rgba(255,255,255,0.05);border:1px solid rgba(243,156,18,0.2);border-radius:10px;padding:16px 20px;display:flex;gap:14px;align-items:flex-start;}
+.framework-num{width:32px;height:32px;background:var(--ember);color:var(--navy);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;font-family:'Playfair Display',serif;}
+.framework-content h4{font-size:14px;color:var(--ember);font-weight:700;margin-bottom:4px;font-family:'Inter',sans-serif;}
+.framework-content p{font-size:13px;color:rgba(255,255,255,0.75);line-height:1.7;margin:0;font-family:'Lora',serif;font-style:italic;}
+
+.questions-list{display:flex;flex-direction:column;gap:20px;margin-bottom:50px;}
+.question-item{background:var(--white);border-radius:12px;border:1px solid var(--border);padding:28px 30px;border-left:4px solid var(--mid-purple);}
+.question-item .q-num{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--mid-purple);margin-bottom:10px;}
+.question-item p{font-family:'Playfair Display',serif;font-size:19px;color:var(--navy);line-height:1.5;font-style:italic;}
+.question-item .q-note{font-family:'Lora',serif;font-size:13px;color:var(--text-light);margin-top:10px;font-style:italic;}
+
+.expect-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:50px;}
+.expect-item{background:var(--white);border-radius:12px;border:1px solid var(--border);padding:22px;}
+.expect-item .e-icon{width:38px;height:38px;background:var(--latte-dark);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;}
+.expect-item h4{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:6px;}
+.expect-item p{font-size:13px;color:var(--text-light);line-height:1.7;}
+
+.prayer-box{background:var(--latte-dark);border-radius:16px;border:1px solid var(--border);padding:40px;text-align:center;margin-bottom:40px;}
+.prayer-box .prayer-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--mid-purple);font-weight:700;margin-bottom:20px;}
+.prayer-box p{font-family:'Playfair Display',serif;font-size:18px;color:var(--navy);line-height:1.8;font-style:italic;}
+
+.session-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;padding-top:20px;border-top:1px solid var(--border);}
+.btn-outline{background:transparent;color:var(--navy);padding:13px 26px;border-radius:8px;text-decoration:none;font-weight:700;font-size:14px;border:2px solid var(--navy);transition:all 0.2s;display:inline-block;}
+.btn-outline:hover{background:var(--navy);color:var(--ember);}
+
+footer{background:var(--navy);padding:36px 40px;text-align:center;}
+footer p{font-family:'Lora',serif;font-size:13px;color:rgba(255,255,255,0.4);font-style:italic;}
+footer a{color:var(--gold-dark);text-decoration:none;}
+
+@media(max-width:700px){
+  nav{padding:0 20px;}
+  .cover{padding:60px 24px 50px;}.cover h1{font-size:36px;}
+  .main{padding:50px 20px 80px;}
+  .expect-grid{grid-template-columns:1fr;}
+  .session-actions{flex-direction:column;align-items:center;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="nav-logo">
+    <svg width="32" height="32" viewBox="0 0 36 36">
+      <circle cx="18" cy="18" r="17" fill="#1a1a2e"/>
+      <path d="M 10 12 A 8 1.5 0 0 0 26 12" fill="none" stroke="#ffd166" stroke-width="0.9" stroke-linecap="round"/>
+      <rect x="10" y="12" width="16" height="3.5" rx="1" fill="#ffb432"/>
+      <rect x="15.5" y="15.5" width="5" height="11" rx="1" fill="#ffb432"/>
+      <rect x="13" y="26.5" width="10" height="2" rx="1" fill="#ffb432" opacity="0.75"/>
+    </svg>
+    <span class="nav-logo-text">THE TABLE</span>
+  </a>
+  <a href="../index.html" class="nav-back">
+    <svg width="16" height="16" viewBox="0 0 16 16"><path d="M10 3L5 8L10 13" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Back to Home
+  </a>
+</nav>
+
+<div class="cover">
+  <div class="cover-badge">Session 07 · Student Prep Guide · October 2026</div>
+  <h1>"When Doubt Sits<br><span>at the Table"</span></h1>
+  <p class="cover-sub">Why Your Questions Do Not Embarrass God</p>
+  <p class="cover-scriptures">Psalm 51 · John 20 · Mark 9 · Matthew 11 · Job · Habakkuk · Jude 22</p>
+  <div class="cover-meta">
+    <div class="cover-meta-item"><div class="val">4 Oct</div><div class="lbl">Session Date</div></div>
+    <div class="cover-meta-item"><div class="val">4–6pm</div><div class="lbl">Time</div></div>
+    <div class="cover-meta-item"><div class="val">6</div><div class="lbl">Doubters</div></div>
+    <div class="cover-meta-item"><div class="val">3</div><div class="lbl">Kinds of Why</div></div>
+  </div>
+</div>
+
+<div class="main">
+
+  <div class="welcome-box">
+    <h2>Before you pull up a chair...</h2>
+    <p>Every one of us knows someone who once walked with God and now does not. A friend from school. A cousin. A colleague. Perhaps somebody we love who is still with us but whose faith quietly died somewhere along the way.</p>
+    <p>Almost every one of them left because a <em>why</em> was never answered. Not a philosophical <em>why</em> for the most part. A deeper one. A wound. A confusion. A question they were never given permission to voice inside a church. This evening the Table welcomes the guest most churches send away. Doubt. Not to enthrone it. To feed it. Because a well-fed doubt often becomes a stronger faith than one that was never allowed to speak.</p>
+  </div>
+
+  <div class="section-divider"><span class="divider-label">Step 1 — Read</span></div>
+
+  <div class="reading-list">
+    <div class="reading-item">
+      <div class="reading-num">1</div>
+      <div class="reading-content">
+        <div class="ref">John 20:24–29</div>
+        <h4>Thomas — the intellectual doubter.</h4>
+        <p>He wanted evidence before he would believe. Jesus did not scold him. Jesus gave him exactly what he asked for. Then he sent him to India.</p>
+      </div>
+    </div>
+    <div class="reading-item">
+      <div class="reading-num">2</div>
+      <div class="reading-content">
+        <div class="ref">Mark 9:14–29</div>
+        <h4>The father — the emotional doubter.</h4>
+        <p>He said the words every honest believer has felt — <em>I believe, help my unbelief.</em> Jesus honoured the mixed heart and healed his son immediately.</p>
+      </div>
+    </div>
+    <div class="reading-item">
+      <div class="reading-num">3</div>
+      <div class="reading-content">
+        <div class="ref">Matthew 11:1–11</div>
+        <h4>John the Baptist — doubting from prison.</h4>
+        <p>The greatest prophet ever born of a woman sent messengers to ask <em>are you really the one?</em> Jesus did not rebuke him. He sent back scripture.</p>
+      </div>
+    </div>
+    <div class="reading-item">
+      <div class="reading-num">4</div>
+      <div class="reading-content">
+        <div class="ref">Habakkuk 1–3</div>
+        <h4>The prophet who confronted God twice.</h4>
+        <p>Habakkuk demanded answers about injustice. God answered him. And by chapter 3, Habakkuk wrote one of the most beautiful declarations of faith in scripture.</p>
+      </div>
+    </div>
+    <div class="reading-item">
+      <div class="reading-num">5</div>
+      <div class="reading-content">
+        <div class="ref">Job 1–2, 38, 42</div>
+        <h4>The man God called "my servant" after every accusation.</h4>
+        <p>Job argued with God for over thirty chapters. God's final verdict — Job spoke rightly. The theologically correct friends did not.</p>
+      </div>
+    </div>
+    <div class="reading-item">
+      <div class="reading-num">6</div>
+      <div class="reading-content">
+        <div class="ref">Jude 22 · Matthew 28:17</div>
+        <h4>Two verses that change everything.</h4>
+        <p>Jude says <em>be merciful to those who doubt.</em> Matthew records that at the Great Commission, some of the eleven still doubted. And Jesus commissioned them all anyway.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-divider"><span class="divider-label">Step 2 — Six Honest Doubters</span></div>
+
+  <div class="doubters-box">
+    <div class="d-label">You Are in Good Company</div>
+    <h3>The Bible is full of honest doubters.</h3>
+    <p>Not fringe characters. Prophets. Kings. Apostles. Fathers. The most faithful people in scripture asked God the hardest questions any human being has ever asked. And God did not send them away.</p>
+    <div class="doubters-list">
+      <div class="doubter-item">
+        <div class="doubter-icon">1</div>
+        <div class="doubter-content">
+          <h4>Thomas · John 20</h4>
+          <p>Wanted to touch the wounds. Jesus offered him exactly the evidence he asked for. The doubter became a missionary to India.</p>
+        </div>
+      </div>
+      <div class="doubter-item">
+        <div class="doubter-icon">2</div>
+        <div class="doubter-content">
+          <h4>The Father · Mark 9</h4>
+          <p><em>I believe, help my unbelief.</em> Jesus honoured the mixed heart and healed the boy immediately.</p>
+        </div>
+      </div>
+      <div class="doubter-item">
+        <div class="doubter-icon">3</div>
+        <div class="doubter-content">
+          <h4>Habakkuk · Habakkuk 1–3</h4>
+          <p>Confronted God twice about injustice. Ended his book with one of the most beautiful declarations of faith in the Bible.</p>
+        </div>
+      </div>
+      <div class="doubter-item">
+        <div class="doubter-icon">4</div>
+        <div class="doubter-content">
+          <h4>Job · Job 1–42</h4>
+          <p>Thirty-seven chapters of accusation. And God called him <em>my servant</em> — not his theologically correct friends.</p>
+        </div>
+      </div>
+      <div class="doubter-item">
+        <div class="doubter-icon">5</div>
+        <div class="doubter-content">
+          <h4>David · Psalm 13</h4>
+          <p><em>How long, Lord? Will you forget me forever?</em> The man after God's own heart taught us the language of lament.</p>
+        </div>
+      </div>
+      <div class="doubter-item">
+        <div class="doubter-icon">6</div>
+        <div class="doubter-content">
+          <h4>John the Baptist · Matthew 11</h4>
+          <p>Doubted from a prison cell. Jesus sent back scripture — and called him the greatest man ever born of a woman.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-divider"><span class="divider-label">Step 3 — The Three Kinds of Why</span></div>
+
+  <div class="whys-box">
+    <div class="w-label">Learning to Recognise the Real Question</div>
+    <h3>Not every why is the same kind of why.</h3>
+    <div class="whys-grid">
+      <div class="why-card why-head">
+        <div class="why-tag">The Head Question</div>
+        <h4>The Intellectual Why</h4>
+        <p><em>How do we know God exists? How do we know the Bible is reliable? How do we know Jesus rose from the dead?</em> These come from a mind trying to understand.</p>
+        <div class="why-need">Needs: Evidence, scripture, reasoning</div>
+      </div>
+      <div class="why-card why-heart">
+        <div class="why-tag">The Heart Question</div>
+        <h4>The Emotional Why</h4>
+        <p><em>Why did God allow my son to die? Why did my father leave? Why did I pray for years and nothing changed?</em> These come from a heart in pain.</p>
+        <div class="why-need">Needs: Presence, lament, the Psalms</div>
+      </div>
+      <div class="why-card why-will">
+        <div class="why-tag">The Will Question</div>
+        <h4>The Moral Why</h4>
+        <p><em>Why should I forgive her? Why should I stay pure? Why should I obey when nobody else is?</em> These come from a will deciding whether to actually do the thing God is asking.</p>
+        <div class="why-need">Needs: A vision of Jesus more compelling than the alternative</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-divider"><span class="divider-label">Step 4 — How Jesus Handled Doubters</span></div>
+
+  <div class="jesus-box">
+    <div class="j-label">The Master of Meeting People Where They Are</div>
+    <h3>Three doubters. Three responses.</h3>
+    <p class="j-sub">One consistent posture — Jesus drew closer to every one of them.</p>
+    <div class="jesus-list">
+      <div class="jesus-row">
+        <h4>To Thomas — he gave evidence</h4>
+        <p><em>Put your finger here. Reach out your hand.</em> Jesus gave Thomas exactly what he asked for. No shame. No lecture. Then Thomas fell to his knees — <em>my Lord and my God.</em></p>
+      </div>
+      <div class="jesus-row">
+        <h4>To the Father in Mark 9 — he gave action</h4>
+        <p>The father said <em>I believe, help my unbelief.</em> Jesus did not require him to sort out his theology first. He healed the boy immediately. Sincerity was enough.</p>
+      </div>
+      <div class="jesus-row">
+        <h4>To John the Baptist — he gave scripture</h4>
+        <p>John doubted from a prison cell. Jesus did not rescue him from prison. He sent scripture — Isaiah 35 and 61. Then he called John the greatest man ever born of a woman.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-divider"><span class="divider-label">Step 5 — Four Questions to Carry Home</span></div>
+
+  <div class="framework-box">
+    <div class="f-label">Where the Answers Actually Come From</div>
+    <h3>Scripture, the Holy Spirit, and Sincere Wrestling</h3>
+    <p class="f-sub">Four portable questions to bring to the Table when doubt sits down beside you.</p>
+    <div class="framework-list">
+      <div class="framework-row">
+        <div class="framework-num">1</div>
+        <div class="framework-content">
+          <h4>Is this a head, heart, or will question?</h4>
+          <p>Because the wrong kind of answer will not satisfy the right kind of question.</p>
+        </div>
+      </div>
+      <div class="framework-row">
+        <div class="framework-num">2</div>
+        <div class="framework-content">
+          <h4>Am I asking for an answer, or for permission?</h4>
+          <p>Sincerity is the door. God meets the honest seeker. He does not chase the person who has already decided.</p>
+        </div>
+      </div>
+      <div class="framework-row">
+        <div class="framework-num">3</div>
+        <div class="framework-content">
+          <h4>Where in scripture has God already answered this?</h4>
+          <p>Almost every honest human question has been asked before. The answer is somewhere in the text. Search for it.</p>
+        </div>
+      </div>
+      <div class="framework-row">
+        <div class="framework-num">4</div>
+        <div class="framework-content">
+          <h4>What is the Helper saying to me as I sit with this?</h4>
+          <p>The Spirit is Counsellor for the head, Comforter for the heart, and Spirit of Truth for the will. Sit still. Listen.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-divider"><span class="divider-label">Step 6 — Journal</span></div>
+
+  <div class="questions-list">
+    <div class="question-item">
+      <div class="q-num">Question 1</div>
+      <p>"Have you ever watched someone you loved walk away from faith over a question that was never answered? What was the question they carried?"</p>
+      <div class="q-note">Almost every one of us knows someone. Sit with the face that comes to mind.</div>
+    </div>
+    <div class="question-item">
+      <div class="q-num">Question 2</div>
+      <p>"Think of a why you are carrying right now. Is it a head question, a heart question, or a will question? And knowing that, does the answer suddenly need to look different?"</p>
+      <div class="q-note">Getting this wrong is what makes so many good people walk away.</div>
+    </div>
+    <div class="question-item">
+      <div class="q-num">Question 3</div>
+      <p>"Am I asking my why because I want the answer, or because I want permission to leave?"</p>
+      <div class="q-note">This is the sincerity question. Only you and the Helper know the true answer.</div>
+    </div>
+  </div>
+
+  <div class="section-divider"><span class="divider-label">Step 7 — Come Ready</span></div>
+
+  <div class="expect-grid">
+    <div class="expect-item">
+      <div class="e-icon">
+        <svg width="20" height="20" viewBox="0 0 20 20"><rect x="3" y="2" width="14" height="16" rx="2" fill="none" stroke="#4a2d7a" stroke-width="1.3"/><line x1="7" y1="7" x2="13" y2="7" stroke="#4a2d7a" stroke-width="1.1" stroke-linecap="round"/><line x1="7" y1="10" x2="13" y2="10" stroke="#4a2d7a" stroke-width="1.1" stroke-linecap="round"/></svg>
+      </div>
+      <h4>Bring your Bible</h4>
+      <p>We will work through Psalm 51, John 20, Mark 9, Matthew 11 and Job together. Any translation you are comfortable with.</p>
+    </div>
+    <div class="expect-item">
+      <div class="e-icon">
+        <svg width="20" height="20" viewBox="0 0 20 20"><circle cx="10" cy="10" r="7" fill="none" stroke="#4a2d7a" stroke-width="1.3"/><line x1="10" y1="7" x2="10" y2="10" stroke="#4a2d7a" stroke-width="1.3" stroke-linecap="round"/><line x1="10" y1="10" x2="13" y2="13" stroke="#4a2d7a" stroke-width="1.3" stroke-linecap="round"/></svg>
+      </div>
+      <h4>4–6pm on Sunday</h4>
+      <p>Two hours together. Come settled and ready to engage. We start and end on time.</p>
+    </div>
+    <div class="expect-item">
+      <div class="e-icon">
+        <svg width="20" height="20" viewBox="0 0 20 20"><circle cx="10" cy="7" r="3" fill="none" stroke="#4a2d7a" stroke-width="1.3"/><path d="M4 17 c0-4 12-4 12 0" fill="none" stroke="#4a2d7a" stroke-width="1.3" stroke-linecap="round"/></svg>
+      </div>
+      <h4>Ages 13 and above</h4>
+      <p>Teenagers, young adults, and parents all welcome. Every voice around the Table matters.</p>
+    </div>
+    <div class="expect-item">
+      <div class="e-icon">
+        <svg width="20" height="20" viewBox="0 0 20 20"><path d="M10 3 C6 3 4 6 4 9 C4 12 6 14 10 17 C14 14 16 12 16 9 C16 6 14 3 10 3 Z" fill="none" stroke="#4a2d7a" stroke-width="1.3" stroke-linejoin="round"/></svg>
+      </div>
+      <h4>Bring the question you carry</h4>
+      <p>Whatever you have been afraid to voice. Bring it. The Table has room for it.</p>
+    </div>
+  </div>
+
+  <div class="prayer-box">
+    <div class="prayer-label">A Prayer Before You Come</div>
+    <p>"Helper, teach me to bring my questions honestly. Give me a sincere heart. And meet me where I am, the way you met Thomas, and the father in Mark 9, and John in the prison cell. Amen."</p>
+  </div>
+
+  <div class="session-actions">
+    <a href="../index.html" class="btn-outline">Back to Home</a>
+  </div>
+
+</div>
+
+<footer>
+  <p>The Table · <a href="../index.html">thetable-hub.github.io/session-01</a> · Encounter. Community. Truth.</p>
+</footer>
+
+</body>
+</html>
