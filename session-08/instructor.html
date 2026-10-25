@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Facilitator Guide — Session 08 | The Table</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#1a1a2e;--navy-mid:#16213e;--gold:#ffb432;--gold-dark:#c9922a;
+  --gold-light:#ffd166;--latte:#fdf8f3;--latte-dark:#f0e8dc;
+  --text:#2c2c2c;--text-light:#6b5b45;--white:#ffffff;--border:#e0d4c4;
+  --garden-deep:#1a3a2a;--garden-mid:#2d5a3f;--garden-light:#5a8a6f;
+  --ember:#f39c12;--eden-gold:#d4a84a;
+  --fall-dark:#5a2a1a;--fall-mid:#8a4a2a;
+  --redemption:#7a1e0f;--redemption-mid:#c0392b;
+  --restoration:#1a4a6f;--restoration-mid:#2a7aa0;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:var(--latte);color:var(--text);line-height:1.7;}
+nav{background:rgba(253,248,243,0.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:68px;position:sticky;top:0;z-index:100;}
+.nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo-text{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--navy);letter-spacing:2px;}
+.nav-back{font-size:13px;font-weight:600;color:var(--text-light);text-decoration:none;display:flex;align-items:center;gap:6px;transition:color 0.2s;}
+.nav-back:hover{color:var(--navy);}
+
+.cover{background:linear-gradient(135deg,#1a1a2e 0%,var(--garden-deep) 50%,var(--garden-mid) 100%);min-height:50vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 40px;position:relative;overflow:hidden;}
+.cover::before{content:'';position:absolute;top:-100px;left:-100px;width:400px;height:400px;background:radial-gradient(circle,rgba(243,156,18,0.18) 0%,transparent 70%);border-radius:50%;}
+.cover::after{content:'';position:absolute;bottom:-120px;right:-100px;width:400px;height:400px;background:radial-gradient(circle,rgba(90,138,111,0.3),transparent 70%);border-radius:50%;}
+.cover-badge{background:rgba(243,156,18,0.2);border:1px solid rgba(243,156,18,0.5);color:var(--ember);font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;padding:8px 20px;border-radius:30px;margin-bottom:40px;position:relative;z-index:1;}
+.cover h1{font-family:'Playfair Display',serif;font-size:52px;color:#fff;line-height:1.2;margin-bottom:20px;font-style:italic;position:relative;z-index:1;}
+.cover h1 span{color:var(--ember);font-style:normal;}
+.cover-subtitle{font-family:'Lora',serif;font-size:17px;color:rgba(255,255,255,0.72);margin-bottom:10px;font-style:italic;position:relative;z-index:1;}
+.cover-scriptures{font-size:11px;color:rgba(255,255,255,0.45);letter-spacing:2px;margin-bottom:50px;position:relative;z-index:1;}
+.cover-divider{width:80px;height:3px;background:linear-gradient(90deg,transparent,var(--ember),transparent);margin:0 auto 40px;position:relative;z-index:1;}
+.cover-meta{display:flex;gap:40px;justify-content:center;flex-wrap:wrap;position:relative;z-index:1;}
+.cover-meta-item{text-align:center;}
+.cover-meta-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:4px;}
+.cover-meta-value{font-size:14px;color:rgba(255,255,255,0.85);font-weight:600;}
+
+.content{max-width:850px;margin:0 auto;padding:60px 40px;}
+
+.overview-box{background:linear-gradient(135deg,#1a1a2e,var(--garden-deep));border-radius:16px;padding:40px;margin-bottom:60px;color:white;}
+.overview-box h2{font-family:'Playfair Display',serif;font-size:24px;color:var(--ember);margin-bottom:24px;letter-spacing:1px;}
+.overview-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;margin-bottom:30px;}
+.overview-item{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:10px;padding:16px;text-align:center;}
+.overview-item .icon{font-size:22px;margin-bottom:8px;}
+.overview-item .label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.5);}
+.overview-item .value{font-size:14px;font-weight:600;color:white;margin-top:4px;}
+.session-list{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;}
+.session-list li{background:rgba(243,156,18,0.12);border-left:3px solid var(--ember);padding:10px 14px;border-radius:0 8px 8px 0;font-size:14px;color:rgba(255,255,255,0.85);}
+.session-list li span{color:var(--ember);font-weight:700;margin-right:6px;}
+
+.section-header{display:flex;align-items:center;gap:16px;margin-bottom:30px;margin-top:60px;}
+.section-number{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:22px;font-weight:700;flex-shrink:0;color:white;}
+.s1 .section-number{background:linear-gradient(135deg,#e74c3c,#c0392b);}
+.s2 .section-number{background:linear-gradient(135deg,#5a8a6f,#2d5a3f);}
+.s3 .section-number{background:linear-gradient(135deg,#8a4a2a,#5a2a1a);}
+.s4 .section-number{background:linear-gradient(135deg,#c0392b,#7a1e0f);}
+.s5 .section-number{background:linear-gradient(135deg,#8e44ad,#4a2d7a);}
+.s6 .section-number{background:linear-gradient(135deg,#2a7aa0,#1a4a6f);}
+.s7 .section-number{background:linear-gradient(135deg,#d4a84a,#9a7a2a);}
+.section-title-block h2{font-family:'Playfair Display',serif;font-size:28px;line-height:1.2;}
+.s1 .section-title-block h2{color:#c0392b;}
+.s2 .section-title-block h2{color:#2d5a3f;}
+.s3 .section-title-block h2{color:#5a2a1a;}
+.s4 .section-title-block h2{color:#7a1e0f;}
+.s5 .section-title-block h2{color:#4a2d7a;}
+.s6 .section-title-block h2{color:#1a4a6f;}
+.s7 .section-title-block h2{color:#9a7a2a;}
+.section-title-block .section-tag{font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:600;opacity:0.6;}
+.section-divider-line{height:3px;border-radius:2px;margin-bottom:30px;}
+.s1 .section-divider-line{background:linear-gradient(90deg,#e74c3c,transparent);}
+.s2 .section-divider-line{background:linear-gradient(90deg,#2d5a3f,transparent);}
+.s3 .section-divider-line{background:linear-gradient(90deg,#5a2a1a,transparent);}
+.s4 .section-divider-line{background:linear-gradient(90deg,#7a1e0f,transparent);}
+.s5 .section-divider-line{background:linear-gradient(90deg,#4a2d7a,transparent);}
+.s6 .section-divider-line{background:linear-gradient(90deg,#1a4a6f,transparent);}
+.s7 .section-divider-line{background:linear-gradient(90deg,#9a7a2a,transparent);}
+
+p{font-family:'Lora',serif;font-size:16px;line-height:1.9;margin-bottom:16px;color:#333;}
+
+.leader-box{background:#fff8e6;border:1px solid #ffd97d;border-left:5px solid var(--ember);border-radius:8px;padding:18px 22px;margin:24px 0;font-family:'Inter',sans-serif;font-size:14px;color:#7a5c00;}
+.leader-box strong{display:block;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#b8860b;margin-bottom:6px;}
+
+.scripture{background:linear-gradient(135deg,#eaf4fb,#d6eaf8);border-left:5px solid #2980b9;border-radius:0 12px 12px 0;padding:22px 28px;margin:28px 0;position:relative;}
+.scripture::before{content:'\201C';position:absolute;top:-10px;left:14px;font-size:80px;color:#2980b9;opacity:0.2;font-family:'Playfair Display',serif;line-height:1;}
+.scripture p{font-family:'Playfair Display',serif;font-size:17px;font-style:italic;color:#1a5276;margin:0 0 8px 0;line-height:1.7;}
+.scripture .ref{font-family:'Inter',sans-serif;font-size:12px;font-weight:700;letter-spacing:1px;color:#2980b9;text-transform:uppercase;}
+
+.question-box{border-radius:12px;padding:20px 24px;margin:24px 0;display:flex;gap:16px;align-items:flex-start;}
+.s1 .question-box{background:#fdf2f2;border:1px solid #f5c6cb;}
+.s2 .question-box{background:#eafaf1;border:1px solid #a9dfbf;}
+.s3 .question-box{background:#f5e8d8;border:1px solid #e0c090;}
+.s4 .question-box{background:#fadbd8;border:1px solid #f1948a;}
+.s5 .question-box{background:#f0e8f8;border:1px solid #c8b3e0;}
+.s6 .question-box{background:#e8f0fa;border:1px solid #a8c8e8;}
+.s7 .question-box{background:#fef9e7;border:1px solid #f9e79f;}
+.question-icon{font-size:26px;flex-shrink:0;margin-top:2px;}
+.question-content strong{display:block;font-family:'Inter',sans-serif;font-size:10px;letter-spacing:2px;text-transform:uppercase;font-weight:700;margin-bottom:6px;color:#c9922a;}
+.question-content p{font-family:'Inter',sans-serif;font-size:15px;font-weight:600;margin:0;color:#2c2c2c;font-style:italic;}
+
+.highlight-box{background:linear-gradient(135deg,#1a1a2e,var(--garden-deep));color:white;border-radius:16px;padding:32px 36px;margin:30px 0;text-align:center;position:relative;overflow:hidden;}
+.highlight-box::before{content:'';position:absolute;top:-40px;right:-40px;width:180px;height:180px;background:radial-gradient(circle,rgba(243,156,18,0.15),transparent 70%);border-radius:50%;}
+.highlight-box p{font-family:'Playfair Display',serif;font-size:20px;font-style:italic;color:white;margin:0;line-height:1.7;position:relative;z-index:1;}
+.highlight-box .highlight-label{font-family:'Inter',sans-serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--ember);font-style:normal;margin-bottom:14px;display:block;font-weight:700;position:relative;z-index:1;}
+
+.sentence-highlight{background:var(--white);border:2px solid var(--eden-gold);border-radius:16px;padding:30px 36px;margin:30px 0;text-align:center;}
+.sentence-highlight .sh-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--garden-mid);font-weight:700;margin-bottom:14px;}
+.sentence-highlight p{font-family:'Playfair Display',serif;font-size:22px;color:var(--navy);line-height:1.5;font-style:italic;margin:0;}
+
+.posture-card{background:white;border-radius:14px;box-shadow:0 4px 16px rgba(0,0,0,0.06);padding:22px 26px;margin:12px 0;border-left:5px solid var(--garden-mid);}
+.posture-card .pc-tag{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--garden-mid);margin-bottom:6px;}
+.posture-card h3{font-family:'Playfair Display',serif;font-size:18px;color:var(--navy);margin-bottom:8px;font-style:italic;}
+
+.future-card{background:white;border-radius:14px;box-shadow:0 4px 16px rgba(0,0,0,0.06);padding:24px 28px;margin:14px 0;border-left:5px solid var(--restoration-mid);}
+.future-card .fc-tag{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--restoration-mid);margin-bottom:6px;}
+.future-card h3{font-family:'Playfair Display',serif;font-size:20px;color:var(--navy);margin-bottom:10px;font-style:italic;}
+
+.fathers-note{background:#fff8e6;border:2px dashed var(--ember);border-radius:16px;padding:30px;margin:40px 0;}
+.fathers-note h3{font-family:'Inter',sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#b8860b;font-weight:700;margin-bottom:14px;}
+.fathers-note p{font-family:'Lora',serif;font-size:15px;color:#7a5c00;line-height:1.8;}
+
+.reflection-box{background:linear-gradient(160deg,var(--garden-deep),#1a1a2e);border-radius:20px;padding:50px 44px;margin:40px 0;position:relative;overflow:hidden;}
+.reflection-box::before{content:'';position:absolute;top:-60px;right:-60px;width:250px;height:250px;background:radial-gradient(circle,rgba(243,156,18,0.15),transparent 70%);border-radius:50%;}
+.reflection-box p{font-family:'Playfair Display',serif;font-size:18px;font-style:italic;color:rgba(255,255,255,0.9);line-height:2;margin-bottom:18px;position:relative;z-index:1;}
+.final-question{background:rgba(243,156,18,0.15);border:1px solid rgba(243,156,18,0.4);border-radius:12px;padding:24px 28px;margin-top:30px;text-align:center;position:relative;z-index:1;}
+.final-question p{font-family:'Playfair Display',serif;font-size:21px;font-style:italic;color:var(--ember);margin:0;}
+
+footer{background:#0d0d1e;padding:36px 40px;text-align:center;}
+footer p{font-family:'Lora',serif;font-size:13px;color:rgba(255,255,255,0.4);font-style:italic;}
+footer a{color:#c9922a;text-decoration:none;}
+
+@media(max-width:700px){
+  nav{padding:0 20px;}
+  .cover{padding:60px 20px 50px;}.cover h1{font-size:36px;}
+  .content{padding:40px 20px;}
+  .overview-grid{grid-template-columns:1fr 1fr;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="nav-logo">
+    <svg width="36" height="36" viewBox="0 0 36 36">
+      <circle cx="18" cy="18" r="17" fill="#1a1a2e"/>
+      <path d="M 10 12 A 8 1.5 0 0 0 26 12" fill="none" stroke="#ffd166" stroke-width="0.9" stroke-linecap="round"/>
+      <rect x="10" y="12" width="16" height="3.5" rx="1" fill="#ffb432"/>
+      <rect x="15.5" y="15.5" width="5" height="11" rx="1" fill="#ffb432"/>
+      <rect x="13" y="26.5" width="10" height="2" rx="1" fill="#ffb432" opacity="0.75"/>
+    </svg>
+    <span class="nav-logo-text">THE TABLE</span>
+  </a>
+  <a href="../index.html" class="nav-back">
+    <svg width="16" height="16" viewBox="0 0 16 16"><path d="M10 3L5 8L10 13" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Back to Home
+  </a>
+</nav>
+
+<div class="cover">
+  <div class="cover-badge">Session 08 · Facilitator Guide · November 2026</div>
+  <h1>"The Family<br><span>Table"</span></h1>
+  <p class="cover-subtitle">The Story Underneath Every Other Story</p>
+  <p class="cover-scriptures">Genesis 1–3 · Luke 22 · Ephesians 2 · Revelation 20–21</p>
+  <div class="cover-divider"></div>
+  <div class="cover-meta">
+    <div class="cover-meta-item"><div class="cover-meta-label">Date</div><div class="cover-meta-value">Sunday, 1 November 2026</div></div>
+    <div class="cover-meta-item"><div class="cover-meta-label">Time</div><div class="cover-meta-value">4:00 – 6:00pm</div></div>
+    <div class="cover-meta-item"><div class="cover-meta-label">Duration</div><div class="cover-meta-value">90 – 100 Minutes</div></div>
+    <div class="cover-meta-item"><div class="cover-meta-label">Audience</div><div class="cover-meta-value">Ages 13 and Above</div></div>
+  </div>
+</div>
+
+<div class="content">
+
+  <div class="overview-box">
+    <h2>📋 Session Overview</h2>
+    <div class="overview-grid">
+      <div class="overview-item"><div class="icon">🏡</div><div class="label">Central Image</div><div class="value">Family Table</div></div>
+      <div class="overview-item"><div class="icon">📖</div><div class="label">Four Acts</div><div class="value">The Whole Story</div></div>
+      <div class="overview-item"><div class="icon">🪑</div><div class="label">Three Postures</div><div class="value">Seated · Circling · Leaving</div></div>
+      <div class="overview-item"><div class="icon">✨</div><div class="label">One Sentence</div><div class="value">To Carry for Life</div></div>
+    </div>
+    <ul class="session-list">
+      <li><span>1.</span> Opening Hook · The Assignment</li>
+      <li><span>2.</span> Act One · Creation</li>
+      <li><span>3.</span> Act Two · The Fall</li>
+      <li><span>4.</span> Act Three · Redemption</li>
+      <li><span>5.</span> The Chairs, Manners, and Option</li>
+      <li><span>6.</span> Act Four · Restoration</li>
+      <li><span>7.</span> Every Meal is a Reminder</li>
+    </ul>
+  </div>
+
+  <!-- SECTION 1 -->
+  <div class="s1">
+    <div class="section-header">
+      <div class="section-number">1</div>
+      <div class="section-title-block"><div class="section-tag">To Open</div><h2>The Assignment</h2></div>
+    </div>
+    <div class="section-divider-line"></div>
+    <div class="leader-box"><strong>🎤 Leader Instruction</strong>Open by pouring tea, letting the room settle, and returning to the question from Session 07.</div>
+
+    <p>Before we open scripture this evening, I want to go back to something that happened at the end of our last gathering. I asked the young people a question. And then I sent you home with it as an assignment. <em>Why are you a Christian?</em> Five words. The simplest question in the room. And many of us struggled to answer it. Some said <em>because my parents are Christians.</em> Some said <em>because Jesus died for me.</em> All of those are honest answers. None of them are wrong. But none of them were enough.</p>
+
+    <p>So the assignment I gave you was simple. Go home. Ask your parents the same question. <em>Why are we Christians as a family?</em> I know some of you had those conversations. For some of you it was awkward. For some of you it opened a conversation that had been quietly waiting for years.</p>
+
+    <div class="highlight-box">
+      <span class="highlight-label">What This Evening Will Do</span>
+      <p>Tonight we are not going to open one passage and go deep. Tonight we are going to open the whole Bible — from Genesis 1 to Revelation 22 — and tell you the entire story in one evening. Four acts. One story.</p>
+    </div>
+
+    <p>By the end of this evening, I want every person around this Table to answer that question in one sentence. In your own voice. With the whole story standing behind it.</p>
+
+    <div class="sentence-highlight">
+      <div class="sh-label">The Sentence to Carry for Life</div>
+      <p>I am a Christian because God is building a Family — and he has invited me to come home.</p>
+    </div>
+
+    <p>Remember it over breakfast tomorrow. Remember it when you sit for supper on Tuesday. Remember it at every meal for the rest of your life. And one day, decades from now, when you have children and grandchildren of your own, pass that sentence down to them. Not as a slogan. As a story they can locate themselves inside.</p>
+
+    <div class="leader-box"><strong>⚡ The Honest Truth About the Option</strong>Deliver this gently. Sober mercy — not fear.</div>
+
+    <p>Before we go further, I need to tell you something. The Table we are about to describe is a real Table. The seats are real. The invitation is real. <strong>But it is also optional.</strong> The chairs are available. The Table is set. But nobody is forced to sit. You can decide to run in circles. You can decide the manners of the Table are too costly. That is your freedom. The Father does not force any of his children to come home.</p>
+
+    <p>But here is the honest thing I must say — with love, not with fear. <strong>You do not know when the door closes for you.</strong> Not when God closes it. The door closes the moment you take your last breath. And none of us know when that breath will be. The option to sit is only an option while you are breathing. I am not telling you this to frighten you. I am telling you because I love every one of you around this Table too much to send you home without being honest.</p>
+
+    <div class="question-box">
+      <div class="question-icon">💭</div>
+      <div class="question-content"><strong>Opening Discussion Question</strong><p>"If someone asked you right now — before this evening even begins — why are you a Christian? What would you say in one sentence? Try it in your own voice. Do not perform. Just answer honestly."</p></div>
+    </div>
+  </div>
+
+  <!-- SECTION 2 -->
+  <div class="s2">
+    <div class="section-header">
+      <div class="section-number">2</div>
+      <div class="section-title-block"><div class="section-tag">Act One</div><h2>Creation · The Table that Was</h2></div>
+    </div>
+    <div class="section-divider-line"></div>
+    <div class="leader-box"><strong>📖 Leader Instruction</strong>This is where the whole story begins. Slow down on the Trinity and the "let us" moment.</div>
+
+    <div class="scripture">
+      <p>"In the beginning, God created the heavens and the earth."</p>
+      <span class="ref">Genesis 1:1</span>
+    </div>
+
+    <p>Ten words. And already — before we even get to verse 2 — there is something we must stop and understand. The sentence says <em>in the beginning, God.</em> It does not say God was lonely. It does not say God needed company. It does not say God was incomplete.</p>
+
+    <p>God was already full. The God we are talking about is not a single person sitting alone in the universe. The God of the Bible is <strong>Father, Son, and Holy Spirit</strong> — three Persons in perfect love with one another, from eternity past. There has never been a moment when God was alone. There has never been a moment when the Father did not love the Son. There has never been a moment when the Spirit did not move between them in perfect fellowship.</p>
+
+    <div class="highlight-box">
+      <span class="highlight-label">Hold This Picture</span>
+      <p>Before there was a universe, there was a Family. Father, Son, and Spirit. Together. Enjoying one another. In perfect love. Lacking nothing. Full.</p>
+    </div>
+
+    <p>So why did God create anything at all? If he was already full — if he already had perfect love inside the Trinity — why make galaxies? Why make earth? Why make us? The answer is not that God needed something. <strong>Love does not stay to itself.</strong> When a man and a woman love each other deeply, what happens eventually? They want children. Not because they are incomplete. Because love overflows. That is what God did. The Father, Son, and Spirit decided to make a creature who could enter that enjoyment. Who could sit at the same Table.</p>
+
+    <div class="scripture">
+      <p>"Let us make man in our image, in our likeness..."</p>
+      <span class="ref">Genesis 1:26</span>
+    </div>
+
+    <p>Did you catch that? <em>Let us.</em> Plural. For the first time in the creation story, God speaks of himself in the plural. The Father, Son, and Spirit — in conversation with one another — decide to make humans. <em>In our image. In our likeness.</em> Meaning — able to love the way we love. Able to relate the way we relate. Able to sit at the Table and share what we share.</p>
+
+    <p>Humans were the only part of creation made to join the conversation. Stars cannot love you back. Oceans cannot pray with you. Mountains cannot sit at the Family Table. But humans — made in the image of the Family God — could do all of these things.</p>
+
+    <p>Now turn to Genesis 2. In Eden, God does not stay far away. God walks in the garden. In the cool of the day. Looking for them. Talking with them. This is not a God on a throne a million miles away. <strong>This is a Father in the garden with his children.</strong> No shame. No distance. No fear. No sickness. No death. Just a Family — the uncreated Three plus the newly-created two — enjoying one another the way the Family had been enjoying itself for eternity.</p>
+
+    <div class="highlight-box">
+      <span class="highlight-label">The Reason You Exist</span>
+      <p>You were made in his image. You were made for his Table. You were made for the kind of love that overflows from a God who is already full. When we gather at House 18 on the first Sunday of every month, we are gathering at a tiny shadow of the real Table that has been set in heaven since before the galaxies were formed.</p>
+    </div>
+
+    <div class="question-box">
+      <div class="question-icon">💭</div>
+      <div class="question-content"><strong>Discussion Question</strong><p>"When you heard just now that you were created to be family with God — not just to serve him, not just to obey him, but to be family with him — did something inside you resist that?"</p></div>
+    </div>
+  </div>
+
+  <!-- SECTION 3 -->
+  <div class="s3">
+    <div class="section-header">
+      <div class="section-number">3</div>
+      <div class="section-title-block"><div class="section-tag">Act Two</div><h2>The Fall · The Table that Was Lost</h2></div>
+    </div>
+    <div class="section-divider-line"></div>
+    <div class="leader-box"><strong>📖 Leader Instruction</strong>This is the saddest moment in the whole Bible. Do not rush. Let the weight of the lost Table land.</div>
+
+    <p>Up to Genesis 3, everything in the story has been <em>very good.</em> The Family Table was set. The children were seated. Then one afternoon, a conversation happened that changed everything. A voice entered Eden. Not loud. Not obviously evil. A clever voice. A quiet voice. The serpent said — <em>did God really say you must not eat from any tree in the garden?</em></p>
+
+    <div class="highlight-box">
+      <span class="highlight-label">Where Every Fall Begins</span>
+      <p>The first attack was not on behaviour. The first attack was on God's goodness. The serpent was planting a seed — are you sure God is as generous as he seems? Are you sure he is not holding something back?</p>
+    </div>
+
+    <p>Then the serpent spoke the sentence that broke everything. <em>You will not certainly die. For God knows that when you eat from it your eyes will be opened, and you will be like God, knowing good and evil.</em> Three lies in one sentence. God is lying. God is hiding something. You are missing something you need to grab for. And this is the heart of every temptation we face from that day to this one — the lie that God is holding out on us at his Table.</p>
+
+    <p>So she took the fruit. She ate. She gave to her husband. And in that moment — the Table broke.</p>
+
+    <div class="scripture">
+      <p>"Then the man and his wife heard the sound of the Lord God as he was walking in the garden in the cool of the day, and they hid from the Lord God among the trees of the garden."</p>
+      <span class="ref">Genesis 3:8</span>
+    </div>
+
+    <p>Did you catch that? <em>They hid.</em> Up until this moment, the man and woman had been running toward the sound of God's footsteps. But now — for the first time in human history — the children heard the Father coming, and instead of running toward him, <strong>they hid.</strong></p>
+
+    <p>Then God calls out the first question he ever asks a human being. <em>Where are you?</em> He was not asking for information. He is God. He was asking a question of the heart. A Father calling out in the garden for his children. <strong>That question has echoed through every human heart ever since.</strong></p>
+
+    <p>The sin was not the fruit. The sin was the choice to walk away from the Table. The consequences were catastrophic. Intimacy ruptured. Relationships poisoned. The ground cursed. The body destined to return to dust. And verse 24 — God placed cherubim and a flaming sword at the entrance of the garden <em>to guard the way to the tree of life.</em> The door back to the Table was closed.</p>
+
+    <div class="highlight-box">
+      <span class="highlight-label">The Real Diagnosis of What is Wrong with the World</span>
+      <p>The problem of the human race is not primarily that we are bad people who need to be better. The problem is that we are children who have walked away from our Father's Table.</p>
+    </div>
+
+    <p>Every human being born since has been born outside the Table. Nobody has been born at the Family Table since Eden. That is why we feel the ache. That is why nothing in this world ever quite satisfies. Something deep in us remembers Eden even though none of us has ever seen it.</p>
+
+    <p>The rest of the Old Testament is the long, slow story of a Father whose children walked out of the house — and who kept trying to find a way to bring them back. He called Abraham. He rescued Israel. He gave the Law. He built the Temple. He sent prophets. For thousands of years. But none of it worked. The door was still shut. The flaming sword was still at the gate.</p>
+
+    <div class="question-box">
+      <div class="question-icon">💬</div>
+      <div class="question-content"><strong>Discussion Question</strong><p>"Do you recognise the ache we just described? That sense that something is not quite right, that nothing ever quite satisfies? Can you name a specific moment when you have felt that ache?"</p></div>
+    </div>
+  </div>
+
+  <!-- SECTION 4 -->
+  <div class="s4">
+    <div class="section-header">
+      <div class="section-number">4</div>
+      <div class="section-title-block"><div class="section-tag">Act Three</div><h2>Redemption · The Table that Was Reopened</h2></div>
+    </div>
+    <div class="section-divider-line"></div>
+    <div class="leader-box"><strong>📖 Leader Instruction</strong>This is the turning point of the whole story. Make sure the group understands Jesus came primarily to bring us home — not primarily to make us morally better.</div>
+
+    <p>For four thousand years, the Father waited. Then one night, in a small town called Bethlehem, under a government nobody loved, in a stable behind an inn that had no room for his mother — the Son of God was born. And the whole story turned on its hinge.</p>
+
+    <div class="highlight-box">
+      <span class="highlight-label">The Deepest Answer to Why Jesus Came</span>
+      <p>Jesus did not primarily come to make us better behaved. He came to bring us home. The door back to the Family Table had been locked since Eden, and nobody on the inside of the human race could open it. So the Father sent somebody who could.</p>
+    </div>
+
+    <p>Jesus was fully God. The second Person of the Trinity. The one who had been sitting at the Family Table since before there was time. But when he came to earth, he was also fully human. He had skin. He had bones. He had tear ducts that produced real tears. He was the bridge the human race could not build for itself.</p>
+
+    <p>Look at his ministry. He went to the places the religious leaders avoided. He ate with tax collectors. He talked with prostitutes. He touched lepers. And he was constantly — constantly — eating with people. Have you ever noticed that in the gospels? He was embodying what he had come to do. He was being the Table in human form. Everywhere he went, the Table came with him.</p>
+
+    <p>But all of that was leading to one specific meal. On the night before he died.</p>
+
+    <div class="scripture">
+      <p>"I have eagerly desired to eat this Passover with you before I suffer... Then he took bread, gave thanks and broke it, and gave it to them, saying, 'This is my body given for you; do this in remembrance of me.' In the same way, after the supper he took the cup, saying, 'This cup is the new covenant in my blood, which is poured out for you.'"</p>
+      <span class="ref">Luke 22:15, 19–20</span>
+    </div>
+
+    <p>The body broken. The blood poured. <strong>The price of reopening the Family Table was being paid in front of their eyes.</strong> The next day, Jesus went to a cross. And on that cross — every consequence of every human being who had ever walked away from the Table was placed on him. He paid it. In full.</p>
+
+    <div class="scripture">
+      <p>"At that moment the curtain of the temple was torn in two from top to bottom."</p>
+      <span class="ref">Matthew 27:51</span>
+    </div>
+
+    <p>In the temple, there was a thick curtain. For over a thousand years, that curtain had said — <em>you cannot come in. The way is closed.</em> When Jesus died, that curtain was torn. Not from the bottom up — as if humans were tearing their way in. <strong>From the top down.</strong> As if the Father himself was reaching down from heaven and ripping the barrier apart with his own hands. The door back to the Family Table had been opened.</p>
+
+    <p>Three days later, the tomb was empty. The Son who had died was alive again. Walking through a garden. Being mistaken by Mary Magdalene for a gardener. Which was no accident. Because the first garden had closed in Eden, and now — on the third day — a new garden had opened.</p>
+
+    <div class="scripture">
+      <p>"But because of his great love for us, God, who is rich in mercy, made us alive with Christ even when we were dead in transgressions... And God raised us up with Christ and seated us with him in the heavenly places in Christ Jesus."</p>
+      <span class="ref">Ephesians 2:4–6</span>
+    </div>
+
+    <p>Read that again. <em>Seated us with him in the heavenly places.</em> When Jesus returned to the Father's right hand, he did not go back as one. He went back carrying with him every human being who had ever accepted the invitation. <strong>Every believer — right now, this evening — is seated with Christ at the Father's right hand.</strong> Not standing at the back. Not kneeling in reverence. Seated. Next to the Son. At the Family Table.</p>
+
+    <div class="highlight-box">
+      <span class="highlight-label">Why Every Meal Matters</span>
+      <p>The Son could not bear the thought that his family would forget what it cost to reopen the Table. So he gave us a reminder we would carry for the rest of our lives. Not once a year. Not once a month. Every single meal. Every meal becomes a mini-communion. A constant remembering that you are a child who has been welcomed home.</p>
+    </div>
+
+    <div class="question-box">
+      <div class="question-icon">💬</div>
+      <div class="question-content"><strong>Discussion Question</strong><p>"When you heard just now that you are already seated with Christ at the Father's right hand — did that match the picture you have been carrying? Or has your picture of being a Christian been smaller than that?"</p></div>
+    </div>
+  </div>
+
+  <!-- SECTION 5 -->
+  <div class="s5">
+    <div class="section-header">
+      <div class="section-number">5</div>
+      <div class="section-title-block"><div class="section-tag">The Pastoral Centre</div><h2>The Chairs, the Manners, and the Option</h2></div>
+    </div>
+    <div class="section-divider-line"></div>
+    <div class="leader-box"><strong>📖 Leader Instruction</strong>This is the pastoral heart of the whole evening. Give full weight to all three postures.</div>
+
+    <p>Everything we have described so far is true. The Father built the Family Table. The children walked away. The Son paid the price. The door has been reopened. The seats are available. The invitation has been issued. <strong>But the invitation is still an invitation. Nobody is forced to accept it.</strong></p>
+
+    <p>Imagine the Father's Family Table. The seats are there. Each one has a person's name on it. There is a seat with your name on it. Reserved. Waiting. Set. And around that Table there are three kinds of people.</p>
+
+    <div class="posture-card">
+      <div class="pc-tag">Posture One</div>
+      <h3>Those who have sat down</h3>
+      <p>They have accepted the invitation. They have pulled up the chair. They have looked at the Father across the Table and said <em>yes. I am your child. I belong here.</em> These are the ones who have come home.</p>
+    </div>
+
+    <div class="posture-card">
+      <div class="pc-tag">Posture Two</div>
+      <h3>Those running in circles</h3>
+      <p>They see the Table. They know the songs. They know the stories. But they have never actually sat down. Some have been running in circles for years. Some have grown up with the Table in their house all their lives. From the outside they look spiritual. But in the deepest place of their heart, they have never said yes.</p>
+    </div>
+
+    <div class="posture-card">
+      <div class="pc-tag">Posture Three</div>
+      <h3>Those considering leaving</h3>
+      <p>They have been seated. But something in them is wondering whether the running-in-circles life might be more interesting. The Father respects their freedom. The door is as open going out as it is coming in.</p>
+    </div>
+
+    <div class="highlight-box">
+      <span class="highlight-label">A Dangerous Place for a Young Person</span>
+      <p>You can spend your entire childhood and your entire teenage years inside Christian culture — and arrive at eighteen having never actually sat down at the Table. You know all the words. You know all the behaviours. But in the deepest place of your heart, you have never said yes.</p>
+    </div>
+
+    <p>That is why so many young people walk away in their first year of university. Not because the arguments got too hard. Because they discovered they had never actually sat down. They were running in circles around a Table they had never joined. Once they left home, there was nothing holding them. <strong>Do not let that be you.</strong></p>
+
+    <div class="leader-box"><strong>⚡ The Honest Warning</strong>Deliver this with dignity, not fear. It is sober mercy.</div>
+
+    <p>You do not know when the door closes for you. Not when God closes it. God does not do that. The door closes the moment you take your last breath. The option to sit at the Table is only an option while you are still breathing. The moment the breath is gone, the choice is made — and the choice stands.</p>
+
+    <p>I am not telling you this to frighten you. I am telling you because I love every one of you too much to send you home without being honest. If anyone walks away this evening, they should walk away knowing clearly what they are walking away from — not under the quiet assumption that there will always be more time. Running in circles is not neutral ground. It is a direction. And every day that choice is being made.</p>
+
+    <div class="highlight-box">
+      <span class="highlight-label">The Table Manners</span>
+      <p>Yes, there are table manners at the Family Table. But the manners are not law. They are love. The Helper — who lives inside every child who has sat down — is quietly, gently, patiently teaching every child how to live in a way that matches the Family they have joined. The longer you sit, the less the manners feel like restrictions, and the more they feel like freedom.</p>
+    </div>
+
+    <p>So let me put the whole picture in front of you one more time. <strong>The Table is set.</strong> The Father built it before time began. <strong>The seat is reserved.</strong> It has your name on it. <strong>The price has been paid.</strong> There is nothing left to earn. <strong>But the invitation is still an invitation.</strong> You can accept this evening. You can accept next month. You can run in circles for the rest of your life. All of those are options the Father respects. <strong>But you do not know when the door closes.</strong> And if you do accept — the Helper will teach you the Family's way of living. Not law. Love.</p>
+
+    <div class="question-box">
+      <div class="question-icon">💬</div>
+      <div class="question-content"><strong>Discussion Question</strong><p>"Which one are you right now? Are you seated at the Table? Are you running in circles around it? Or are you considering getting up and leaving? Do not perform. Just know honestly, in the quietness of your own heart, where you actually are this evening."</p></div>
+    </div>
+  </div>
+
+  <!-- SECTION 6 -->
+  <div class="s6">
+    <div class="section-header">
+      <div class="section-number">6</div>
+      <div class="section-title-block"><div class="section-tag">Act Four</div><h2>Restoration · The Table that Will Be</h2></div>
+    </div>
+    <div class="section-divider-line"></div>
+    <div class="leader-box"><strong>📖 Leader Instruction</strong>Most teenagers have never heard the end of the story clearly. This section transforms how they imagine their future.</div>
+
+    <p>Most people — if they know the Christian story at all — think it ends with Jesus dying for us and us going to heaven when we die. But the story has one more act. And it is the act that transforms how you imagine your whole future.</p>
+
+    <p>When you picture heaven — what do you see? Clouds. White robes. Harps. A vague eternal church service. Is that your picture? Because that is not what the Bible actually describes. The Bible describes something much more specific. Much more physical. Much more earthly. And much more exciting than most of us have ever been taught.</p>
+
+    <div class="future-card">
+      <div class="fc-tag">The Second Coming · Revelation 19:11</div>
+      <h3>Jesus returns physically to earth</h3>
+      <p>Not as a baby in a stable this time. As a King on a white horse, with the armies of heaven behind him, coming back to the planet he once walked as a man. This is the moment every Christian throughout history has been waiting for.</p>
+    </div>
+
+    <div class="future-card">
+      <div class="fc-tag">The Rapture · 1 Thessalonians 4:16–17</div>
+      <h3>The Family gathered in one moment</h3>
+      <p>Every believer across every nation and every century — lifted up at the same moment to meet the Son in the air. Teenagers in Nairobi, grandmothers in Nigeria, children in Brazil, farmers in Vietnam — all of them lifted up at the same moment. The Family finally together. The seats that have been empty for too long — finally filled.</p>
+    </div>
+
+    <div class="future-card">
+      <div class="fc-tag">The Millennium · Revelation 20:4–6</div>
+      <h3>A thousand years of his reign on earth</h3>
+      <p>A thousand years of Jesus physically present on earth, ruling, teaching, dwelling with his family. A thousand years of peace. No war. No injustice. No sickness. No violence. Just family — the Father's family — living under the direct physical reign of Jesus himself on a restored earth. Imagine what Nairobi will look like. Imagine what Africa will look like. This is coming.</p>
+    </div>
+
+    <div class="future-card">
+      <div class="fc-tag">The New Earth · Revelation 21:1–4</div>
+      <h3>God himself dwelling with his people forever</h3>
+      <p>The Holy City comes <em>down</em>. From heaven. To earth. The old picture — of people going up to heaven — is backwards. The real picture — of God coming down to a renewed earth to dwell with his Family forever. This is Eden restored. The Family finally reunited. The Table that began in Genesis 2 is restored and perfected.</p>
+    </div>
+
+    <div class="highlight-box">
+      <span class="highlight-label">Your Life is Not Seventy Years Long</span>
+      <p>This life is the warm-up. The real event is the thousand-year reign with Christ. And after that, eternity on a new earth with God himself dwelling among us. You were not made for seventy years. You were made for forever.</p>
+    </div>
+
+    <p>Carry two pictures in your mind at the same time. <strong>The first picture.</strong> You, right now, sitting around this little Table at House 18. Teenagers. Parents. Neighbours. In Nairobi. On a Sunday afternoon. Breathing. Alive. Able to make a decision. <strong>The second picture.</strong> The Family Table in the new Jerusalem. The Father at the head. The Son beside him. The Spirit moving among the children. And every believer from every nation and every century — including, perhaps, you — seated together forever.</p>
+
+    <p>The second picture is where this story is heading. The first picture is the small Table where you decide whether you want to be part of the second one.</p>
+
+    <div class="question-box">
+      <div class="question-icon">💬</div>
+      <div class="question-content"><strong>Discussion Question</strong><p>"Did any part of what we just described surprise you? Did any of it feel too big to be true? Name honestly which part landed hardest in your heart."</p></div>
+    </div>
+  </div>
+
+  <!-- SECTION 7 -->
+  <div class="s7">
+    <div class="section-header">
+      <div class="section-number">7</div>
+      <div class="section-title-block"><div class="section-tag">To Close</div><h2>Every Meal is a Reminder</h2></div>
+    </div>
+    <div class="section-divider-line"></div>
+    <div class="leader-box"><strong>📖 Leader Instruction</strong>Read this slowly. This is the landing place of eight months of gathering.</div>
+
+    <div class="reflection-box">
+      <p>Eight months ago we opened this Table for the first time. We asked who Jesus is. We cried out — <em>but you, Lord.</em> We discovered every spiritual blessing had already been given. We watched the Shepherd become the Host. The Table became the Temple. The Temple became the fire. The fire learned how to welcome doubt. And this evening — we have discovered what the Table has been from the very beginning.</p>
+      <p>It has always been the Family Table.</p>
+      <p>The Father has been building a Family since before the galaxies were formed. The children walked away in Eden. For four thousand years the Father waited. Then the Son came. The body was broken. The blood was poured. The door was reopened. And now we live in the moment of invitation.</p>
+      <p>Some have sat down. Some are running in circles. Some have never been told the chair exists. This evening is a good night to decide.</p>
+      <p>Say it in your heart with me now. Quietly. <em>I am a Christian because God is building a Family — and he has invited me to come home.</em></p>
+      <p>That is the whole story in one sentence. That is who you are. That is why you are here. That is where you are going. That is what every meal of your life is going to remind you of from this evening onwards.</p>
+      <div class="final-question">
+        <p>"Which one are you right now? Seated, circling, or considering leaving?"</p>
+      </div>
+    </div>
+
+    <div class="sentence-highlight">
+      <div class="sh-label">The New Daily Rhythm</div>
+      <p>Before every meal — pause. Just for one second. Lift your eyes. And remember. <em>I have a seat at the Family Table. The body was broken for me. The drink was poured out for me. And I am going to pause and thank the Father for inviting me home.</em></p>
+    </div>
+
+    <div class="fathers-note">
+      <h3>✍ A Note for the Facilitator — Your Personal Moment</h3>
+      <p>This is the moment where your own voice matters most. Share briefly — when did you consciously pull up the chair at the Family Table for the first time? Not the Christian culture you were raised around. The actual moment you said yes to the Father in your own voice. What did that look like? What did it feel like? What changed? How has every meal been different since? Do not perform it. Just tell the truth. Two or three honest sentences from a father who has sat at this Table for years will land deeper than everything else this evening combined. The young people around your Table need to hear a grown man they respect tell them — <em>this is the moment I came home.</em> Tell them.</p>
+    </div>
+
+    <div class="highlight-box" style="margin-top:40px;">
+      <span class="highlight-label">A Final Word</span>
+      <p>Eight months. Eight sessions. The Shepherd became the Host. The Table became the Temple. The Temple became the fire. The fire welcomed doubt. And this evening — the whole Family finally understood what Table we have been gathering around all along. Lead well, Victor. 🪑✨</p>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <p>The Table · <a href="../index.html">thetable-hub.github.io/session-01</a> · Encounter. Community. Truth.</p>
+</footer>
+
+</body>
+</html>
